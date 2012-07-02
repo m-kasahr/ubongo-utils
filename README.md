@@ -1,4 +1,9 @@
 ubongo-utils
 ============
+ubongo-utils is a set of utilities for Ubongo, Ubongo Mini, Ubongo Duel
+and Ubongo 3D puzzle games designed by Grzegorz Rejchtman.
+Ubongo Extreme (hexagonal tiles) or Ubongo Trigo (triangle tiles) is
+not supported.  It runs on UNIX based operating systems including Linux.
+All utilities are designed to be invoked on a command line.  
 
-Utilities for the puzzle game Ubongo and its variants
+'ubongo-utils' is free software.  See LICENSE.md for more details.
