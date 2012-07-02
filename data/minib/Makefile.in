@@ -1,0 +1,79 @@
+subdir = data/minib
+top_builddir = ../..
+srcdir = @srcdir@
+top_srcdir = $(srcdir)/$(top_builddir)
+VPATH = @srcdir@
+
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+PACKAGE = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+libdir = @libdir@
+datarootdir = @datarootdir@
+datadir = @datadir@
+pkgdatadir = $(datadir)/$(PACKAGE_NAME)
+pkgdataorigdir = $(pkgdatadir)/orig
+pkgdatadueldir = $(pkgdatadir)/duel
+pkgdataminibdir = $(pkgdatadir)/minib
+pkgdataminigdir = $(pkgdatadir)/minig
+pkgdataminirdir = $(pkgdatadir)/minir
+pkgdataminiydir = $(pkgdatadir)/miniy
+pkgdata3ddir = $(pkgdatadir)/3d
+includedir = @includedir@
+ubongoincludedir = $(includedir)/ubongo
+ubongo3dincludedir = $(includedir)/ubongo3d
+pkgdocdir = @pkgdocdir@
+
+CXX = @CXX@
+RANLIB = @RANLIB@
+LIBTOOL = @LIBTOOL@
+SHELL = @SHELL@
+RUBY = @RUBY@
+CONVERT = @CONVERT@
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+
+pkgdataminib_FILES = A.piece B.piece C.piece D.piece E.piece F.piece G.piece \
+                     colors piece-order
+
+DISTFILES = Makefile.in $(pkgdataminib_FILES)
+CLEANFILES =
+LIBTOOL_CLEANFILES = 
+
+.SUFFIXES:
+.SUFFIXES: .cpp .lo
+
+.PHONY: all clean distclean install uninstall dist-local
+
+all:
+
+install: all
+	$(MKDIR_P) $(DESTDIR)$(pkgdataminibdir)
+	for i in $(pkgdataminib_FILES); do \
+	    $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(pkgdataminibdir)/$$i; \
+	done
+
+uninstall:
+	for i in $(pkgdataminib_FILES); do \
+	    test -f $(DESTDIR)$(pkgdataminibdir)/$$i || continue; \
+	    rm -f $(DESTDIR)$(pkgdataminibdir)/$$i; \
+	done
+	-rmdir $(DESTDIR)$(pkgdataminibdir)
+	-rmdir $(DESTDIR)$(pkgdatadir)
+
+clean:
+
+distclean: clean
+	-rm -f Makefile
+
+dist-local:
+	$(MKDIR_P) $(top_builddir)/$(PACKAGE)/$(subdir)
+	for i in $(DISTFILES); do \
+	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
+	done

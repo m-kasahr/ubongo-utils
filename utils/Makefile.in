@@ -1,0 +1,547 @@
+subdir = utils
+top_builddir = ..
+srcdir = @srcdir@
+top_srcdir = $(srcdir)/$(top_builddir)
+VPATH = @srcdir@
+
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+PACKAGE = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+libdir = @libdir@
+datarootdir = @datarootdir@
+datadir = @datadir@
+pkgdatadir = $(datadir)/$(PACKAGE_NAME)
+pkgdataorigdir = $(pkgdatadir)/orig
+pkgdatadueldir = $(pkgdatadir)/duel
+pkgdataminibdir = $(pkgdatadir)/minib
+pkgdataminigdir = $(pkgdatadir)/minig
+pkgdataminirdir = $(pkgdatadir)/minir
+pkgdataminiydir = $(pkgdatadir)/miniy
+pkgdata3ddir = $(pkgdatadir)/3d
+includedir = @includedir@
+ubongoincludedir = $(includedir)/ubongo
+ubongo3dincludedir = $(includedir)/ubongo3d
+pkgdocdir = @pkgdocdir@
+
+CXX = @CXX@
+RANLIB = @RANLIB@
+LIBTOOL = @LIBTOOL@
+SHELL = @SHELL@
+RUBY = @RUBY@
+CONVERT = @CONVERT@
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+
+DEFS = -DVERSION=\"$(PACKAGE_VERSION)\"
+INCLUDES = -I$(top_srcdir)/lib
+CXXFLAGS = @CXXFLAGS@
+LDFLAGS = @LDFLAGS@
+LIB_VERSION_INFO = @LIBUBONGO_VERSION_INFO@
+LIBS = -lstdc++
+
+dataorig_srcdir = $(top_srcdir)/data/orig
+dataduel_srcdir = $(top_srcdir)/data/duel
+dataminib_srcdir = $(top_srcdir)/data/minib
+dataminig_srcdir = $(top_srcdir)/data/minig
+dataminir_srcdir = $(top_srcdir)/data/minir
+dataminiy_srcdir = $(top_srcdir)/data/miniy
+data3d_srcdir = $(top_srcdir)/data/3d
+
+libubongo_srcdir = $(top_srcdir)/lib/ubongo
+libubongo_builddir = $(top_builddir)/lib/ubongo
+libubongo3d_srcdir = $(top_srcdir)/lib/ubongo3d
+libubongo3d_builddir = $(top_builddir)/lib/ubongo3d
+libubongo = $(libubongo_builddir)/libubongo.la
+libubongo3d = $(libubongo3d_builddir)/libubongo3d.la
+
+ubongosolveorig_SOURCES = ubongo-solve-orig.cpp
+ubongosolveorig_OBJECTS = ubongo-solve-orig.lo
+ubongosolveorig_LIBS    = $(libubongo)
+ubongosolveorig_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongosolveduel_SOURCES = ubongo-solve-duel.cpp
+ubongosolveduel_OBJECTS = ubongo-solve-duel.lo
+ubongosolveduel_LIBS    = $(libubongo)
+ubongosolveduel_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongosolveminib_SOURCES = ubongo-solve-minib.cpp
+ubongosolveminib_OBJECTS = ubongo-solve-minib.lo
+ubongosolveminib_lIBS    = $(libubongo)
+ubongosolveminib_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongosolveminig_SOURCES = ubongo-solve-minig.cpp
+ubongosolveminig_OBJECTS = ubongo-solve-minig.lo
+ubongosolveminig_lIBS    = $(libubongo)
+ubongosolveminig_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongosolveminir_SOURCES = ubongo-solve-minir.cpp
+ubongosolveminir_OBJECTS = ubongo-solve-minir.lo
+ubongosolveminir_lIBS    = $(libubongo)
+ubongosolveminir_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongosolveminiy_SOURCES = ubongo-solve-miniy.cpp
+ubongosolveminiy_OBJECTS = ubongo-solve-miniy.lo
+ubongosolveminiy_lIBS    = $(libubongo)
+ubongosolveminiy_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongosolve3d_SOURCES = ubongo-solve-3d.cpp
+ubongosolve3d_OBJECTS = ubongo-solve-3d.lo
+ubongosolve3d_lIBS    = $(libubongo3d)
+ubongosolve3d_LDFLAGS = -L$(libubongo3d_builddir) -lubongo3d
+
+ubongoanalyzeorig_SOURCES = ubongo-analyze-orig.cpp
+ubongoanalyzeorig_OBJECTS = ubongo-analyze-orig.lo
+ubongoanalyzeorig_LIBS    = $(libubongo)
+ubongoanalyzeorig_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongoanalyzeduel_SOURCES = ubongo-analyze-duel.cpp
+ubongoanalyzeduel_OBJECTS = ubongo-analyze-duel.lo
+ubongoanalyzeduel_LIBS    = $(libubongo)
+ubongoanalyzeduel_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongoanalyzeminib_SOURCES = ubongo-analyze-minib.cpp
+ubongoanalyzeminib_LIBS    = $(libubongo)
+ubongoanalyzeminib_OBJECTS = ubongo-analyze-minib.lo
+ubongoanalyzeminib_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongoanalyzeminig_SOURCES = ubongo-analyze-minig.cpp
+ubongoanalyzeminig_OBJECTS = ubongo-analyze-minig.lo
+ubongoanalyzeminig_LIBS    = $(libubongo)
+ubongoanalyzeminig_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongoanalyzeminir_SOURCES = ubongo-analyze-minir.cpp
+ubongoanalyzeminir_OBJECTS = ubongo-analyze-minir.lo
+ubongoanalyzeminir_LIBS    = $(libubongo)
+ubongoanalyzeminir_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongoanalyzeminiy_SOURCES = ubongo-analyze-miniy.cpp
+ubongoanalyzeminiy_OBJECTS = ubongo-analyze-miniy.lo
+ubongoanalyzeminiy_LIBS    = $(libubongo)
+ubongoanalyzeminiy_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
+ubongoanalyze3d_SOURCES = ubongo-analyze-3d.cpp
+ubongoanalyze3d_OBJECTS = ubongo-analyze-3d.lo
+ubongoanalyze3d_LIBS    = $(libubongo3d)
+ubongoanalyze3d_LDFLAGS = -L$(libubongo3d_builddir) -lubongo3d
+
+PROGRAMS = ubongo-solve-orig ubongo-solve-duel ubongo-solve-minib \
+           ubongo-solve-minig ubongo-solve-minir ubongo-solve-miniy \
+           ubongo-solve-3d ubongo-analyze-orig ubongo-analyze-duel \
+           ubongo-analyze-minib ubongo-analyze-minig ubongo-analyze-minir \
+           ubongo-analyze-miniy ubongo-analyze-3d 
+
+SCRIPTS = ubongo-draw ubongo-html-orig ubongo-html-duel ubongo-html-minib \
+          ubongo-html-minig ubongo-html-minir ubongo-html-miniy \
+          ubongo-html-3d ubongo-compare
+
+DISTFILES = Makefile.in ubongo-solve-x.cpp.in ubongo-analyze-x.cpp.in \
+            ubongo-html-x.in ubongo-html-3d.in ubongo-draw-x.in \
+            ubongo-compare.in 
+CLEANFILES = $(SCRIPTS) \
+             $(ubongosolveorig_SOURCES) $(ubongosolveduel_SOURCES) \
+             $(ubongosolveminib_SOURCES) $(ubongosolveminig_SOURCES) \
+             $(ubongosolveminir_SOURCES) $(ubongosolveminiy_SOURCES) \
+             $(ubongosolve3d_SOURCES) \
+             $(ubongoanalyzeorig_SOURCES) $(ubongoanalyzeduel_SOURCES) \
+             $(ubongoanalyzeminib_SOURCES) $(ubongoanalyzeminig_SOURCES) \
+             $(ubongoanalyzeminir_SOURCES) $(ubongoanalyzeminiy_SOURCES) \
+             $(ubongoanalyze3d_SOURCES)
+LIBTOOL_CLEANFILES = $(PROGRAMS) \
+             $(ubongosolveorig_OBJECTS) $(ubongosolveduel_OBJECTS) \
+             $(ubongosolveminib_OBJECTS) $(ubongosolveminig_OBJECTS) \
+             $(ubongosolveminir_OBJECTS) $(ubongosolveminiy_OBJECTS) \
+             $(ubongosolve3d_OBJECTS) \
+             $(ubongoanalyzeorig_OBJECTS) $(ubongoanalyzeduel_OBJECTS) \
+             $(ubongoanalyzeminib_OBJECTS) $(ubongoanalyzeminig_OBJECTS) \
+             $(ubongoanalyzeminir_OBJECTS) $(ubongoanalyzeminiy_OBJECTS) \
+             $(ubongoanalyze3d_OBJECTS)
+
+.SUFFIXES:
+
+.PHONY: all clean distclean install uninstall dist-local
+
+all: $(PROGRAMS) $(SCRIPTS)
+
+install: all
+	$(MKDIR_P) $(DESTDIR)$(bindir)
+	for i in $(PROGRAMS); do \
+	    $(LIBTOOL) --mode=install $(INSTALL_PROGRAM) $$i \
+	        $(DESTDIR)$(bindir)/$$i; \
+	done
+	for i in $(SCRIPTS); do \
+	    $(INSTALL_SCRIPT) $$i $(DESTDIR)$(bindir)/$$i; \
+	done
+
+uninstall:
+	for i in $(PROGRAMS); do \
+	    $(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(bindir)/$$i; \
+	done
+	for i in $(SCRIPTS); do \
+	    rm -f $(DESTDIR)$(bindir)/$$i; \
+	done
+
+clean:
+	-$(LIBTOOL) --mode=clean rm -f $(LIBTOOL_CLEANFILES)
+	-rm -f $(CLEANFILES)
+
+distclean: clean
+	-rm -f Makefile
+
+dist-local:
+	$(MKDIR_P) $(top_builddir)/$(PACKAGE)/$(subdir)
+	for i in $(DISTFILES); do \
+	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
+	done
+
+ubongo-solve-orig: $(ubongosolveorig_OBJECTS) $(ubongosolveorig_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongosolveorig_OBJECTS) $(ubongosolveorig_LDFLAGS)
+
+ubongo-solve-duel: $(ubongosolveduel_OBJECTS) $(ubongosolveduel_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongosolveduel_OBJECTS) $(ubongosolveduel_LDFLAGS)
+
+ubongo-solve-minib: $(ubongosolveminib_OBJECTS) $(ubongosolveminib_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongosolveminib_OBJECTS) $(ubongosolveminib_LDFLAGS)
+
+ubongo-solve-minig: $(ubongosolveminig_OBJECTS) $(ubongosolveminig_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongosolveminig_OBJECTS) $(ubongosolveminig_LDFLAGS)
+
+ubongo-solve-minir: $(ubongosolveminir_OBJECTS) $(ubongosolveminir_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongosolveminir_OBJECTS) $(ubongosolveminir_LDFLAGS)
+
+ubongo-solve-miniy: $(ubongosolveminiy_OBJECTS) $(ubongosolveminiy_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongosolveminiy_OBJECTS) $(ubongosolveminiy_LDFLAGS)
+
+ubongo-solve-3d: $(ubongosolve3d_OBJECTS) $(ubongosolve3d_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongosolve3d_OBJECTS) $(ubongosolve3d_LDFLAGS)
+
+ubongo-analyze-orig: $(ubongoanalyzeorig_OBJECTS) $(ubongoanalyzeorig_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongoanalyzeorig_OBJECTS) $(ubongoanalyzeorig_LDFLAGS)
+
+ubongo-analyze-duel: $(ubongoanalyzeduel_OBJECTS) $(ubongoanalyzeduel_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongoanalyzeduel_OBJECTS) $(ubongoanalyzeduel_LDFLAGS)
+
+ubongo-analyze-minib: $(ubongoanalyzeminib_OBJECTS) $(ubongoanalyzeminib_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongoanalyzeminib_OBJECTS) $(ubongoanalyzeminib_LDFLAGS)
+
+ubongo-analyze-minig: $(ubongoanalyzeminig_OBJECTS) $(ubongoanalyzeminig_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongoanalyzeminig_OBJECTS) $(ubongoanalyzeminig_LDFLAGS)
+
+ubongo-analyze-minir: $(ubongoanalyzeminir_OBJECTS) $(ubongoanalyzeminir_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongoanalyzeminir_OBJECTS) $(ubongoanalyzeminir_LDFLAGS)
+
+ubongo-analyze-miniy: $(ubongoanalyzeminiy_OBJECTS) $(ubongoanalyzeminiy_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongoanalyzeminiy_OBJECTS) $(ubongoanalyzeminiy_LDFLAGS)
+
+ubongo-analyze-3d: $(ubongoanalyze3d_OBJECTS) $(ubongoanalyze3d_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongoanalyze3d_OBJECTS) $(ubongoanalyze3d_LDFLAGS)
+
+ubongo-solve-orig.lo: ubongo-solve-orig.cpp \
+                      $(libubongo_builddir)/pieceset_orig.h \
+                      $(libubongo_srcdir)/solver.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-orig.cpp
+
+ubongo-solve-duel.lo: ubongo-solve-duel.cpp \
+                      $(libubongo_builddir)/pieceset_duel.h \
+                      $(libubongo_srcdir)/solver.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-duel.cpp
+
+ubongo-solve-minib.lo: ubongo-solve-minib.cpp \
+                       $(libubongo_builddir)/pieceset_minib.h \
+                       $(libubongo_srcdir)/solver.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-minib.cpp
+
+ubongo-solve-minig.lo: ubongo-solve-minig.cpp \
+                       $(libubongo_builddir)/pieceset_minig.h \
+                       $(libubongo_srcdir)/solver.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-minig.cpp
+
+ubongo-solve-minir.lo: ubongo-solve-minir.cpp \
+                       $(libubongo_builddir)/pieceset_minir.h \
+                       $(libubongo_srcdir)/solver.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-minir.cpp
+
+ubongo-solve-miniy.lo: ubongo-solve-miniy.cpp \
+                       $(libubongo_builddir)/pieceset_miniy.h \
+                       $(libubongo_srcdir)/solver.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-miniy.cpp
+
+ubongo-solve-3d.lo: ubongo-solve-3d.cpp \
+                    $(libubongo3d_builddir)/pieceset_3d.h \
+                    $(libubongo3d_srcdir)/solver.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-3d.cpp
+
+ubongo-analyze-orig.lo: ubongo-analyze-orig.cpp \
+                        $(libubongo_builddir)/pieceset_orig.h \
+                        $(libubongo_srcdir)/analyzer.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-orig.cpp
+
+ubongo-analyze-duel.lo: ubongo-analyze-duel.cpp \
+                        $(libubongo_builddir)/pieceset_duel.h \
+                        $(libubongo_srcdir)/analyzer.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-duel.cpp
+
+ubongo-analyze-minib.lo: ubongo-analyze-minib.cpp \
+                         $(libubongo_builddir)/pieceset_minib.h \
+                         $(libubongo_srcdir)/analyzer.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-minib.cpp
+
+ubongo-analyze-minig.lo: ubongo-analyze-minig.cpp \
+                         $(libubongo_builddir)/pieceset_minig.h \
+                         $(libubongo_srcdir)/analyzer.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-minig.cpp
+
+ubongo-analyze-minir.lo: ubongo-analyze-minir.cpp \
+                         $(libubongo_builddir)/pieceset_minir.h \
+                         $(libubongo_srcdir)/analyzer.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-minir.cpp
+
+ubongo-analyze-miniy.lo: ubongo-analyze-miniy.cpp \
+                         $(libubongo_builddir)/pieceset_miniy.h \
+                         $(libubongo_srcdir)/analyzer.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-miniy.cpp
+
+ubongo-analyze-3d.lo: ubongo-analyze-3d.cpp \
+                      $(libubongo3d_builddir)/pieceset_3d.h \
+                      $(libubongo3d_srcdir)/analyzer.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-3d.cpp
+
+ubongo-solve-orig.cpp: ubongo-solve-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|orig|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|Orig|' \
+	    $(srcdir)/ubongo-solve-x.cpp.in > $@
+
+ubongo-solve-duel.cpp: ubongo-solve-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|duel|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|Duel|' \
+	    $(srcdir)/ubongo-solve-x.cpp.in > $@
+
+ubongo-solve-minib.cpp: ubongo-solve-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|minib|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|MiniB|' \
+	    $(srcdir)/ubongo-solve-x.cpp.in > $@
+
+ubongo-solve-minig.cpp: ubongo-solve-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|minig|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|MiniG|' \
+	    $(srcdir)/ubongo-solve-x.cpp.in > $@
+
+ubongo-solve-minir.cpp: ubongo-solve-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|minir|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|MiniR|' \
+	    $(srcdir)/ubongo-solve-x.cpp.in > $@
+
+ubongo-solve-miniy.cpp: ubongo-solve-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|miniy|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|MiniY|' \
+	    $(srcdir)/ubongo-solve-x.cpp.in > $@
+
+ubongo-solve-3d.cpp: ubongo-solve-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|3d|' \
+	    -e 's|[@]lib[@]|ubongo3d|' \
+	    -e 's|[@]namespace[@]|Ubongo3d|' \
+	    -e 's|[@]pieceset_suffix[@]|3d|' \
+	    $(srcdir)/ubongo-solve-x.cpp.in > $@
+
+ubongo-analyze-orig.cpp: ubongo-analyze-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|orig|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|Orig|' \
+	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
+
+ubongo-analyze-duel.cpp: ubongo-analyze-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|duel|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|Duel|' \
+	    $(srcdir)/$? > $@
+
+ubongo-analyze-minib.cpp: ubongo-analyze-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|minib|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|MiniB|' \
+	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
+
+ubongo-analyze-minig.cpp: ubongo-analyze-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|minig|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|MiniG|' \
+	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
+
+ubongo-analyze-minir.cpp: ubongo-analyze-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|minir|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|MiniR|' \
+	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
+
+ubongo-analyze-miniy.cpp: ubongo-analyze-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|miniy|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|MiniY|' \
+	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
+
+ubongo-analyze-3d.cpp: ubongo-analyze-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|3d|' \
+	    -e 's|[@]lib[@]|ubongo3d|' \
+	    -e 's|[@]namespace[@]|Ubongo3d|' \
+	    -e 's|[@]pieceset_suffix[@]|3d|' \
+	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
+
+ubongo-draw: ubongo-draw.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]CONVERT[@]|$(CONVERT)|' \
+	    $(srcdir)/ubongo-draw.in > $@
+	chmod 0755 $@
+
+ubongo-html-orig: ubongo-html-x.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]name[@]|orig|' \
+	    -e 's|[@]title[@]|Ubongo|' \
+	    -e 's|[@]bindir[@]|$(bindir)|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
+	    $(srcdir)/ubongo-html-x.in > $@
+	chmod 0755 $@
+
+ubongo-html-duel: ubongo-html-x.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]name[@]|duel|' \
+	    -e 's|[@]title[@]|Ubongo Duel|' \
+	    -e 's|[@]bindir[@]|$(bindir)|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
+	    $(srcdir)/ubongo-html-x.in > $@
+	chmod 0755 $@
+
+ubongo-html-minib: ubongo-html-x.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]name[@]|minib|' \
+	    -e 's|[@]title[@]|Ubongo Mini|' \
+	    -e 's|[@]bindir[@]|$(bindir)|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
+	    $(srcdir)/ubongo-html-x.in > $@
+	chmod 0755 $@
+
+ubongo-html-minig: ubongo-html-x.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]name[@]|minig|' \
+	    -e 's|[@]title[@]|Ubongo Mini|' \
+	    -e 's|[@]bindir[@]|$(bindir)|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
+	    $(srcdir)/ubongo-html-x.in > $@
+	chmod 0755 $@
+
+ubongo-html-minir: ubongo-html-x.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]name[@]|minir|' \
+	    -e 's|[@]title[@]|Ubongo Mini|' \
+	    -e 's|[@]bindir[@]|$(bindir)|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
+	    $(srcdir)/ubongo-html-x.in > $@
+	chmod 0755 $@
+
+ubongo-html-miniy: ubongo-html-x.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]name[@]|miniy|' \
+	    -e 's|[@]title[@]|Ubongo Mini|' \
+	    -e 's|[@]bindir[@]|$(bindir)|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
+	    $(srcdir)/ubongo-html-x.in > $@
+	chmod 0755 $@
+
+ubongo-html-3d: ubongo-html-3d.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]name[@]|3d|' \
+	    -e 's|[@]title[@]|Ubongo 3-D|' \
+	    -e 's|[@]bindir[@]|$(bindir)|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
+	    $(srcdir)/ubongo-html-3d.in > $@
+	chmod 0755 $@
+
+ubongo-compare: ubongo-compare.in Makefile
+	rm -f $@
+	sed -e 's|[@]RUBY[@]|$(RUBY)|' \
+	    -e 's|[@]PACKAGE_VERSION[@]|$(PACKAGE_VERSION)|' \
+	    -e 's|[@]bindir[@]|$(bindir)|' \
+	    $(srcdir)/ubongo-compare.in > $@
+	chmod 0755 $@
+

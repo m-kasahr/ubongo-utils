@@ -1,0 +1,122 @@
+subdir = .
+top_builddir = .
+srcdir = @srcdir@
+top_srcdir = $(srcdir)/$(top_builddir)
+VPATH = @srcdir@
+
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+PACKAGE = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+libdir = @libdir@
+datarootdir = @datarootdir@
+datadir = @datadir@
+pkgdatadir = $(datadir)/$(PACKAGE_NAME)
+pkgdataorigdir = $(pkgdatadir)/orig
+pkgdatadueldir = $(pkgdatadir)/duel
+pkgdataminibdir = $(pkgdatadir)/minib
+pkgdataminigdir = $(pkgdatadir)/minig
+pkgdataminirdir = $(pkgdatadir)/minir
+pkgdataminiydir = $(pkgdatadir)/miniy
+pkgdata3ddir = $(pkgdatadir)/3d
+includedir = @includedir@
+ubongoincludedir = $(includedir)/ubongo
+ubongo3dincludedir = $(includedir)/ubongo3d
+pkgdocdir = @pkgdocdir@
+
+CXX = @CXX@
+RANLIB = @RANLIB@
+LIBTOOL = @LIBTOOL@
+SHELL = @SHELL@
+RUBY = @RUBY@
+CONVERT = @CONVERT@
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+
+.SUFFIXES:
+
+.PHONY: all clean distclean install uninstall dist-local \
+        dist dist-gzip dist-bzip2
+
+SUBDIRS = lib/ubongo lib/ubongo3d utils data/orig data/duel data/minib \
+    data/minig data/minir data/miniy data/3d
+
+DISTFILES = COPYING.txt README.md INSTALL.md Makefile.in aclocal.m4 \
+            config.guess config.status config.sub configure configure.ac \
+            install-sh ltmain.sh m4/libtool.m4 m4/ltoptions.m4 m4/ltsugar.m4 \
+            m4/ltversion.m4 m4/lt~obsolete.m4
+CLEANFILES =
+
+all: all-subdirs
+
+clean: clean-subdirs
+	rm -rf $(PACKAGE)
+
+distclean: clean distclean-subdirs
+	rm -f Makefile
+	rm -f config.log
+	rm -f libtool
+
+install: install-subdirs
+
+uninstall: uninstall-subdirs
+
+dist-gzip2:
+	rm -rf $(PACKAGE)
+	mkdir $(PACKAGE)
+	mkdir $(PACKAGE)/m4
+	for i in $(DISTFILES); do \
+	    cp -p $$i $(PACKAGE)/$$i; \
+	done
+	for i in $(SUBDIRS); do \
+	    (cd $$i && $(MAKE) dist-local) || exit 1; \
+	done
+	tar cf - $(PACKAGE) | gzip -c --best > $(PACKAGE).tar.gz
+	rm -rf $(PACKAGE)
+
+dist: dist-gzip2
+
+dist-bzip2:
+	rm -rf $(PACKAGE)
+	rm -f $(PACKAGE).tar.bz2
+	mkdir $(PACKAGE)
+	mkdir $(PACKAGE)/m4
+	for i in $(DISTFILES); do \
+	    cp -p $$i $(PACKAGE)/$$i; \
+	done
+	for i in $(SUBDIRS); do \
+	    (cd $$i && $(MAKE) dist-local) || exit 1; \
+	done
+	tar cf - $(PACKAGE) | bzip2 -c --best > $(PACKAGE).tar.bz2
+	rm -rf $(PACKAGE)
+
+all-subdirs:
+	for I in $(SUBDIRS); do \
+	    (cd $$I && $(MAKE) all) || exit 1; \
+	done
+
+clean-subdirs:
+	for I in $(SUBDIRS); do \
+	    (cd $$I && $(MAKE) clean) || exit 1; \
+	done
+
+distclean-subdirs:
+	for I in $(SUBDIRS); do \
+	    (cd $$I && $(MAKE) distclean) || exit 1; \
+	done
+
+install-subdirs:
+	for I in $(SUBDIRS); do \
+	    (cd $$I && $(MAKE) install DESTDIR=$(DESTDIR)) || exit 1; \
+	done
+
+uninstall-subdirs:
+	for I in $(SUBDIRS); do \
+	    (cd $$I && $(MAKE) uninstall DESTDIR=$(DESTDIR)) || exit 1; \
+	done

@@ -1,0 +1,391 @@
+#! @RUBY@
+#                                                             -*- Ruby -*-
+# Copyright (c) 2009  Motoyuki Kasahara
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. Neither the name of the project nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+require 'getoptlong'
+
+# Program version.
+PROGRAM_VERSION = '@PACKAGE_VERSION@'
+
+# Background color. ("R G B")
+BACKGROUND_COLOR = '255 255 255';
+
+# Border color. ("R G B")
+BORDER_COLOR = '0 0 0'
+
+# Command to convert an image file from PPM to PNG.
+PNG_CONVERTER = '@CONVERT@'
+
+# Default size (N pixels) of each square.
+SQUARE_SIZE = 16
+
+#
+# Create a colorset with minimum color definitions.
+#
+def create_colorset()
+  colors = {
+    '#' => BACKGROUND_COLOR,
+    '.' => BACKGROUND_COLOR,
+  }
+  return colors
+end
+
+#
+# Read a color definition file.
+#
+def read_color_file(file_path)
+  if (file = open(file_path, 'r') rescue nil) == nil
+    warn("#{$0} failed to open the color file, #{$!}: '#{file_path}'")
+    return
+  end
+
+  colors = create_colorset()
+  while ((line = file.gets) rescue nil) != nil
+    line.chop!
+    next if line =~ /^;/
+    if line !~ /^([A-Z.#])\s+(\d+)\s+(\d+)\s+(\d+)$/
+      warn("malformed color definition, line #{file.lineno}")
+      next
+    end
+    colors[$1] = "#{$2} #{$3} #{$4}";
+  end
+
+  file.close
+  return colors
+end
+
+#
+# Read a matrix file.
+#
+def read_matrix_file(file_path)
+  if file_path == '-'
+    file = $stdin
+  else
+    if (file = open(file_path, 'r') rescue nil) == nil
+      warn("failed to open the matrix file, #{$!}: #{file_path}")
+      return
+    end
+  end
+
+  matrix = Array.new
+  while ((line = file.gets) rescue nil) != nil
+    line.chop!
+    break if line == nil || line =~ /^$/
+    matrix.push(line.split(''))
+  end
+  file.close
+
+  return matrix
+end
+
+#
+# Normalize matrix data.
+# Make all lines in the matrix data have the same width.
+#
+def normalize_matrix(matrix)
+  matrix_width = 0
+
+  matrix.each do |line|
+    matrix_width = line.length if line.length > matrix_width
+  end
+
+  matrix.each do |line|
+    if line.length < matrix_width
+      line[line.length, matrix_width - line.length] = '.'
+    end
+  end
+end
+
+#
+# Create a PPM file.
+#
+def create_ppm_file(file_path, colors, matrix, square_size)
+  matrix_width = matrix[0].length
+  matrix_height = matrix.length
+
+  #
+  # Open a PPM file.
+  #
+  if (file = open(file_path, 'w')) == nil
+    warn("failed to open the file, #{$!}: #{file_path}")
+    return false
+  end
+
+  #
+  # Write a preamble.
+  #
+  file.print("P3\n")
+  file.printf("%d %d\n",
+              matrix_width * square_size + 1,
+              matrix_height * square_size + 1);
+  file.print("255\n")
+
+  matrix.each_index do |y|
+    #
+    # Write a left-top corner of a square.
+    #
+    matrix[y].each_index do |x|
+      ch = matrix[y][x]
+      color = colors[ch]
+      color = BACKGROUND_COLOR if color == nil
+      file.print(' ') if x > 0
+      if  y > 0 &&
+          x > 0 &&
+          matrix[y][x - 1]     == ch &&
+          matrix[y - 1][x]     == ch &&
+          matrix[y - 1][x - 1] == ch &&
+          ch != '#'
+        file.print(color)
+      elsif y == 0 && x == 0 && ch == '.'
+        file.print(color)
+      elsif x == 0 && ch == '.' && matrix[y - 1][x] == '.'
+        file.print(color)
+      elsif y == 0 && ch == '.' && matrix[y][x - 1] == '.'
+        file.print(color)
+      else
+        file.print(BORDER_COLOR)
+      end
+
+      #
+      # Write a top border of a square.
+      #
+      if y > 0 && matrix[y - 1][x] == ch && ch != '#'
+        (1 .. square_size - 1).each {|i| file.print(' ', color)}
+      elsif y == 0 && ch == '.'
+        (1 .. square_size - 1).each {|i| file.print(' ', color)}
+      else
+        (1 .. square_size - 1).each {|i| file.print(' ', BORDER_COLOR)}
+      end
+    end
+
+    #
+    # Write a right-top corner of a square.
+    #
+    if y == 0 && matrix[y][-1] == '.'
+      file.print(' ', colors['.'], "\n")
+    elsif matrix[y][-1] == '.' && matrix[y - 1][-1] == '.'
+      file.print(' ', colors['.'], "\n")
+    else
+      file.print(' ', BORDER_COLOR, "\n")
+    end
+
+    for i in 1 .. square_size - 1
+      #
+      # Write a left border of a square.
+      #
+      matrix[y].each_index do |x|
+        ch = matrix[y][x]
+        color = colors[ch]
+        color = BACKGROUND_COLOR if color == nil
+        file.print(' ') if x > 0
+        if x > 0 && matrix[y][x - 1] == ch && ch != '#'
+          file.print(color)
+        elsif x == 0 && ch == '.'
+          file.print(color)
+        else
+          file.print(BORDER_COLOR)
+        end
+
+        #
+        # Write an inner area of a square.
+        #
+        (1 .. square_size - 1).each {|j| file.print(' ', color)}
+      end
+
+      #
+      # Write a right border of a square.
+      #
+      if matrix[y][-1] == '.'
+        file.print(' ', colors['.'], "\n")
+      else
+        file.print(' ', BORDER_COLOR, "\n")
+      end
+    end
+  end
+
+  matrix[-1].each_index do |x|
+    ch = matrix[-1][x]
+    file.print(' ') if x > 0
+
+    #
+    # Write a left-bottom corner of a bottom square in the matrix.
+    #
+    if x == 0 && ch == '.'
+      file.print(colors['.'])
+    elsif ch == '.' && matrix[-1][x - 1] == '.'
+      file.print(colors['.'])
+    else
+      file.print(BORDER_COLOR)
+    end
+
+    #
+    # Write a bottom border of a bottom square in the matrix.
+    #
+    if ch == '.'
+      (1 .. square_size - 1).each {|i| file.print(' ', colors['.'])}
+    else
+      (1 .. square_size - 1).each {|i| file.print(' ', BORDER_COLOR)}
+    end
+  end
+
+  #
+  # Write a right-bottom corner of a bottom square in the matrix.
+  #
+  if matrix[-1][-1] == '.'
+    file.print(' ', colors['.'], "\n")
+  else
+    file.print(' ', BORDER_COLOR, "\n")
+  end
+
+  #
+  # Close the file.
+  #
+  file.close
+
+  return true
+end
+
+#
+# Create a PNG file.
+#
+def create_png_file(png_file_path, colors, matrix, square_size)
+  if png_file_path =~ /\.png$/i
+    ppm_file_path = png_file_path.gsub(/\.png$/, '.ppm')
+  else
+    ppm_file_path = png_file_path + '.ppm'
+  end
+
+  if !create_ppm_file(ppm_file_path, colors, matrix, square_size)
+    return false
+  end
+
+  system("#{PNG_CONVERTER} #{ppm_file_path} #{png_file_path}")
+  if $?.exited? && $?.exitstatus == 0
+    result = true
+  else
+    result = false
+  end
+
+  File.delete(ppm_file_path)
+  return result
+end
+
+#
+# Print usage.
+#
+def print_usage()
+  print "Usage: ubongo-draw [option...] MATRIX-FILE PNG-FILE\n"
+  print "Options:\n"
+  print "  -c FILE, --color-file=FILE\n"
+  print "                 Specify color definition file.\n"
+  print "  -h, --help     Give this help, then exit.\n"
+  print "  -s N, --size=N\n"
+  print "                 Length (N pixels) of each square."
+  print " (default: #{SQUARE_SIZE})\n"
+  print "  -v, --version  Display version number, then exit.\n"
+  print "\n"
+  print "Arguments:\n"
+  print "  MATRIX-FILE    Input matrix file. '-' means stdin.\n"
+  print "  PNG-FILE       Output PNG file.\n"
+end
+
+#
+# Initialize variables.
+#
+$color_file_path = nil
+$square_size = SQUARE_SIZE
+
+#
+# Parse command line arguments.
+#
+$options =
+  GetoptLong.new(['--color-file', '-c', GetoptLong::REQUIRED_ARGUMENT],
+                 ['--help',       '-h', GetoptLong::NO_ARGUMENT],
+                 ['--size',       '-s', GetoptLong::REQUIRED_ARGUMENT],
+                 ['--version',    '-v', GetoptLong::NO_ARGUMENT])
+$try_help = "Try '#{$0} --help' for more details."
+
+begin
+  $options.each do |name, argument|
+    case name
+    when '--color-file'
+      $color_file_path = argument
+    when '--help'
+      print_usage
+      exit(0)
+    when '--size'
+      $square_size = argument.to_i
+      if $square_size <= 0
+        warn("#{$0}: invalid size: #{argument}")
+        warn($try_help)
+        exit(1)
+      end
+    when '--version'
+      print "ubongo-draw version #{PROGRAM_VERSION}\n"
+      exit(0)
+    end
+  end
+rescue
+  warn($try_help)
+  exit(1)
+end
+
+if ARGV.length < 2
+  warn("#{$0}: too few argument.")
+  warn($try_help)
+  exit(1)
+elsif ARGV.length > 2
+  warn("#{$0}: too many arguments.")
+  warn($try_help)
+  exit(1)
+end
+
+$matrix_file_path = ARGV[0]
+$png_file_path = ARGV[1]
+
+#
+# Read a color definition file.
+#
+if $color_file_path == nil
+  $colors = create_colorset()
+else
+  $colors = read_color_file($color_file_path)
+  $colors = create_colorset() if $colors == nil
+end
+
+#
+# Read a matrix file.
+#
+$matrix = read_matrix_file($matrix_file_path)
+exit(1) if $colors == nil
+
+normalize_matrix($matrix)
+
+#
+# Create a PNG file of matrix data.
+#
+create_png_file($png_file_path, $colors, $matrix, $square_size)

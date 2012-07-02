@@ -1,0 +1,120 @@
+subdir = lib/ubongo3d
+top_builddir = ../..
+srcdir = @srcdir@
+top_srcdir = $(srcdir)/$(top_builddir)
+VPATH = @srcdir@
+
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+PACKAGE = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+libdir = @libdir@
+datarootdir = @datarootdir@
+datadir = @datadir@
+pkgdatadir = $(datadir)/$(PACKAGE_NAME)
+pkgdataorigdir = $(pkgdatadir)/orig
+pkgdatadueldir = $(pkgdatadir)/duel
+pkgdataminibdir = $(pkgdatadir)/minib
+pkgdataminigdir = $(pkgdatadir)/minig
+pkgdataminirdir = $(pkgdatadir)/minir
+pkgdataminiydir = $(pkgdatadir)/miniy
+pkgdata3ddir = $(pkgdatadir)/3d
+includedir = @includedir@
+ubongodincludedir = $(includedir)/ubongo
+ubongo3dincludedir = $(includedir)/ubongo3d
+pkgdocdir = @pkgdocdir@
+
+CXX = @CXX@
+RANLIB = @RANLIB@
+LIBTOOL = @LIBTOOL@
+SHELL = @SHELL@
+RUBY = @RUBY@
+CONVERT = @CONVERT@
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+
+DEFS = 
+INCLUDES = -I$(srcdir)/..
+CXXFLAGS = @CXXFLAGS@
+LDFLAGS = @LDFLAGS@
+LIB_VERSION_INFO = @LIBUBONGO3D_VERSION_INFO@
+LIBS = 
+
+data3d_srcdir = $(top_srcdir)/data/3d
+
+libubongo3d_HEADERS = analyzer.h board.h common.h piece.h \
+                      pieceset.h pieceset_3d.h puzzle.h solver.h
+libubongo3d_SOURCES = analyzer.cpp board.cpp piece.cpp pieceset.cpp \
+                      puzzle.cpp solver.cpp
+libubongo3d_OBJECTS = analyzer.lo board.lo piece.lo pieceset.lo puzzle.lo \
+                      solver.lo
+
+DISTFILES = Makefile.in make-pieceset-3d.rb $(libubongo3d_SOURCES) \
+            analyzer.h board.h common.h piece.h pieceset.h puzzle.h solver.h
+CLEANFILES = pieceset_3d.h
+LIBTOOL_CLEANFILES = libubongo3d.la $(libubongo3d_OBJECTS)
+
+.SUFFIXES:
+.SUFFIXES: .cpp .lo
+
+.PHONY: all clean distclean install uninstall dist-local
+
+.cpp.lo:
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c $(srcdir)/$<
+
+all: libubongo3d.la $(libubongo3d_HEADERS)
+
+install: all
+	$(MKDIR_P) $(DESTDIR)$(libdir)
+	$(LIBTOOL) --mode=install $(INSTALL_PROGRAM) libubongo3d.la \
+	    $(DESTDIR)$(libdir)/libubongo3d.la
+	$(LIBTOOL) --mode=finish $(DESTDIR)$(libdir)
+	$(MKDIR_P) $(DESTDIR)$(ubongo3dincludedir)
+	for i in $(libubongo3d_HEADERS); do \
+	    $(INSTALL_DATA) $(srcdir)/$$i \
+	        $(DESTDIR)$(ubongo3dincludedir)/$$i; \
+	done
+
+uninstall:
+	$(LIBTOOL) --mode=uninstall rm -f $(DESTDIR)$(libdir)/libubongo3d.la
+	for i in $(libubongo3d_HEADERS); do \
+	    test -f $(DESTDIR)$(ubongo3dincludedir)/$$i || continue; \
+	    rm -f $(DESTDIR)$(ubongo3dincludedir)/$$i; \
+	done
+	-rmdir $(DESTDIR)$(ubongo3dincludedir)
+
+clean:
+	-$(LIBTOOL) --mode=clean rm -f $(LIBTOOL_CLEANFILES)
+	-rm -f $(CLEANFILES)
+
+distclean: clean
+	-rm -f Makefile
+
+dist-local:
+	$(MKDIR_P) $(top_builddir)/$(PACKAGE)/$(subdir)
+	for i in $(DISTFILES); do \
+	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
+	done
+
+libubongo3d.la: $(libubongo3d_OBJECTS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    -version-info $(LIB_VERSION_INFO) -rpath $(libdir) \
+	    $(libubongo3d_OBJECTS)
+
+analyzer.lo: analyzer.cpp board.h pieceset.h puzzle.h solver.h
+board.lo: board.cpp board.h piece.h common.h
+piece.lo: piece.cpp piece.h common.h
+pieceset.lo: pieceset.cpp pieceset.h piece.h
+puzzle.lo: puzzle.cpp puzzle.h board.h piece.h common.h
+solver.lo: solver.cpp solver.h puzzle.h board.h piece.h common.h
+
+pieceset_3d.h: $(srcdir)/make-pieceset-3d.rb
+	rm -f $@
+	$(RUBY) $(srcdir)/make-pieceset-3d.rb 3d $(data3d_srcdir) > $@

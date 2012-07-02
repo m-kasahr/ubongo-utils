@@ -1,0 +1,329 @@
+//                                                            -*- C++ -*-
+// Copyright (c) 2009  Motoyuki Kasahara
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+// 3. Neither the name of the project nor the names of its contributors
+//    may be used to endorse or promote products derived from this software
+//    without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+// OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+// OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+// SUCH DAMAGE.
+//
+
+extern "C" {
+#include <getopt.h>
+}
+
+#include <cstdlib>
+#include <string>
+#include <cstring>
+#include <iostream>
+#include <fstream>
+#include <list>
+#include <vector>
+#include "@lib@/pieceset_@name@.h"
+#include "@lib@/solver.h"
+
+using namespace @namespace@;
+
+const size_t max_pieces_in_piece_set = 5;
+const size_t shape_file_max_line_length = 256;
+const char *argv0;
+
+//
+// Mode.
+//
+enum run_mode {
+    argument_mode = 0,
+    file_mode = 1,
+};
+
+//
+// Read a board file.
+//
+void
+read_board_file(const char *file_name, Board &board) {
+
+    std::fstream fs;
+    fs.open(file_name, std::ios::in);
+    if (!fs.is_open()) {
+	std::cerr << argv0 << ": failed to open the board file: " << file_name
+		  << std::endl;
+	std::exit(1);
+    }
+
+    std::string shape;
+    char line[shape_file_max_line_length];
+    while (fs.getline(line, sizeof(line))) {
+	shape += line;
+	shape += "\n";
+    }
+    fs.close();
+
+    board.set_shape(shape.c_str());
+    if (!board.has_shape()) {
+	std::cerr << argv0 << ": malformed board data: " << file_name
+		  << std::endl;
+	std::exit(1);
+    }
+}
+
+//
+// Solve a puzzle.
+//
+void
+solve_puzzle(Puzzle &puzzle, bool all_flag = false) {
+
+    Solver solver(puzzle);
+    int solution_count = 0;
+
+    std::cout << "*";
+    for (size_t i = 0; i < puzzle.get_piece_count(); i++)
+	std::cout << ' ' << puzzle.get_piece(i).get_id();
+    std::cout << std::endl;
+
+    while (solver.find_solution()) {
+	solution_count++;
+	if (all_flag) {
+	    if (solution_count > 1)
+		std::cout << std::endl;
+	    std::cout << "--- Solution " << solution_count << std::endl;
+	    std::cout << solver.get_puzzle().dump_board();
+	} else {
+	    std::cout << solver.get_puzzle().dump_board();
+	    break;
+	}
+    }
+    if (solution_count == 0)
+	std::cout << "- No solution" << std::endl;
+}
+
+//
+// Solve the given puzzle (argument mode).
+//
+void
+run_argument_mode(const char *board_file_name, char *piece_names[],
+    bool all_flag = false) {
+    //
+    // Read a board file.
+    //
+    Board board;
+    read_board_file(board_file_name, board);
+
+    std::vector<Piece> pieces;
+    PieceSet_@pieceset_suffix@ pieceset;
+
+    for (size_t i = 0; piece_names[i] != NULL; i++) {
+	try {
+	    Piece piece = pieceset.get_piece_by_id(piece_names[i]);
+	    pieces.push_back(piece);
+	}
+	catch (std::exception &e) {
+	    std::cerr << argv0 << ": invalid piece name: " << piece_names[i]
+		      << std::endl;
+	    std::exit(1);
+	}
+    }
+
+    Puzzle puzzle(board, pieces, pieceset.get_flip_flag());
+    solve_puzzle(puzzle, all_flag);
+}
+
+//
+// Solve the given puzzles (file mode).
+//
+void
+run_file_mode(const char *board_file_name, const char *problem_file_name,
+    bool all_flag = false) {
+    //
+    // Read a board file.
+    //
+    Board board;
+    read_board_file(board_file_name, board);
+
+    //
+    // Open a problem file.
+    //
+    std::fstream fs;
+    fs.open(problem_file_name, std::ios::in);
+    if (!fs.is_open()) {
+	std::cerr << argv0 << ": failed to open the problem file: "
+		  << problem_file_name << std::endl;
+	std::exit(1);
+    }
+
+    PieceSet_@pieceset_suffix@ pieceset;
+
+    int lineno = 0;
+    char line_buffer[shape_file_max_line_length];
+    while (fs.getline(line_buffer, sizeof(line_buffer))) {
+	lineno++;
+
+	//
+	// Read a problem.
+	//
+	if (*line_buffer != '*')
+	    continue;
+
+	std::string line = line_buffer;
+	size_t offset = 1;
+	std::vector<std::string> piece_names;
+
+	for (;;) {
+	    offset = line.find_first_not_of(" \t", offset);
+	    if (offset == std::string::npos || line[offset] == ';')
+		break;
+	    if ('A' <= line[offset] && line[offset] <= 'Z')
+		piece_names.push_back(line.substr(offset, 1));
+	    else {
+		piece_names.clear();
+		break;
+	    }
+	    offset++;
+	}
+	if (piece_names.size() == 0)
+	    continue;
+
+	//
+	// Set pieces.
+	//
+	std::vector<Piece> pieces;
+	for (size_t i = 0; i < piece_names.size(); i++) {
+	    try {
+		Piece piece = pieceset.get_piece_by_id(piece_names[i]);
+		pieces.push_back(piece);
+	    }
+	    catch (std::exception &e) {
+		std::cerr << argv0 << ": warning: invalid piece name: "
+			  << piece_names[i] << ", at line " << lineno
+			  << std::endl;
+		pieces.clear();
+		break;
+	    }
+	}
+	if (pieces.size() == 0)
+	    continue;
+
+	//
+	// Sovle the problem.
+	//
+	Puzzle puzzle(board, pieces, pieceset.get_flip_flag());
+	solve_puzzle(puzzle, all_flag);
+	std::cout << std::endl;
+    }
+
+    //
+    // Close the problem file.
+    //
+    fs.close();
+}
+
+//
+// Main.
+//
+int
+main(int argc, char *argv[]) {
+    //
+    // Parse options.
+    //
+    static const char *short_options = "af:hv";
+    static struct option long_options[] = {
+	{"all",          required_argument, NULL, 'a'},
+	{"file",         required_argument, NULL, 'f'},
+	{"help",         no_argument,       NULL, 'h'},
+	{"version",      no_argument,       NULL, 'v'},
+	{NULL, 0, NULL, 0}
+    };
+
+    const char *problem_file_name = "";
+    bool all_flag = false;
+    argv0 = argv[0];
+    run_mode mode = argument_mode;
+
+    for (;;) {
+	char ch;
+	ch = ::getopt_long(argc, argv, short_options, long_options, NULL);
+	if (ch == -1)
+            break;
+        switch (ch) {
+	case 'a':
+	    all_flag = true;
+	    break;
+	case 'f':
+	    problem_file_name = ::optarg;
+	    mode = file_mode;
+	    break;
+	case 'h':
+	    std::cout << "Usage: ubongo-solve-@name@ [option...] BOARD-FILE PIECE..."
+		      << std::endl;
+	    std::cout << "    or ubongo-solve-@name@ [option...] -f PROBLEM-FILE BOARD-FILE"
+		      << std::endl;
+	    std::cout << "Options: " << std::endl;
+	    std::cout << "  -a, --all      Find all solutions." << std::endl;
+	    std::cout << "  -f FILE, --file=FILE" << std::endl;
+	    std::cout << "                 Search FILE for a problem file."
+		      << std::endl;
+	    std::cout << "  -h, --help     Give this help, then exit."
+		      << std::endl;
+	    std::cout << "  -v, --version  Display version number, then exit."
+		      << std::endl;
+	    std::cout << std::endl;
+	    std::cout << "Arguments: " << std::endl;
+	    std::cout << "  BOARD-FILE     Board shape file." << std::endl;
+	    std::cout << "  PIECE          Piece letter." << std::endl;
+	    std::cout << std::endl;
+	    std::exit(0);
+	case 'v':
+	    std::cout << "ubongo-solve version " << VERSION << std::endl;
+	    exit(0);
+	default:
+	    std::cerr << argv0 << ": invalid option -- " << ch << std::endl;
+	    std::cerr << "Try `" << argv0 << " --help' for more details"
+		      << std::endl;
+	    std::exit(1);
+	}
+    }
+
+    //
+    // Parse non-option arguments.
+    //
+    if ((argc - ::optind < 1 && mode == file_mode)
+	|| (argc - ::optind < 2 && mode == argument_mode)) {
+	std::cerr << argv0 << ": too few argument" << std::endl;
+	std::cerr << "Try `" << argv0 << " --help' for more details"
+		  << std::endl;
+	std::exit(1);
+    } else if (argc - ::optind > 2 && mode == file_mode) {
+	std::cerr << argv0 << ": too many arguments" << std::endl;
+	std::cerr << "Try `" << argv0 << " --help' for more details"
+		  << std::endl;
+	std::exit(1);
+    }
+
+    //
+    // Solve the puzzles.
+    //
+    if (mode == argument_mode) {
+	run_argument_mode(argv[::optind], argv + ::optind + 1, all_flag);
+    } else {
+	run_file_mode(argv[::optind], problem_file_name, all_flag);
+    }
+
+    return 0;
+}

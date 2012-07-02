@@ -1,0 +1,5 @@
+* C L R
+.LLC.
+LLRCC
+RLR.C
+RRR.C

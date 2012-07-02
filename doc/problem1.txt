@@ -1,0 +1,20 @@
+.###.
+#####
+###.#
+###.#
+; squares=16
+
+* A C P ; solutions=1
+* B C E ; solutions=1
+* B C M ; solutions=1
+* B C N ; solutions=1
+* B C P ; solutions=1
+* B C R ; solutions=2
+* C D H ; solutions=1
+* C I T ; solutions=1
+* C L R ; solutions=1
+* C N U ; solutions=1
+* C O S ; solutions=1
+* C Q T ; solutions=1
+* C R T ; solutions=1
+; puzzles=13

@@ -1,0 +1,81 @@
+subdir = data/duel
+top_builddir = ../..
+srcdir = @srcdir@
+top_srcdir = $(srcdir)/$(top_builddir)
+VPATH = @srcdir@
+
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+PACKAGE = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+libdir = @libdir@
+datarootdir = @datarootdir@
+datadir = @datadir@
+pkgdatadir = $(datadir)/$(PACKAGE_NAME)
+pkgdataorigdir = $(pkgdatadir)/orig
+pkgdatadueldir = $(pkgdatadir)/duel
+pkgdataminibdir = $(pkgdatadir)/minib
+pkgdataminigdir = $(pkgdatadir)/minig
+pkgdataminirdir = $(pkgdatadir)/minir
+pkgdataminiydir = $(pkgdatadir)/miniy
+pkgdata3ddir = $(pkgdatadir)/3d
+includedir = @includedir@
+ubongoincludedir = $(includedir)/ubongo
+ubongo3dincludedir = $(includedir)/ubongo3d
+pkgdocdir = @pkgdocdir@
+
+CXX = @CXX@
+RANLIB = @RANLIB@
+LIBTOOL = @LIBTOOL@
+SHELL = @SHELL@
+RUBY = @RUBY@
+CONVERT = @CONVERT@
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+
+pkgdataduel_FILES = A.piece B.piece C.piece D.piece E.piece F.piece G.piece \
+                    H.piece I.piece J.piece K.piece L.piece M.piece N.piece \
+                    O.piece P.piece Q.piece R.piece S.piece T.piece U.piece \
+                    colors piece-order
+
+DISTFILES = Makefile.in $(pkgdataduel_FILES)
+CLEANFILES =
+LIBTOOL_CLEANFILES = 
+
+.SUFFIXES:
+.SUFFIXES: .cpp .lo
+
+.PHONY: all clean distclean install uninstall dist-local
+
+all:
+
+install: all
+	$(MKDIR_P) $(DESTDIR)$(pkgdatadueldir)
+	for i in $(pkgdataduel_FILES); do \
+	    $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(pkgdatadueldir)/$$i; \
+	done
+
+uninstall:
+	for i in $(pkgdataduel_FILES); do \
+	    test -f $(DESTDIR)$(pkgdatadueldir)/$$i || continue; \
+	    rm -f $(DESTDIR)$(pkgdatadueldir)/$$i; \
+	done
+	-rmdir $(DESTDIR)$(pkgdatadueldir)
+	-rmdir $(DESTDIR)$(pkgdatadir)
+
+clean:
+
+distclean: clean
+	-rm -f Makefile
+
+dist-local:
+	$(MKDIR_P) $(top_builddir)/$(PACKAGE)/$(subdir)
+	for i in $(DISTFILES); do \
+	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
+	done

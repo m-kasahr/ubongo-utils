@@ -1,0 +1,525 @@
+#! @RUBY@
+#                                                             -*- Ruby -*-
+# Copyright (c) 2009  Motoyuki Kasahara
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. Neither the name of the project nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+require 'getoptlong'
+require 'fileutils'
+
+# Program version.
+PROGRAM_VERSION = '@PACKAGE_VERSION@'
+
+# Path to the package data directory.
+PKGDATADIR = '@pkgdatadir@/@name@'
+
+# File name format for an HTML.
+# ('%s' is replaced by a basenmae of the solution file.) 
+HTML_FILE_NAME_FORMAT = '%s.html'
+
+# File name format for a board image.
+# ('%s' is replaced by a basenmae of the HTML file.) 
+BOARD_PNG_FILE_NAME_FORMAT = '%s-board.png'
+
+# File name format for piece images.
+# ('%s' is replaced by a piece ID.)
+PIECE_PNG_FILE_NAME_FORMAT = 'piece-%s.png'
+
+# File name format for solution images
+# ('%06d' is replaced by a value of problem sequence.
+#  '%064' is replaced by a value of solution sequence).
+SOLUTION_PNG_FILE_NAME_FORMAT = '%s-solution-%03d-%05d.png'
+
+# File name format for piece definition file.
+PIECE_FILE_NAME_FORMAT = '%s.piece'
+
+# Path to a file which defines piece colors.
+COLOR_FILE_PATH = "#{PKGDATADIR}/colors"
+
+# Path to a file which defines order of pieces.
+PIECE_ORDER_FILE_PATH = "#{PKGDATADIR}/piece-order"
+
+# Default title of an HTML file (problem mode)
+PROBLEM_TITLE = '@title@ Puzzles'
+
+# Default title of an HTML file (solution and both modes)
+SOLUTION_TITLE = '@title@ Solutions'
+
+# Default HTML creation mode (solution / problem).
+MODE = 'solution'
+
+# Default size (N pixels) of each square in a piece PNG file.
+PROBLEM_SIZE = 6
+
+# Default size (N pixels) of each square in a boad PNG file.
+BOARD_SIZE = 16
+
+# Default size (N pixels) of each square in a solution PNG file.
+SOLUTION_SIZE = 16
+
+# Path to 'ubongo-draw' command.
+UBONGO_DRAW = '@bindir@/ubongo-draw'
+
+#
+# Read a piece-order file.
+#
+def read_piece_order_file()
+  return if !FileTest.exist?(PIECE_ORDER_FILE_PATH)
+  if (file = open(PIECE_ORDER_FILE_PATH, 'r') rescue nil) == nil
+    warn("#{$0}: failed to open the order file, #{$!}: " +
+         "'#{PIECE_ORDER_FILE_PATH}'")
+    return
+  end
+
+  order = {}
+  while ((line = file.gets) rescue nil) != nil
+    line.chop!
+    if line !~ /^([A-Z.#])$/
+      warn("#{$0}: malformed color definition, line #{file.lineno}")
+      next
+    end
+    order[$1] = file.lineno;
+  end
+
+  file.close
+  return order
+end
+
+#
+# Create a board (without pieces) file as PNG image.
+#
+def create_board_png_file(png_file_path, png_data, color_file_path, size)
+  begin
+    command = "#{UBONGO_DRAW} --color-file=#{COLOR_FILE_PATH} " +
+      "--size=#{size} - #{png_file_path}"
+    file = open("| #{command}", 'w')
+    file.write(png_data)
+    file.close
+  rescue
+    return false
+  end
+
+  return true
+end
+
+#
+# Create a piece file as a PNG image.
+#
+def create_piece_png_file(png_file_path, text_file_path, color_file_path,
+                          parameters)
+  begin
+    command = "#{UBONGO_DRAW} --color-file=#{color_file_path} " +
+      "--size=#{$parameters['problem-size']} #{text_file_path} " +
+      "#{png_file_path}"
+    file = open("| #{command}", 'w')
+    file.write(png_data)
+    file.close
+  rescue
+  end
+end
+
+#
+# Create all piece files as PNG images.
+#
+def create_all_piece_png_files(basename, output_prefix, pieces, parameters)
+  png_directory = sprintf("%s/%s", output_prefix, parameters['piece-directory'])
+
+  #
+  # Create a directory if missing.
+  #
+  if !FileTest.directory?(png_directory)
+    if (FileUtils.mkdir_p(png_directory) rescue -1) < 0
+      warn("#{$0}: failed to create a directory, #{$!}: #{png_directory}")
+      exit(1)
+    end
+  end
+
+  #
+  # Create each piece file as a PNG image.
+  #
+  pieces.each_key do |piece|
+    text_file_name = sprintf(PIECE_FILE_NAME_FORMAT, piece)
+    text_file_path = sprintf("%s/%s", PKGDATADIR, text_file_name)
+
+    png_file_name = sprintf(PIECE_PNG_FILE_NAME_FORMAT, piece)
+    png_file_path = sprintf("%s/%s", png_directory, png_file_name)
+    create_piece_png_file(png_file_path, text_file_path, color_file_path,
+                          parameters)
+  end
+end
+
+#
+# Create an HTML which shows solutions of a puzzle sheet.
+#
+def create_html_file(basename, html_directory, mode, solution_file_path,
+                     piece_order, parameters)
+  html_file_name = sprintf(HTML_FILE_NAME_FORMAT, basename)
+  html_file_path = sprintf("%s/%s", html_directory, html_file_name)
+
+  #
+  # Create a directory if missing.
+  #
+  if !FileTest.directory?(html_directory)
+    if (FileUtils.mkdir_p(html_directory) rescue -1) < 0
+      warn("#{$0}: failed to create a directory, #{$!}: #{html_directory}")
+      exit(1)
+    end
+  end
+
+  #
+  # Open text and HTML files.
+  #
+  if (solution_file = open(solution_file_path, 'r') rescue nil) == nil
+    abort("failed to open '#{solution_file_path}', #{$!}")
+  end
+
+  if (html_file = open(html_file_path, 'w') rescue nil) == nil
+    abort("failed to open '#{html_file_path}', #{$!}")
+  end
+
+  #
+  # Write a preamble.
+  #
+  if mode == 'problem'
+    title = parameters['problem-title']
+  else
+    title = parameters['solution-title']
+  end
+
+  html_file.print("<html>\n")
+  html_file.print("<head>\n")
+  html_file.print("<title>#{title}</title>\n")
+  html_file.print("</head>\n")
+  html_file.print("<body>\n")
+  html_file.print("<h1>#{title}</h1>\n")
+  html_file.print("<p>\n")
+
+  #
+  # Write an HTML body.
+  #
+  problem_no = 0
+  solution_no = 0
+  problem_data = ''
+  used_pieces = {}
+
+  while ((line = solution_file.gets) rescue nil) != nil
+    if line =~ /^\*\s*([A-Z](\s+[A-Z])*)/
+      #
+      # A problem line.
+      #
+      problem_data = $1.split(/\s+/)
+      if piece_order == nil
+        problem_data.sort!{|a, b| rand(3) - 1}
+      else
+        problem_data.sort!{|a, b| piece_order[a] <=> piece_order[b]}
+      end
+      problem_no += 1
+      solution_no = 0
+
+      if problem_no == 1
+        png_file_name = sprintf(BOARD_PNG_FILE_NAME_FORMAT, basename)
+        png_file_path = sprintf("%s/%s", parameters['board-directory'],
+                                png_file_name)
+        html_file.print("Board:<br>\n")
+        html_file.print("<img src=\"#{png_file_path}\" alt=\"\"><br>\n")
+      end
+
+      html_file.print("<hr>\n")
+      html_file.print("No.#{problem_no}:&nbsp;\n")
+
+      problem_data.each do |piece|
+        png_file_name = sprintf(PIECE_PNG_FILE_NAME_FORMAT, piece)
+        png_file_path = sprintf("%s/%s", parameters['piece-directory'],
+                                png_file_name)
+        html_file.print("<img src=\"#{png_file_path}\" alt=\"#{piece}\">\n")
+        used_pieces[piece] = true
+      end
+      html_file.print("<br>\n")
+
+    elsif line =~ /^[.#A-Z]+$/
+      #
+      # Solution data.
+      #
+      solution_no += 1
+      png_file_name = sprintf(SOLUTION_PNG_FILE_NAME_FORMAT,
+                              basename, problem_no, solution_no)
+      png_file_path = sprintf("%s/%s", parameters['solution-directory'],
+                              png_file_name)
+      html_file.print("<img src=\"#{png_file_path}\" alt=\"\">\n")
+
+      while true
+        line = (solution_file.gets rescue nil)
+        break if line == nil || line =~ /^$/
+      end
+    end
+  end
+
+  html_file.print("</p>\n")
+  html_file.print("</body>\n")
+  html_file.print("</html>\n")
+  html_file.close
+  solution_file.close
+
+  return used_pieces
+end
+
+#
+# Create board and solution files.
+#
+def create_solution_files(basename, output_prefix, solution_file_path,
+                          color_file_path, parameters)
+  board_directory = sprintf("%s/%s", output_prefix,
+                            parameters['board-directory'])
+  solution_directory = sprintf("%s/%s", output_prefix,
+                               parameters['solution-directory'])
+
+  #
+  # Create a directories if missing.
+  #
+  if !FileTest.directory?(board_directory)
+    if (FileUtils.mkdir_p(board_directory) rescue -1) < 0
+      warn("#{$0}: failed to create a directory, #{$!}: #{board_directory}")
+      exit(1)
+    end
+  end
+
+  if !FileTest.directory?(solution_directory)
+    if (FileUtils.mkdir_p(solution_directory) rescue -1) < 0
+      warn("#{$0}: failed to create a directory, #{$!}: #{solution_directory}")
+      exit(1)
+    end
+  end
+
+  #
+  # Open a text file.
+  #
+  if (solution_file = open(solution_file_path, 'r') rescue nil) == nil
+    abort("failed to open '#{solution_file_path}', #{$!}")
+  end
+
+  #
+  # Create board and solution image files.
+  #
+  problem_no = 0
+  solution_no = 0
+  solution_data = ''
+
+  while ((line = solution_file.gets) rescue nil) != nil
+    if line =~ /^\*\s*([A-Z](\s+[A-Z])*)/
+      #
+      # A problem line.
+      #
+      problem_no += 1
+      solution_no = 0
+
+    elsif line =~ /^[.#A-Z]+$/
+      #
+      # Solution data.
+      #
+      solution_no += 1
+      solution_data = ''
+      while true
+        solution_data += line
+        line = (solution_file.gets rescue nil)
+        break if line == nil || line =~ /^$/
+      end
+
+      #
+      # Write a problem, at the end of the first solution.
+      #
+      if problem_no == 1 && solution_no == 1
+        board_data = solution_data.gsub(/[A-Z]/, '#')
+        png_file_name = sprintf(BOARD_PNG_FILE_NAME_FORMAT, basename)
+        png_file_path = sprintf("%s/%s", board_directory, png_file_name)
+        create_board_png_file(png_file_path, board_data, color_file_path,
+                              parameters['solution-size'])
+      end
+
+      #
+      # Write a solution.
+      #
+      png_file_name = sprintf(SOLUTION_PNG_FILE_NAME_FORMAT,
+                              basename, problem_no, solution_no)
+      png_file_path = sprintf("%s/%s", solution_directory, png_file_name)
+      create_board_png_file(png_file_path, solution_data, color_file_path,
+                            parameters['solution-size'])
+    end
+  end
+
+  solution_file.close
+end
+
+#
+# Print usage.
+#
+def print_usage()
+  print "Usage: ubongo-html-@name@ [option...] TEXT-FILE\n"
+  print "Options:\n"
+  print "  -b NAME, --basename=NAME\n"
+  print "                 Basename of output files.\n"
+  print "  -h, --help     Give this help, then exit.\n"
+  print "  -p, --problem  Output problems only.\n"
+  print "  -o DIR, --output-prefix=DIR\n"
+  print "                 Output HTML and PNG files in DIR. (default: .)\n"
+  print "  -v, --version  Display version number, then exit.\n"
+  print "  --problem-size=N\n"
+  print "                 Size of PNG files for representing pieces as problems..\n"
+  print "  --board-size=N\n"
+  print "                 Size of PNG files for representing boards.\n"
+  print "  --solution-size=N\n"
+  print "                 Size of PNG files for representing solutions.\n"
+  print "  --title=TEXT   Title of an HTML file.\n"
+  print "  --board-directory=DIR\n"
+  print "                 Generate a board image file in DIR, relative to\n"
+  print "                 '--output-prefix' (default: .)\n"
+  print "  --solution-directory=DIR\n"
+  print "                 Generate solution image files in DIR, relative to\n"
+  print "                 '--output-prefix' (default: .)\n"
+  print "  --piece-directory=DIR\n"
+  print "                 Generate piece image files in DIR, relative to\n"
+  print "                 '--output-prefix' (default: .)\n"
+  print "\n"
+  print "Arguments:\n"
+  print "  TEXT-FILE  Input text file.\n"
+end
+
+#
+# HTML creation parameters.
+#
+$parameters = {
+  'problem-title'      => PROBLEM_TITLE,
+  'solution-title'     => SOLUTION_TITLE,
+  'problem-size'       => PROBLEM_SIZE,
+  'board-size'         => BOARD_SIZE,
+  'solution-size'      => SOLUTION_SIZE,
+  'board-directory'    => '.',
+  'solution-directory' => '.',
+  'piece-directory'    => '.',
+}
+
+#
+# Initialize variables.
+#
+$mode = MODE
+$basename = nil
+$output_prefix = '.'
+
+#
+# Parse command line arguments.
+#
+$options =
+  GetoptLong.new(['--basename', '-b',      GetoptLong::REQUIRED_ARGUMENT],
+                 ['--help', '-h',          GetoptLong::NO_ARGUMENT],
+                 ['--problem', '-p',       GetoptLong::NO_ARGUMENT],
+                 ['--output-prefix', '-o', GetoptLong::REQUIRED_ARGUMENT],
+                 ['--problem-size',        GetoptLong::REQUIRED_ARGUMENT],
+                 ['--board-size',          GetoptLong::REQUIRED_ARGUMENT],
+                 ['--solution-size',       GetoptLong::REQUIRED_ARGUMENT],
+                 ['--board-directory',     GetoptLong::REQUIRED_ARGUMENT],
+                 ['--solution-directory',  GetoptLong::REQUIRED_ARGUMENT],
+                 ['--piece-directory',     GetoptLong::REQUIRED_ARGUMENT],
+                 ['--title',               GetoptLong::REQUIRED_ARGUMENT],
+                 ['--version', '-v',       GetoptLong::NO_ARGUMENT])
+$try_help = "Try '#{$0} --help' for more details."
+
+begin
+  $options.each do |name, argument|
+    case name
+    when '--basename'
+      $basename = argument
+    when '--help'
+      print_usage
+      exit(0)
+    when '--problem'
+      $mode = 'problem'
+    when '--output-prefix'
+      $output_prefix = argument
+    when '--problem-size'
+      $parameters['problem-size'] = argument.to_i
+      if $parameters['problem-size'] <= 0
+        warn("#{$0}: invalid size: #{argument}")
+        abort($try_help)
+      end
+    when '--board-size'
+      $parameters['board-size'] = argument.to_i
+      if $parameters['board_size'] <= 0
+        warn("#{$0}: invalid size: #{argument}")
+        abort($try_help)
+      end
+    when '--solution-size'
+      $parameters['solution-size'] = argument.to_i
+      if $parameters['solution_size'] <= 0
+        warn("#{$0}: invalid size: #{argument}")
+        abort($try_help)
+      end
+    when '--title'
+      $parameters['problem-title'] = argument
+      $parameters['solution-title'] = argument
+    when '--board-directory'
+      $parameters['board-directory'] = argument
+    when '--solution-directory'
+      $parameters['solution-directory'] = argument
+    when '--piece-directory'
+      $parameters['piece-directory'] = argument
+    when '--version'
+      print "ubongo-html version #{PROGRAM_VERSION}\n"
+      exit(0)
+    end
+  end
+rescue
+  abort($try_help)
+end
+
+if ARGV.length < 1
+  warn("#{$0}: too few argument.")
+  abort($try_help)
+elsif ARGV.length > 1
+  warn("#{$0}: too many arguments.")
+  abort($try_help)
+end
+
+$solution_file_path = ARGV[0]
+
+#
+# Determine basename of output files.
+#
+if $basename == nil
+  $basename = File.basename($solution_file_path, '.*')
+end
+
+#
+# Read a piece-order file.
+#
+$piece_order = read_piece_order_file()
+
+#
+# Create HTML and board image files.
+#
+$pieces = create_html_file($basename, $output_prefix, $mode,
+                           $solution_file_path, $piece_order, $parameters)
+create_solution_files($basename, $output_prefix, $solution_file_path,
+                      $parameters)
+create_all_piece_png_files($basename, $output_prefix, $pieces, $parameters)
+exit(0)

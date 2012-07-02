@@ -1,0 +1,115 @@
+subdir = doc
+top_builddir = ..
+srcdir = @srcdir@
+top_srcdir = $(srcdir)/$(top_builddir)
+VPATH = @srcdir@
+
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+PACKAGE = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+libdir = @libdir@
+datarootdir = @datarootdir@
+datadir = @datadir@
+pkgdatadir = $(datadir)/$(PACKAGE_NAME)
+pkgdataorigdir = $(pkgdatadir)/orig
+pkgdatadueldir = $(pkgdatadir)/duel
+pkgdataminibdir = $(pkgdatadir)/minib
+pkgdataminigdir = $(pkgdatadir)/minig
+pkgdataminirdir = $(pkgdatadir)/minir
+pkgdataminiydir = $(pkgdatadir)/miniy
+pkgdata3ddir = $(pkgdatadir)/3d
+includedir = @includedir@
+ubongoincludedir = $(includedir)/ubongo
+ubongo3dincludedir = $(includedir)/ubongo3d
+pkgdocdir = @pkgdocdir@
+
+CXX = @CXX@
+RANLIB = @RANLIB@
+LIBTOOL = @LIBTOOL@
+SHELL = @SHELL@
+RUBY = @RUBY@
+CONVERT = @CONVERT@
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+
+.SUFFIXES:
+
+.PHONY: all clean distclean install uninstall dist-local
+
+pkgdoc_FILES = ubongo-utils.md \
+               orig-piece-A.png orig-piece-B.png orig-piece-C.png \
+               orig-piece-D.png orig-piece-E.png orig-piece-F.png \
+               orig-piece-G.png orig-piece-H.png orig-piece-I.png \
+               orig-piece-J.png orig-piece-K.png orig-piece-L.png \
+               duel-small-piece-A.png duel-small-piece-B.png \
+               duel-small-piece-C.png duel-small-piece-D.png \
+               duel-small-piece-E.png duel-small-piece-F.png \
+               duel-small-piece-G.png duel-small-piece-H.png \
+               duel-small-piece-I.png duel-small-piece-J.png \
+               duel-small-piece-K.png duel-small-piece-L.png \
+               duel-small-piece-M.png duel-small-piece-N.png \
+               duel-small-piece-O.png duel-small-piece-P.png \
+               duel-small-piece-Q.png duel-small-piece-R.png \
+               duel-small-piece-S.png duel-small-piece-T.png \
+               duel-small-piece-U.png \
+               duel-piece-A.png duel-piece-B.png duel-piece-C.png \
+               duel-piece-D.png duel-piece-E.png duel-piece-F.png \
+               duel-piece-G.png duel-piece-H.png duel-piece-I.png \
+               duel-piece-J.png duel-piece-K.png duel-piece-L.png \
+               duel-piece-M.png duel-piece-N.png duel-piece-O.png \
+               duel-piece-P.png duel-piece-Q.png duel-piece-R.png \
+               duel-piece-S.png duel-piece-T.png duel-piece-U.png \
+               minib-piece-A.png minib-piece-B.png minib-piece-C.png \
+               minib-piece-D.png minib-piece-E.png minib-piece-F.png \
+               minib-piece-G.png \
+               minig-piece-A.png minig-piece-B.png minig-piece-C.png \
+               minig-piece-D.png minig-piece-E.png minig-piece-F.png \
+               minig-piece-G.png \
+               minir-piece-A.png minir-piece-B.png minir-piece-C.png \
+               minir-piece-D.png minir-piece-E.png minir-piece-F.png \
+               minir-piece-G.png \
+               miniy-piece-A.png miniy-piece-B.png miniy-piece-C.png \
+               miniy-piece-D.png miniy-piece-E.png miniy-piece-F.png \
+               miniy-piece-G.png \
+               3d-piece-A.png 3d-piece-B.png 3d-piece-C.png 3d-piece-D.png \
+               3d-piece-E.png 3d-piece-F.png 3d-piece-G.png 3d-piece-H.png \
+               3d-piece-I.png 3d-piece-J.png 3d-piece-K.png 3d-piece-L.png \
+               3d-piece-M.png 3d-piece-N.png 3d-piece-O.png 3d-piece-P.png \
+               board1.png solution1.png solution2.png solution3.png \
+               board1.txt combinations1.txt problem1.txt solution1.txt
+
+DISTFILES = Makefile.in $(pkgdoc_FILES)
+CLEANFILES =
+
+all:
+
+install: all
+	$(MKDIR_P) $(DESTDIR)$(pkgdocdir)
+	for i in $(pkgdoc_FILES); do \
+	    $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(pkgdocdir)/$$i; \
+	done
+
+uninstall:
+	for i in $(pkgdoc_FILES); do \
+	    test -f $(DESTDIR)$(pkgdocdir)/$$i || continue; \
+	    rm -f $(DESTDIR)$(pkgdocdir)/$$i; \
+	done
+	-rmdir $(DESTDIR)$(pkgdocdir)
+
+clean:
+
+distclean: clean
+	-rm -f Makefile
+
+dist-local:
+	$(MKDIR_P) $(top_builddir)/$(PACKAGE)/$(subdir)
+	for i in $(DISTFILES); do \
+	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
+	done

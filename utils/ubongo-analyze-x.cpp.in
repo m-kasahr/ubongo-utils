@@ -1,0 +1,239 @@
+//                                                            -*- C++ -*-
+// Copyright (c) 2009  Motoyuki Kasahara
+//
+// Redistribution and use in source and binary forms, with or without
+// modification, are permitted provided that the following conditions
+// are met:
+// 1. Redistributions of source code must retain the above copyright
+//    notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright
+//    notice, this list of conditions and the following disclaimer in the
+//    documentation and/or other materials provided with the distribution.
+// 3. Neither the name of the project nor the names of its contributors
+//    may be used to endorse or promote products derived from this software
+//    without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+// ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
+// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+// OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+// HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+// LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+// OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+// SUCH DAMAGE.
+//
+
+extern "C" {
+#include <getopt.h>
+}
+
+#include <cstdlib>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <list>
+#include <vector>
+#include "@lib@/pieceset_@name@.h"
+#include "@lib@/analyzer.h"
+
+using namespace @namespace@;
+
+const size_t max_file_line_length = 256;
+const size_t max_pieces_in_piece_set = 5;
+
+#ifndef VERSION
+#define VERSION "?"
+#endif
+
+//
+// Output Mode.
+//
+enum Output_Mode {
+    hide_solution      = 0,
+    show_one_solution  = 1,
+    show_all_solutions = 2
+};
+
+//
+// Read a board file.
+//
+void
+read_board_file(const char *file_name, Board &board) {
+
+    std::fstream fs;
+    fs.open(file_name, std::ios::in);
+    if (!fs.is_open()) {
+	std::cerr << "failed to open the board file: " << file_name
+		  << std::endl;
+	std::exit(1);
+    }
+
+    std::string shape;
+    char line[max_file_line_length];
+    while (fs.getline(line, sizeof(line))) {
+	shape += line;
+	shape += "\n";
+    }
+    fs.close();
+
+    board.set_shape(shape.c_str());
+    if (!board.has_shape()) {
+	std::cerr << "malformed board data: " << file_name << std::endl;
+	std::exit(1);
+    }
+}
+
+//
+// Analyze puzzles.
+//
+void
+analyze_puzzles(const char *board_file_name, int piece_count,
+    int max_solutions, Output_Mode mode) {
+    //
+    // Read a board file.
+    //
+    Board board;
+    read_board_file(board_file_name, board);
+    std::cout << board.dump();
+    std::cout << "; squares=" << board.get_blank_count() << std::endl;
+    std::cout << std::endl;
+
+    //
+    // Analyze.
+    //
+    int puzzle_count = 0;
+    PieceSet_@pieceset_suffix@ pieceset;
+    Analyzer analyzer(board, pieceset, piece_count);
+
+    while (analyzer.find_solvable_puzzle()) {
+	const Puzzle &puzzle = analyzer.get_puzzle();
+	int solution_count = 0;
+	std::stringstream ss;
+	do {
+	    solution_count++;
+	    if (mode == show_all_solutions) {
+		ss << "--- Solution " << solution_count << std::endl;
+		ss << puzzle.dump_board() << std::endl;
+	    } else if (mode == show_one_solution && solution_count == 1) {
+		ss << puzzle.dump_board() << std::endl;
+	    }
+	} while (analyzer.find_next_solution());
+
+	if (max_solutions != 0 && solution_count > max_solutions)
+	    continue;
+
+	std::cout << "* ";
+	for (int i = 0; i < piece_count; i++)
+	    std::cout << puzzle.get_piece(i).get_id() << " ";
+	std::cout << "; solutions=" << solution_count << std::endl;
+	if (mode != hide_solution)
+	    std::cout << ss.str();
+	puzzle_count++;
+    }
+
+    std::cout << "; puzzles=" << puzzle_count << std::endl;
+}
+
+//
+// Main.
+//
+int
+main(int argc, char *argv[]) {
+    //
+    // Parse options.
+    //
+    static const char *short_options = "am:hsv";
+    static struct option long_options[] = {
+	{"show-all-solutions", no_argument,       NULL, 'a'},
+	{"max-solutions",      required_argument, NULL, 'm'},
+	{"help",               no_argument,       NULL, 'h'},
+	{"show-solution",      no_argument,       NULL, 's'},
+	{"version",            no_argument,       NULL, 'v'},
+	{NULL, 0, NULL, 0}
+    };
+
+    int max_solutions = 0;
+    Output_Mode output_mode = hide_solution;
+
+    for (;;) {
+	char ch;
+	ch = ::getopt_long(argc, argv, short_options, long_options, NULL);
+	if (ch == -1)
+            break;
+        switch (ch) {
+	case 'a':
+	    output_mode = show_all_solutions;
+	    break;
+	case 'h':
+	    std::cout << "Usage: ubongo-analyze-@name@ [option...] BOARD-FILE N"
+		      << std::endl;
+	    std::cout << "Options: " << std::endl;
+	    std::cout << "  -a, --show-all-solutions" << std::endl;
+	    std::cout << "                 Show all solutions. Imply '-s'."
+		      << std::endl;
+	    std::cout << "  -m N, --max-solutions=N" << std::endl;
+	    std::cout << "                 Output puzzles with 1..N solutions only."
+		      << std::endl;
+	    std::cout << "  -h, --help     Give this help, then exit."
+		      << std::endl;
+	    std::cout << "  -s, --show-solution" << std::endl;
+	    std::cout << "                 Also output a solution."
+		      << std::endl;
+	    std::cout << "  -v, --version  Display version number, then exit."
+		      << std::endl;
+	    std::cout << std::endl;
+	    std::cout << "Arguments: " << std::endl;
+	    std::cout << "  BOARD-FILE     Board shape file." << std::endl;
+	    std::exit(0);
+	case 'm':
+	    max_solutions = std::atoi(::optarg);
+	    break;
+	case 's':
+	    if (output_mode == hide_solution)
+		output_mode = show_one_solution;
+	    break;
+	case 'v':
+	    std::cout << "ubongo-analyze version " << VERSION << std::endl;
+	    exit(0);
+	default:
+	    std::cerr << argv[0] << ": invalid option -- " << ch << std::endl;
+	    std::cerr << "Try `" << argv[0] << " --help' for more details"
+		      << std::endl;
+	    std::exit(1);
+	}
+    }
+
+    //
+    // Parse non-option arguments.
+    //
+    if (argc - ::optind < 2) {
+	std::cerr << argv[0] << ": too few argument" << std::endl;
+	std::cerr << "Try `" << argv[0] << " --help' for more details"
+		  << std::endl;
+	std::exit(1);
+    } else if (argc - ::optind > 2) {
+	std::cerr << argv[0] << ": too many arguments" << std::endl;
+	std::cerr << "Try `" << argv[0] << " --help' for more details"
+		  << std::endl;
+	std::exit(1);
+    }
+
+    //
+    // Create puzzles.
+    //
+    int piece_count = std::atoi(argv[::optind + 1]);
+    if (piece_count <= 0) {
+	std::cerr << argv[0] << ": invalid argument: " << argv[::optind + 1]
+		  << std::endl;
+	std::cerr << "Try `" << argv[0] << " --help' for more details"
+		  << std::endl;
+	std::exit(1);
+    }
+
+    analyze_puzzles(argv[::optind], piece_count, max_solutions, output_mode);
+    return 0;
+}

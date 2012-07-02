@@ -1,0 +1,80 @@
+; squares=16
+* A C P ; solutions=1
+.PPC.
+PPACC
+PPA.C
+AAA.C
+
+* B C E ; solutions=1
+.EEC.
+EEECC
+BBE.C
+BBB.C
+
+* B C M ; solutions=1
+.MMC.
+BMMCC
+BBM.C
+BBM.C
+
+* B C N ; solutions=1
+.BBC.
+NBBCC
+NNB.C
+NNN.C
+
+* B C P ; solutions=1
+.PPC.
+PPPCC
+PBB.C
+BBB.C
+
+* B C R ; solutions=2
+.BBC.
+RBBCC
+RBR.C
+RRR.C
+
+* C D H ; solutions=1
+.HDC.
+HHDCC
+HDD.C
+HHD.C
+
+* C I T ; solutions=1
+.IIC.
+IIICC
+TIT.C
+TTT.C
+
+* C L R ; solutions=1
+.LLC.
+LLRCC
+RLR.C
+RRR.C
+
+* C N U ; solutions=1
+.UUC.
+UUNCC
+UNN.C
+NNN.C
+
+* C O S ; solutions=1
+.SOC.
+SSOCC
+SSO.C
+SOO.C
+
+* C Q T ; solutions=1
+.QQC.
+TTQCC
+TQQ.C
+TTQ.C
+
+* C R T ; solutions=1
+.TTC.
+RRTCC
+RTT.C
+RRR.C
+
+; puzzles=13
