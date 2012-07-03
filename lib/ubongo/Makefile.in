@@ -76,7 +76,7 @@ LIBTOOL_CLEANFILES = libubongo.la $(libubongo_OBJECTS)
 
 .cpp.lo:
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/$<
+	    $(CXXFLAGS) -o $@ -c $<
 
 all: libubongo.la $(libubongo_HEADERS)
 

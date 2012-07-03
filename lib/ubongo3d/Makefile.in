@@ -68,7 +68,7 @@ LIBTOOL_CLEANFILES = libubongo3d.la $(libubongo3d_OBJECTS)
 
 .cpp.lo:
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/$<
+	    $(CXXFLAGS) -o $@ -c $<
 
 all: libubongo3d.la $(libubongo3d_HEADERS)
 

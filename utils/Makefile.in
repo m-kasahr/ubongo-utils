@@ -41,7 +41,7 @@ INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 
 DEFS = -DVERSION=\"$(PACKAGE_VERSION)\"
-INCLUDES = -I$(top_srcdir)/lib
+INCLUDES = -I$(top_builddir)/lib -I$(top_srcdir)/lib
 CXXFLAGS = @CXXFLAGS@
 LDFLAGS = @LDFLAGS@
 LIB_VERSION_INFO = @LIBUBONGO_VERSION_INFO@
@@ -261,85 +261,85 @@ ubongo-solve-orig.lo: ubongo-solve-orig.cpp \
                       $(libubongo_builddir)/pieceset_orig.h \
                       $(libubongo_srcdir)/solver.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-orig.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-solve-orig.cpp
 
 ubongo-solve-duel.lo: ubongo-solve-duel.cpp \
                       $(libubongo_builddir)/pieceset_duel.h \
                       $(libubongo_srcdir)/solver.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-duel.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-solve-duel.cpp
 
 ubongo-solve-minib.lo: ubongo-solve-minib.cpp \
                        $(libubongo_builddir)/pieceset_minib.h \
                        $(libubongo_srcdir)/solver.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-minib.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-solve-minib.cpp
 
 ubongo-solve-minig.lo: ubongo-solve-minig.cpp \
                        $(libubongo_builddir)/pieceset_minig.h \
                        $(libubongo_srcdir)/solver.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-minig.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-solve-minig.cpp
 
 ubongo-solve-minir.lo: ubongo-solve-minir.cpp \
                        $(libubongo_builddir)/pieceset_minir.h \
                        $(libubongo_srcdir)/solver.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-minir.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-solve-minir.cpp
 
 ubongo-solve-miniy.lo: ubongo-solve-miniy.cpp \
                        $(libubongo_builddir)/pieceset_miniy.h \
                        $(libubongo_srcdir)/solver.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-miniy.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-solve-miniy.cpp
 
 ubongo-solve-3d.lo: ubongo-solve-3d.cpp \
                     $(libubongo3d_builddir)/pieceset_3d.h \
                     $(libubongo3d_srcdir)/solver.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-solve-3d.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-solve-3d.cpp
 
 ubongo-analyze-orig.lo: ubongo-analyze-orig.cpp \
                         $(libubongo_builddir)/pieceset_orig.h \
                         $(libubongo_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-orig.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-analyze-orig.cpp
 
 ubongo-analyze-duel.lo: ubongo-analyze-duel.cpp \
                         $(libubongo_builddir)/pieceset_duel.h \
                         $(libubongo_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-duel.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-analyze-duel.cpp
 
 ubongo-analyze-minib.lo: ubongo-analyze-minib.cpp \
                          $(libubongo_builddir)/pieceset_minib.h \
                          $(libubongo_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-minib.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-analyze-minib.cpp
 
 ubongo-analyze-minig.lo: ubongo-analyze-minig.cpp \
                          $(libubongo_builddir)/pieceset_minig.h \
                          $(libubongo_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-minig.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-analyze-minig.cpp
 
 ubongo-analyze-minir.lo: ubongo-analyze-minir.cpp \
                          $(libubongo_builddir)/pieceset_minir.h \
                          $(libubongo_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-minir.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-analyze-minir.cpp
 
 ubongo-analyze-miniy.lo: ubongo-analyze-miniy.cpp \
                          $(libubongo_builddir)/pieceset_miniy.h \
                          $(libubongo_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-miniy.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-analyze-miniy.cpp
 
 ubongo-analyze-3d.lo: ubongo-analyze-3d.cpp \
                       $(libubongo3d_builddir)/pieceset_3d.h \
                       $(libubongo3d_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
-	    $(CXXFLAGS) -o $@ -c $(srcdir)/ubongo-analyze-3d.cpp
+	    $(CXXFLAGS) -o $@ -c ubongo-analyze-3d.cpp
 
 ubongo-solve-orig.cpp: ubongo-solve-x.cpp.in
 	rm -f $@
@@ -411,7 +411,7 @@ ubongo-analyze-duel.cpp: ubongo-analyze-x.cpp.in
 	    -e 's|[@]lib[@]|ubongo|' \
 	    -e 's|[@]namespace[@]|Ubongo|' \
 	    -e 's|[@]pieceset_suffix[@]|Duel|' \
-	    $(srcdir)/$? > $@
+	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
 
 ubongo-analyze-minib.cpp: ubongo-analyze-x.cpp.in
 	rm -f $@
