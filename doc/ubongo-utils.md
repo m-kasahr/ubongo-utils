@@ -40,9 +40,9 @@ Here is an example:
 Each character '#' is a square printed on the board.  The actual board
 corresponding with the text file above looks like:
 
-<p>
+<div class="example">
 <img src="board1.png" alt="an image of a board">
-</p>
+</div>
 
 To specify pieces placed on the board, upper letters ('A', 'B', 'C' ...)
 are used.  An unique letter is assigned to each piece in an Ubongo
@@ -206,9 +206,9 @@ a solution:
 
 It means that the solution looks like:
 
-<p>
+<div class="example">
 <img src="solution1.png" alt="an image of a solution">
-</p>
+</div>
 
 'Solver' program for Ubongo 3-D, 'ubongo-solve-3d' command, outputs
 text data slightly different from other solver programs:
@@ -404,9 +404,9 @@ type:
 It generates 'board1.html' and some PNG files at the current directory.
 The created HTML page looks like:
 
-<p>
+<div class="example">
 <img src="board1.png" alt="">
-</p>
+</div>
 
 If you want to create an HTML page of a solution, do it like this way:
 
@@ -416,17 +416,17 @@ If you want to create an HTML page of a solution, do it like this way:
 It generates 'solution1.html' and PNG files at the current directory.
 The HTML page looks like:
 
-<p>
+<div class="example">
 Board:<br>
 <img src="board1.png" alt=""><br>
 <hr>
 No.1:&nbsp;
-<img src="duel-mini-piece-R.png" alt="R">
-<img src="duel-mini-piece-C.png" alt="C">
-<img src="duel-mini-piece-L.png" alt="L">
+<img src="duel-piece-small-R.png" alt="R">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-L.png" alt="L">
 <br>
 <img src="./solution1.png" alt="">
-</p>
+</div>
 
 To convert a list of combinations of pieces, run the following commands:
 
@@ -435,29 +435,29 @@ To convert a list of combinations of pieces, run the following commands:
 
 It makes 'combinations1.html' and PNG files.  The HTML page looks like:
 
-<p>
+<div class="example">
 Board:<br>
 <img src="board1.png" alt=""><br>
 <hr>
 No.1:&nbsp;
-<img src="duel-mini-piece-R.png" alt="R">
-<img src="duel-mini-piece-C.png" alt="C">
-<img src="duel-mini-piece-L.png" alt="L">
+<img src="duel-piece-small-R.png" alt="R">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-L.png" alt="L">
 <br>
 <hr>
 No.2:&nbsp;
-<img src="duel-mini-piece-C.png" alt="C">
-<img src="duel-mini-piece-B.png" alt="B">
-<img src="duel-mini-piece-E.png" alt="E">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-B.png" alt="B">
+<img src="duel-piece-small-E.png" alt="E">
 <br>
 <hr>
 No.3:&nbsp;
-<img src="duel-mini-piece-M.png" alt="M">
-<img src="duel-mini-piece-C.png" alt="C">
-<img src="duel-mini-piece-B.png" alt="B">
+<img src="duel-piece-small-M.png" alt="M">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-B.png" alt="B">
 <br>
 (snip)
-</p>
+</div>
 
 'combinations1.html' may contains solutions.  'HTML Converter' also
 converts solutions.
@@ -467,33 +467,33 @@ converts solutions.
 
 The generated HTML page looks like:
 
-<p>
+<div class="example">
 Board:<br>
 <img src="board1.png" alt=""><br>
 <hr>
 No.1:&nbsp;
-<img src="duel-mini-piece-R.png" alt="R">
-<img src="duel-mini-piece-C.png" alt="C">
-<img src="duel-mini-piece-L.png" alt="L">
+<img src="duel-piece-small-R.png" alt="R">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-L.png" alt="L">
 <br>
 <img src="solution1.png" alt="">
 <hr>
 No.2:&nbsp;
-<img src="duel-mini-piece-C.png" alt="C">
-<img src="duel-mini-piece-B.png" alt="B">
-<img src="duel-mini-piece-E.png" alt="E">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-B.png" alt="B">
+<img src="duel-piece-small-E.png" alt="E">
 <br>
 <img src="solution2.png" alt="">
 <hr>
 No.3:&nbsp;
-<img src="duel-mini-piece-N.png" alt="N">
-<img src="duel-mini-piece-C.png" alt="C">
-<img src="duel-mini-piece-B.png" alt="B">
+<img src="duel-piece-small-N.png" alt="N">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-B.png" alt="B">
 <br>
 <img src="solution3.png" alt="">
 <br>
 (snip)
-</p>
+</div>
 
 The common form of the analyzer commands is:
 

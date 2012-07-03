@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>ubongo-utils</title>
+<style>
+body {
+    color:              #000000;
+    background-color:   #ffffff;
+}
+h1 {
+    font-size:          x-large;
+}
+h2 {
+    font-size:          large;
+    background-color:   #cfcf00;
+    padding:            3px;
+    border-style:       none;
+    border-width:       1px;
+}
+pre {
+    color:              1010c0;
+    padding:            6px;
+    margin-left:        16px;
+    border-style:       dashed;
+    border-width:       1px;
+    border-color:       #7f7f7f;
+}
+div.example {
+    padding:            6px;
+    margin-left:        16px;
+    border-style:       dashed;
+    border-width:       1px;
+    border-color:       #7f7f7f;
+}
+</style>
+</head>
+<body>

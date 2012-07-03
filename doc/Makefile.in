@@ -33,6 +33,7 @@ LIBTOOL = @LIBTOOL@
 SHELL = @SHELL@
 RUBY = @RUBY@
 CONVERT = @CONVERT@
+MARKDOWN = @MARKDOWN@
 MKDIR_P = @MKDIR_P@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
@@ -43,7 +44,7 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 
 .PHONY: all clean distclean install uninstall dist-local
 
-pkgdoc_FILES = ubongo-utils.md \
+pkgdoc_FILES = ubongo-utils.md ubongo-utils.html \
                orig-piece-A.png orig-piece-B.png orig-piece-C.png \
                orig-piece-D.png orig-piece-E.png orig-piece-F.png \
                orig-piece-G.png orig-piece-H.png orig-piece-I.png \
@@ -85,10 +86,11 @@ pkgdoc_FILES = ubongo-utils.md \
                board1.png solution1.png solution2.png solution3.png \
                board1.txt combinations1.txt problem1.txt solution1.txt
 
-DISTFILES = Makefile.in $(pkgdoc_FILES)
+DISTFILES = Makefile.in $(pkgdoc_FILES) \
+            ubongo-utils.html.header ubongo-utils.html.footer
 CLEANFILES =
 
-all:
+all: $(srcdir)/ubongo-utils.html
 
 install: all
 	$(MKDIR_P) $(DESTDIR)$(pkgdocdir)
@@ -108,8 +110,16 @@ clean:
 distclean: clean
 	-rm -f Makefile
 
-dist-local:
+dist-local: $(srcdir)/ubongo-utils.html
 	$(MKDIR_P) $(top_builddir)/$(PACKAGE)/$(subdir)
 	for i in $(DISTFILES); do \
 	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
 	done
+
+$(srcdir)/ubongo-utils.html: $(srcdir)/ubongo-utils.html.header \
+                             $(srcdir)/ubongo-utils.html.footer \
+                             $(srcdir)/ubongo-utils.md
+	rm -f $@
+	cat $(srcdir)/ubongo-utils.html.header >> $@
+	$(MARKDOWN) $(srcdir)/ubongo-utils.md >> $@
+	cat $(srcdir)/ubongo-utils.html.footer >> $@

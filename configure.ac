@@ -12,6 +12,7 @@ AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 AC_PATH_PROG([RUBY], [ruby], [/usr/bin/ruby])
 AC_PATH_PROG([CONVERT], [convert], [/usr/bin/convert])
+AC_PATH_PROGS([MARKDOWN], [Markdown.pl], [/usr/bin/Markdown.pl])
 AC_ARG_WITH(pkgdocdir,
 AC_HELP_STRING([--with-pkgdocdir=DIR],
     [HTML documents in DIR (default=DATADIR/ubongo-utils/doc)]),
