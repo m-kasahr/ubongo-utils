@@ -1,0 +1,697 @@
+<html>
+<head>
+<title>ubongo-utils</title>
+<style>
+body {
+    color:              #000000;
+    background-color:   #ffffff;
+}
+h1 {
+    font-size:          x-large;
+}
+h2 {
+    font-size:          large;
+    background-color:   #cfcf00;
+    padding:            3px;
+    border-style:       none;
+    border-width:       1px;
+}
+pre {
+    color:              1010c0;
+    padding:            6px;
+    margin-left:        16px;
+    border-style:       dashed;
+    border-width:       1px;
+    border-color:       #7f7f7f;
+}
+div.example {
+    padding:            6px;
+    margin-left:        16px;
+    border-style:       dashed;
+    border-width:       1px;
+    border-color:       #7f7f7f;
+}
+</style>
+</head>
+<body>
+<h1>ubongo-utils</h1>
+
+<p>ubongo-utils is a set of utilities for Ubongo, Ubongo Mini, Ubongo Duel
+and Ubongo 3-D puzzle games designed by Grzegorz Rejchtman.
+Ubongo Extreme (hexagonal tiles) or Ubongo Trigo (triangle tiles) is
+not supported.  It runs on UNIX based operating systems including Linux.
+All utilities are designed to be invoked on a command line.  </p>
+
+<p>ubongo-utils currently provides the following programs:</p>
+
+<ul>
+<li>Solver</li>
+<li>Analyzer</li>
+<li>HTML converter</li>
+</ul>
+
+<p>In the next three sections, I explain how to use those utility programs.</p>
+
+<h2>Solver</h2>
+
+<p>The 'Solver' utility solves a puzzle.  ubongo-utils provides a solver
+command for each Ubongo variant.</p>
+
+<ul>
+<li><code>ubongo-solve-orig</code>   (for Ubongo)</li>
+<li><code>ubongo-solve-duel</code>   (for Ubongo Duel)</li>
+<li><code>ubongo-solve-minib</code>  (for Ubongo Mini - blue tiles)</li>
+<li><code>ubongo-solve-minig</code>  (for Ubongo Mini - green tiles)</li>
+<li><code>ubongo-solve-minir</code>  (for Ubongo Mini - red tiles)</li>
+<li><code>ubongo-solve-miniy</code>  (for Ubongo Mini - yellow tiles)</li>
+<li><code>ubongo-solve-3d</code>     (for Ubongo 3-D)</li>
+</ul>
+
+<p>Specifying shape of a board and pieces placed on it, 'Solver' outputs
+its solutions.  The shape of a board is represented with a text file.
+Here is an example:</p>
+
+<pre><code>.###.
+#####
+###.#
+###.#
+</code></pre>
+
+<p>Each character '#' is a square printed on the board.  The actual board
+corresponding with the text file above looks like:</p>
+
+<div class="example">
+<img src="board1.png" alt="an image of a board">
+</div>
+
+<p>To specify pieces placed on the board, upper letters ('A', 'B', 'C' ...)
+are used.  An unique letter is assigned to each piece in an Ubongo
+variant.</p>
+
+<p>Ubongo:</p>
+
+<table>
+<tr>
+<td>A:<img src="orig-piece-A.png" alt="Ubongo A"></td>
+<td>B:<img src="orig-piece-B.png" alt="Ubongo B"></td>
+<td>C:<img src="orig-piece-C.png" alt="Ubongo C"></td>
+<td>D:<img src="orig-piece-D.png" alt="Ubongo D"></td>
+<td>E:<img src="orig-piece-E.png" alt="Ubongo E"></td>
+<td>F:<img src="orig-piece-F.png" alt="Ubongo F"></td>
+<td>G:<img src="orig-piece-G.png" alt="Ubongo G"></td>
+<td>H:<img src="orig-piece-H.png" alt="Ubongo H"></td>
+</tr>
+<tr>
+<td>I:<img src="orig-piece-I.png" alt="Ubongo I"></td>
+<td>J:<img src="orig-piece-J.png" alt="Ubongo J"></td>
+<td>K:<img src="orig-piece-K.png" alt="Ubongo K"></td>
+<td>L:<img src="orig-piece-L.png" alt="Ubongo L"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+<p>Ubongo Duel:</p>
+
+<table>
+<tr>
+<td>A:<img src="duel-piece-A.png" alt="Duel A"></td>
+<td>B:<img src="duel-piece-B.png" alt="Duel B"></td>
+<td>C:<img src="duel-piece-C.png" alt="Duel C"></td>
+<td>D:<img src="duel-piece-D.png" alt="Duel D"></td>
+<td>E:<img src="duel-piece-E.png" alt="Duel E"></td>
+<td>F:<img src="duel-piece-F.png" alt="Duel F"></td>
+<td>G:<img src="duel-piece-G.png" alt="Duel G"></td>
+<td>H:<img src="duel-piece-H.png" alt="Duel H"></td>
+</tr>
+<tr>
+<td>I:<img src="duel-piece-I.png" alt="Duel I"></td>
+<td>J:<img src="duel-piece-J.png" alt="Duel J"></td>
+<td>K:<img src="duel-piece-K.png" alt="Duel K"></td>
+<td>L:<img src="duel-piece-L.png" alt="Duel L"></td>
+<td>M:<img src="duel-piece-M.png" alt="Duel M"></td>
+<td>N:<img src="duel-piece-N.png" alt="Duel N"></td>
+<td>O:<img src="duel-piece-O.png" alt="Duel O"></td>
+<td>P:<img src="duel-piece-P.png" alt="Duel P"></td>
+</tr>
+<tr>
+<td>Q:<img src="duel-piece-Q.png" alt="Duel Q"></td>
+<td>R:<img src="duel-piece-R.png" alt="Duel R"></td>
+<td>S:<img src="duel-piece-S.png" alt="Duel S"></td>
+<td>T:<img src="duel-piece-T.png" alt="Duel T"></td>
+<td>U:<img src="duel-piece-U.png" alt="Duel U"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+<p>Ubongo Mini - Blue Tiles:</p>
+
+<table>
+<tr>
+<td>A:<img src="minib-piece-A.png" alt="Mini Blue A"></td>
+<td>B:<img src="minib-piece-B.png" alt="Mini Blue B"></td>
+<td>C:<img src="minib-piece-C.png" alt="Mini Blue C"></td>
+<td>D:<img src="minib-piece-D.png" alt="Mini Blue D"></td>
+<td>E:<img src="minib-piece-E.png" alt="Mini Blue E"></td>
+<td>F:<img src="minib-piece-F.png" alt="Mini Blue F"></td>
+<td>G:<img src="minib-piece-G.png" alt="Mini Blue G"></td>
+</tr>
+</table>
+
+<p>Ubongo Mini - Green Tiles:</p>
+
+<table>
+<tr>
+<td>A:<img src="minig-piece-A.png" alt="Mini Green A"></td>
+<td>B:<img src="minig-piece-B.png" alt="Mini Green B"></td>
+<td>C:<img src="minig-piece-C.png" alt="Mini Green C"></td>
+<td>D:<img src="minig-piece-D.png" alt="Mini Green D"></td>
+<td>E:<img src="minig-piece-E.png" alt="Mini Green E"></td>
+<td>F:<img src="minig-piece-F.png" alt="Mini Green F"></td>
+<td>G:<img src="minig-piece-G.png" alt="Mini Green G"></td>
+</tr>
+</table>
+
+<p>Ubongo Mini - Red Tiles:</p>
+
+<table>
+<tr>
+<td>A:<img src="minir-piece-A.png" alt="Mini Red A"></td>
+<td>B:<img src="minir-piece-B.png" alt="Mini Red B"></td>
+<td>C:<img src="minir-piece-C.png" alt="Mini Red C"></td>
+<td>D:<img src="minir-piece-D.png" alt="Mini Red D"></td>
+<td>E:<img src="minir-piece-E.png" alt="Mini Red E"></td>
+<td>F:<img src="minir-piece-F.png" alt="Mini Red F"></td>
+<td>G:<img src="minir-piece-G.png" alt="Mini Red G"></td>
+</tr>
+</table>
+
+<p>Ubongo Mini - Yellow Tiles:</p>
+
+<table>
+<tr>
+<td>A:<img src="miniy-piece-A.png" alt="Mini Yellow A"></td>
+<td>B:<img src="miniy-piece-B.png" alt="Mini Yellow B"></td>
+<td>C:<img src="miniy-piece-C.png" alt="Mini Yellow C"></td>
+<td>D:<img src="miniy-piece-D.png" alt="Mini Yellow D"></td>
+<td>E:<img src="miniy-piece-E.png" alt="Mini Yellow E"></td>
+<td>F:<img src="miniy-piece-F.png" alt="Mini Yellow F"></td>
+<td>G:<img src="miniy-piece-G.png" alt="Mini Yellow G"></td>
+</tr>
+</table>
+
+<p>Ubongo 3-D:</p>
+
+<table>
+<tr>
+<td>A:<img src="3d-piece-A.png" alt="3-D A"></td>
+<td>B:<img src="3d-piece-B.png" alt="3-D B"></td>
+<td>C:<img src="3d-piece-C.png" alt="3-D C"></td>
+<td>D:<img src="3d-piece-D.png" alt="3-D D"></td>
+<td>E:<img src="3d-piece-E.png" alt="3-D E"></td>
+<td>F:<img src="3d-piece-F.png" alt="3-D F"></td>
+<td>G:<img src="3d-piece-G.png" alt="3-D G"></td>
+<td>H:<img src="3d-piece-H.png" alt="3-D H"></td>
+</tr>
+<tr>
+<td>I:<img src="3d-piece-I.png" alt="3-D I"></td>
+<td>J:<img src="3d-piece-J.png" alt="3-D J"></td>
+<td>K:<img src="3d-piece-K.png" alt="3-D K"></td>
+<td>L:<img src="3d-piece-L.png" alt="3-D L"></td>
+<td>M:<img src="3d-piece-M.png" alt="3-D M"></td>
+<td>N:<img src="3d-piece-N.png" alt="3-D N"></td>
+<td>O:<img src="3d-piece-O.png" alt="3-D O"></td>
+<td>P:<img src="3d-piece-P.png" alt="3-D P"></td>
+</tr>
+</table>
+
+<p>Suppose that you'd like to solve a puzzle for Ubongo Duel, with the
+board above saved as the text file 'board1.txt', and with the piece
+'C', 'L' and 'R'.  Type the following line to execute the solver.</p>
+
+<pre><code>$ ubongo-solve-duel board1.txt C L R
+</code></pre>
+
+<p>The 'Solver' program, the 'ubongo-solve-duel' command, will output
+a solution:</p>
+
+<pre><code>* C L R
+.LLC.
+LLRCC
+RLR.C
+RRR.C
+</code></pre>
+
+<p>It means that the solution looks like:</p>
+
+<div class="example">
+<img src="solution1.png" alt="an image of a solution">
+</div>
+
+<p>'Solver' program for Ubongo 3-D, 'ubongo-solve-3d' command, outputs
+text data slightly different from other solver programs:</p>
+
+<pre><code>FFOE
+.FFE
+====
+FOOO
+.EEE
+</code></pre>
+
+<p>The lines before the horizontal rule '====' represents the second level
+(i.e. the first floor) of the solution and lines after the horizontal
+rule are the first level (i.e. the ground floor), respectively.</p>
+
+<p>The common form of the solver commands is:</p>
+
+<pre><code>solver-program [option...] BOARD-FILE PIECE...
+</code></pre>
+
+<p>or</p>
+
+<pre><code>solver-program [option...] -f PROBLEM-FILE BOARD-FILE
+</code></pre>
+
+<p>PIECE is an upper letter ('A', 'B', 'C' ...) assigned to a piece.
+PROBLEM-FILE is a file which describes combinations of pieces, one 
+combination per a line.  An example of PROBLEM-FILE is shown below:</p>
+
+<pre><code>* A C P
+* B C E
+* B C M
+* B C N
+* B C P
+* B C R
+</code></pre>
+
+<p>When PROBLEM-FILE is specified, the solver tries to solve all puzzles
+described in the file.  Note that result data output by 'Analyzer' 
+(described later) can also be used as PROBLEM-FILE.
+You can specify either PROBLEM-FILE or PIECE, but not both.</p>
+
+<p>The solver programs recognize the options described below:</p>
+
+<ul>
+<li>-a, --all</li>
+</ul>
+
+<p>By default, the solver programs display only one solution.  Specifying
+this option, solvers output all solution of the puzzle.</p>
+
+<ul>
+<li>-f FILE, --file FILE</li>
+</ul>
+
+<p>Read a list of combinations of pieces from FILE.</p>
+
+<ul>
+<li>-h, --help</li>
+</ul>
+
+<p>Print command line usage, then exits.</p>
+
+<ul>
+<li>-v, --version</li>
+</ul>
+
+<p>Print a version number, then exits.</p>
+
+<p>The solver programs exit with the exit code 0 (success) even when the
+puzzle has no solution.</p>
+
+<h2>Analyzer</h2>
+
+<p>The 'Analyzer' utility is similar to 'Solver', but it assists you in
+creating puzzles.  Specifying a board file and how many pieces are
+placed on it, 'Analyzer' outputs all solvable combinations of pieces.</p>
+
+<p>Suppose that you'd like to create three piece puzzles of Ubongo Duel.
+Since there are 21 kinds of pieces in Ubongo Duel, 'Analyzer' tries
+solving</p>
+
+<p>C(21, 3) = (21 * 20 * 19) / (3 * 2 * 1) = 1330</p>
+
+<p>ways of combinations of pieces, and it outputs all solvable combinations
+of pieces for the given board, like this:</p>
+
+<pre><code>$ ubongo-analyze-duel board1.txt 3
+.###.
+#####
+###.#
+###.#
+; squares=16
+
+* A C P ; solutions=1
+* B C E ; solutions=1
+* B C M ; solutions=1
+* B C N ; solutions=1
+* B C P ; solutions=1
+* B C R ; solutions=2
+* C D H ; solutions=1
+* C I T ; solutions=1
+* C L R ; solutions=1
+* C N U ; solutions=1
+* C O S ; solutions=1
+* C Q T ; solutions=1
+* C R T ; solutions=1
+; puzzles=13
+</code></pre>
+
+<p>Same as 'Solver', ubongo-utils also provides an analyzer command for
+each Ubongo variant.</p>
+
+<ul>
+<li><code>ubongo-analyze-orig</code>   (for Ubongo)</li>
+<li><code>ubongo-analyze-duel</code>   (for Ubongo Duel)</li>
+<li><code>ubongo-analyze-minib</code>  (for Ubongo Mini - blue tiles)</li>
+<li><code>ubongo-analyze-minig</code>  (for Ubongo Mini - green tiles)</li>
+<li><code>ubongo-analyze-minir</code>  (for Ubongo Mini - red tiles)</li>
+<li><code>ubongo-analyze-miniy</code>  (for Ubongo Mini - yellow tiles)</li>
+<li><code>ubongo-analyze-3d</code>     (for Ubongo 3-D)</li>
+</ul>
+
+<p>In output data, a character ';' means beginning of a comment.  Each
+comment ends with a newline.  'Analyzer' also outputs solutions if
+the '--show-solution' option is specified:</p>
+
+<pre><code>$ ubongo-analyze-duel --show-solution board1.txt 3
+.###.
+#####
+###.#
+###.#
+; squares=16
+
+* A C P ; solutions=1
+.PPC.
+PPACC
+PPA.C
+AAA.C
+
+* B C E ; solutions=1
+.EEC.
+EEECC
+BBE.C
+BBB.C
+
+* B C M ; solutions=1
+.MMC.
+(snip)
+</code></pre>
+
+<p>The common form of the analyzer commands is:</p>
+
+<pre><code>analyzer-program [option...] BOARD-FILE NPIECES
+</code></pre>
+
+<p>The format of BOARD-FILE is the same as that of 'Solver'.
+NPIECIES must be an integer greater than zero.
+The analyzer programs recognize the following options:</p>
+
+<ul>
+<li>-a, --all-solutions</li>
+</ul>
+
+<p>Show all solutions.  This option implies '--show-solution'.</p>
+
+<ul>
+<li>-h, --help</li>
+</ul>
+
+<p>Print command line usage, then exits.</p>
+
+<ul>
+<li>-m N, --max-solutions=N</li>
+</ul>
+
+<p>Output solvable combinations of pieces with N solutions or less only.</p>
+
+<ul>
+<li>-s, --show-solution</li>
+</ul>
+
+<p>Also output a solution.</p>
+
+<ul>
+<li>-v, --version</li>
+</ul>
+
+<p>Print a version number, then exits.</p>
+
+<p>The analyzer programs exit with the exit code 0 (success) even when
+it has reported no solvable combinations of pieces.</p>
+
+<h2>HTML Converter</h2>
+
+<p>'HTML converter' converts a text file to an HTML file and PNG image
+files.  The text file may contains one of the following data:</p>
+
+<ul>
+<li>Shapes of boards</li>
+<li>Solutions output by 'Solver'</li>
+<li>A list of combinations of pieces output by 'Analyzer'</li>
+</ul>
+
+<p>Same as 'Solver' and 'Analyzer', ubongo-utils provides a converter
+command for each Ubongo variant.</p>
+
+<ul>
+<li><code>ubongo-html-orig</code>   (for Ubongo)</li>
+<li><code>ubongo-html-duel</code>   (for Ubongo Duel)</li>
+<li><code>ubongo-html-minib</code>  (for Ubongo Mini - blue tiles)</li>
+<li><code>ubongo-html-minig</code>  (for Ubongo Mini - green tiles)</li>
+<li><code>ubongo-html-minir</code>  (for Ubongo Mini - red tiles)</li>
+<li><code>ubongo-html-miniy</code>  (for Ubongo Mini - yellow tiles)</li>
+</ul>
+
+<p>If you'd like to convert the board file 'board1.txt' for Ubongo Duel,
+type:</p>
+
+<pre><code>$ ubongo-html-duel board1.txt
+</code></pre>
+
+<p>It generates 'board1.html' and some PNG files at the current directory.
+The created HTML page looks like:</p>
+
+<div class="example">
+<img src="board1.png" alt="">
+</div>
+
+<p>If you want to create an HTML page of a solution, do it like this way:</p>
+
+<pre><code>$ ubongo-solve-duel board1.txt C L R &gt; solution1.txt
+$ ubongo-html-duel solution1.txt
+</code></pre>
+
+<p>It generates 'solution1.html' and PNG files at the current directory.
+The HTML page looks like:</p>
+
+<div class="example">
+Board:<br>
+<img src="board1.png" alt=""><br>
+<hr>
+No.1:&nbsp;
+<img src="duel-piece-small-R.png" alt="R">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-L.png" alt="L">
+<br>
+<img src="./solution1.png" alt="">
+</div>
+
+<p>To convert a list of combinations of pieces, run the following commands:</p>
+
+<pre><code>$ ubongo-analyze-duel board1.txt 3 &gt; combinations1.txt
+$ ubongo-html-duel --problem combinations.txt
+</code></pre>
+
+<p>It makes 'combinations1.html' and PNG files.  The HTML page looks like:</p>
+
+<div class="example">
+Board:<br>
+<img src="board1.png" alt=""><br>
+<hr>
+No.1:&nbsp;
+<img src="duel-piece-small-R.png" alt="R">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-L.png" alt="L">
+<br>
+<hr>
+No.2:&nbsp;
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-B.png" alt="B">
+<img src="duel-piece-small-E.png" alt="E">
+<br>
+<hr>
+No.3:&nbsp;
+<img src="duel-piece-small-M.png" alt="M">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-B.png" alt="B">
+<br>
+(snip)
+</div>
+
+<p>'combinations1.html' may contains solutions.  'HTML Converter' also
+converts solutions.</p>
+
+<pre><code>$ ubongo-analyze-duel --solution board1.txt 3 &gt; combinations1.txt
+$ ubongo-html-duel combinations.txt
+</code></pre>
+
+<p>The generated HTML page looks like:</p>
+
+<div class="example">
+Board:<br>
+<img src="board1.png" alt=""><br>
+<hr>
+No.1:&nbsp;
+<img src="duel-piece-small-R.png" alt="R">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-L.png" alt="L">
+<br>
+<img src="solution1.png" alt="">
+<hr>
+No.2:&nbsp;
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-B.png" alt="B">
+<img src="duel-piece-small-E.png" alt="E">
+<br>
+<img src="solution2.png" alt="">
+<hr>
+No.3:&nbsp;
+<img src="duel-piece-small-N.png" alt="N">
+<img src="duel-piece-small-C.png" alt="C">
+<img src="duel-piece-small-B.png" alt="B">
+<br>
+<img src="solution3.png" alt="">
+<br>
+(snip)
+</div>
+
+<p>The common form of the analyzer commands is:</p>
+
+<pre><code>html-converter-program [option...] TEXT-FILE
+</code></pre>
+
+<p>The 'HTML Converter' programs recognize the following options:</p>
+
+<ul>
+<li>-b BASENAME, --basename=BASENAME</li>
+</ul>
+
+<p>Create an HTML file with the filename 'BASENAME.html' and create PNG
+files for representing board and solutions with the filenames starting
+with 'BASENAME-'.  The default value is basename of TEXT-FILE.</p>
+
+<p>This option changes basenames of output files.  To change an output
+directory, use '--output-prefix' instead.</p>
+
+<ul>
+<li>-h, --help</li>
+</ul>
+
+<p>Print command line usage, then exits.</p>
+
+<ul>
+<li>-p, --problem</li>
+</ul>
+
+<p>Do not output solutions.  Output problems (combinations of pieces)
+only.</p>
+
+<ul>
+<li>-o PREFIX, --output-prefix=PREFIX</li>
+</ul>
+
+<p>Generate an HTML file at the directory PREFIX.  This options also
+changes locations of PNG files generated by 'HTML Converter'.
+The default value is '.'.  Also see description of '--basename',
+'--board-directory', '--solution-directory' and '--piece-directory'
+options.</p>
+
+<ul>
+<li>-v, --version</li>
+</ul>
+
+<p>Print a version number, then exits.</p>
+
+<ul>
+<li>--problem-size=SIZE</li>
+</ul>
+
+<p>Specify size of PNG files for representing pieces as problems.
+In generated image files, pieces consist of squares with sides SIZE
+pixels.  'HTML Converter' for Ubongo 3-D ignores this option.
+The default value is 6. </p>
+
+<ul>
+<li>--board-size=SIZE</li>
+</ul>
+
+<p>Specify size of PNG files for representing boards.  In generated image
+files, boards consist of squares with sides SIZE pixels.
+The default value is 16 </p>
+
+<ul>
+<li>--solution-size=SIZE</li>
+</ul>
+
+<p>Specify size of PNG files for representing solutions.  In generated
+image files, solutions consist of squares with sides SIZE pixels.
+The default value is 16. </p>
+
+<ul>
+<li>--board-directory=DIR</li>
+</ul>
+
+<p>Create PNG files for representing boards at the directory DIR.
+relative to a directory where an HTML file resides.  For example,
+specifying 'images/boards' as DIR, the generated HTML page contains
+'img' tags like:</p>
+
+<pre><code>&lt;img src="images/boards/x-board.png" alt=""&gt;
+</code></pre>
+
+<p>The default value is '.'. </p>
+
+<ul>
+<li>--solution-directory=DIR</li>
+</ul>
+
+<p>Create PNG files for representing solutions at the directory DIR,
+relative to a directory where an HTML file resides.  For example,
+specifying 'images/solutions' as DIR, the generated HTML page contains
+'img' tags like:</p>
+
+<pre><code>&lt;img src="images/solutions/x-solution-001-00002.png" alt=""&gt;
+</code></pre>
+
+<p>The default value is '.'. </p>
+
+<ul>
+<li>--piece-directory=DIR</li>
+</ul>
+
+<p>Creates PNG files for representing pieces at the directory DIR, 
+relative to a directory where an HTML file resides.  For example,
+specifying 'images/pieces' as DIR, the generated HTML page contains
+'img' tags like:</p>
+
+<pre><code>&lt;img src="images/pieces/piece-a.png" alt="A"&gt;
+</code></pre>
+
+<p>The default value is '.'. </p>
+
+<ul>
+<li>--title=TITLE</li>
+</ul>
+
+<p>Specify title of an HTML page.
+The default value is "<GAME TITLE> Problems" if '--problem' option
+is specifed, or "<GAME TITLE> Solutions" otherwise.
+<GAME TITLE> here is "Ubongo", "Ubongo Duel", "Ubongo Mini" or
+"Ubongo 3-D".</p>
+</body>
+</html>
