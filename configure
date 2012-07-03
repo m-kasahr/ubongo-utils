@@ -610,6 +610,7 @@ ac_includes_default="\
 
 ac_subst_vars='LTLIBOBJS
 LIBOBJS
+getopt_OBJECTS
 pkgdocdir
 MARKDOWN
 CONVERT
@@ -2187,6 +2188,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
 CXXFLAGS=${CXXFLAGS-"-g -O3"}
 LIBUBONGO_VERSION_INFO=1:0:0
 LIBUBONGO3D_VERSION_INFO=1:0:0
+
 
 
 
@@ -14390,11 +14392,44 @@ done
 test -n "$MARKDOWN" || MARKDOWN="/usr/bin/Markdown.pl"
 
 
+
 # Check whether --with-pkgdocdir was given.
 if test "${with_pkgdocdir+set}" = set; then :
   withval=$with_pkgdocdir; pkgdocdir="${withval}"
 else
   pkgdocdir='${datadir}/ubongo-utils/doc'
+fi
+
+
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for getopt_long" >&5
+$as_echo_n "checking for getopt_long... " >&6; }
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+extern "C" {
+#include <getopt.h>
+}
+int
+main ()
+{
+::getopt_long(0, 0, 0, 0, 0);
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  ac_cv_func_getopt_long=yes
+else
+  ac_cv_func_getopt_long=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_func_getopt_long" >&5
+$as_echo "$ac_cv_func_getopt_long" >&6; }
+if test $ac_cv_func_getopt_long = yes; then
+    getopt_OBJECTS=
+else
+    getopt_OBJECTS=getpot.lo
 fi
 
 
