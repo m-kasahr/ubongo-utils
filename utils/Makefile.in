@@ -143,7 +143,7 @@ SCRIPTS = ubongo-draw ubongo-html-orig ubongo-html-duel ubongo-html-minib \
           ubongo-html-3d ubongo-compare
 
 DISTFILES = Makefile.in ubongo-solve-x.cpp.in ubongo-analyze-x.cpp.in \
-            ubongo-html-x.in ubongo-html-3d.in ubongo-draw-x.in \
+            ubongo-html-x.in ubongo-html-3d.in ubongo-draw.in \
             ubongo-compare.in 
 CLEANFILES = $(SCRIPTS) \
              $(ubongosolveorig_SOURCES) $(ubongosolveduel_SOURCES) \

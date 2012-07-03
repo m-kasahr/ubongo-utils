@@ -49,17 +49,17 @@ pkgdoc_FILES = ubongo-utils.md ubongo-utils.html \
                orig-piece-D.png orig-piece-E.png orig-piece-F.png \
                orig-piece-G.png orig-piece-H.png orig-piece-I.png \
                orig-piece-J.png orig-piece-K.png orig-piece-L.png \
-               duel-small-piece-A.png duel-small-piece-B.png \
-               duel-small-piece-C.png duel-small-piece-D.png \
-               duel-small-piece-E.png duel-small-piece-F.png \
-               duel-small-piece-G.png duel-small-piece-H.png \
-               duel-small-piece-I.png duel-small-piece-J.png \
-               duel-small-piece-K.png duel-small-piece-L.png \
-               duel-small-piece-M.png duel-small-piece-N.png \
-               duel-small-piece-O.png duel-small-piece-P.png \
-               duel-small-piece-Q.png duel-small-piece-R.png \
-               duel-small-piece-S.png duel-small-piece-T.png \
-               duel-small-piece-U.png \
+               duel-piece-small-A.png duel-piece-small-B.png \
+               duel-piece-small-C.png duel-piece-small-D.png \
+               duel-piece-small-E.png duel-piece-small-F.png \
+               duel-piece-small-G.png duel-piece-small-H.png \
+               duel-piece-small-I.png duel-piece-small-J.png \
+               duel-piece-small-K.png duel-piece-small-L.png \
+               duel-piece-small-M.png duel-piece-small-N.png \
+               duel-piece-small-O.png duel-piece-small-P.png \
+               duel-piece-small-Q.png duel-piece-small-R.png \
+               duel-piece-small-S.png duel-piece-small-T.png \
+               duel-piece-small-U.png \
                duel-piece-A.png duel-piece-B.png duel-piece-C.png \
                duel-piece-D.png duel-piece-E.png duel-piece-F.png \
                duel-piece-G.png duel-piece-H.png duel-piece-I.png \

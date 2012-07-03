@@ -48,7 +48,7 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 SUBDIRS = lib/ubongo lib/ubongo3d utils data/orig data/duel data/minib \
     data/minig data/minir data/miniy data/3d doc
 
-DISTFILES = COPYING.txt README.md INSTALL.md Makefile.in aclocal.m4 \
+DISTFILES = LICENSE.md README.md INSTALL.md Makefile.in aclocal.m4 \
             config.guess config.status config.sub configure configure.ac \
             install-sh ltmain.sh m4/libtool.m4 m4/ltoptions.m4 m4/ltsugar.m4 \
             m4/ltversion.m4 m4/lt~obsolete.m4
