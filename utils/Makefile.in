@@ -47,6 +47,8 @@ LDFLAGS = @LDFLAGS@
 LIB_VERSION_INFO = @LIBUBONGO_VERSION_INFO@
 LIBS = -lstdc++
 
+getopt_OBJECTS = @getopt_OBJECTS@
+
 dataorig_srcdir = $(top_srcdir)/data/orig
 dataduel_srcdir = $(top_srcdir)/data/duel
 dataminib_srcdir = $(top_srcdir)/data/minib
@@ -68,67 +70,67 @@ ubongosolveorig_LIBS    = $(libubongo)
 ubongosolveorig_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongosolveduel_SOURCES = ubongo-solve-duel.cpp
-ubongosolveduel_OBJECTS = ubongo-solve-duel.lo
+ubongosolveduel_OBJECTS = ubongo-solve-duel.lo $(getopt_OBJECTS)
 ubongosolveduel_LIBS    = $(libubongo)
 ubongosolveduel_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongosolveminib_SOURCES = ubongo-solve-minib.cpp
-ubongosolveminib_OBJECTS = ubongo-solve-minib.lo
+ubongosolveminib_OBJECTS = ubongo-solve-minib.lo $(getopt_OBJECTS)
 ubongosolveminib_lIBS    = $(libubongo)
 ubongosolveminib_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongosolveminig_SOURCES = ubongo-solve-minig.cpp
-ubongosolveminig_OBJECTS = ubongo-solve-minig.lo
+ubongosolveminig_OBJECTS = ubongo-solve-minig.lo $(getopt_OBJECTS)
 ubongosolveminig_lIBS    = $(libubongo)
 ubongosolveminig_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongosolveminir_SOURCES = ubongo-solve-minir.cpp
-ubongosolveminir_OBJECTS = ubongo-solve-minir.lo
+ubongosolveminir_OBJECTS = ubongo-solve-minir.lo $(getopt_OBJECTS)
 ubongosolveminir_lIBS    = $(libubongo)
 ubongosolveminir_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongosolveminiy_SOURCES = ubongo-solve-miniy.cpp
-ubongosolveminiy_OBJECTS = ubongo-solve-miniy.lo
+ubongosolveminiy_OBJECTS = ubongo-solve-miniy.lo $(getopt_OBJECTS)
 ubongosolveminiy_lIBS    = $(libubongo)
 ubongosolveminiy_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongosolve3d_SOURCES = ubongo-solve-3d.cpp
-ubongosolve3d_OBJECTS = ubongo-solve-3d.lo
+ubongosolve3d_OBJECTS = ubongo-solve-3d.lo $(getopt_OBJECTS)
 ubongosolve3d_lIBS    = $(libubongo3d)
 ubongosolve3d_LDFLAGS = -L$(libubongo3d_builddir) -lubongo3d
 
 ubongoanalyzeorig_SOURCES = ubongo-analyze-orig.cpp
-ubongoanalyzeorig_OBJECTS = ubongo-analyze-orig.lo
+ubongoanalyzeorig_OBJECTS = ubongo-analyze-orig.lo $(getopt_OBJECTS)
 ubongoanalyzeorig_LIBS    = $(libubongo)
 ubongoanalyzeorig_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongoanalyzeduel_SOURCES = ubongo-analyze-duel.cpp
-ubongoanalyzeduel_OBJECTS = ubongo-analyze-duel.lo
+ubongoanalyzeduel_OBJECTS = ubongo-analyze-duel.lo $(getopt_OBJECTS)
 ubongoanalyzeduel_LIBS    = $(libubongo)
 ubongoanalyzeduel_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongoanalyzeminib_SOURCES = ubongo-analyze-minib.cpp
+ubongoanalyzeminib_OBJECTS = ubongo-analyze-minib.lo $(getopt_OBJECTS)
 ubongoanalyzeminib_LIBS    = $(libubongo)
-ubongoanalyzeminib_OBJECTS = ubongo-analyze-minib.lo
 ubongoanalyzeminib_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongoanalyzeminig_SOURCES = ubongo-analyze-minig.cpp
-ubongoanalyzeminig_OBJECTS = ubongo-analyze-minig.lo
+ubongoanalyzeminig_OBJECTS = ubongo-analyze-minig.lo $(getopt_OBJECTS)
 ubongoanalyzeminig_LIBS    = $(libubongo)
 ubongoanalyzeminig_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongoanalyzeminir_SOURCES = ubongo-analyze-minir.cpp
-ubongoanalyzeminir_OBJECTS = ubongo-analyze-minir.lo
+ubongoanalyzeminir_OBJECTS = ubongo-analyze-minir.lo $(getopt_OBJECTS)
 ubongoanalyzeminir_LIBS    = $(libubongo)
 ubongoanalyzeminir_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongoanalyzeminiy_SOURCES = ubongo-analyze-miniy.cpp
-ubongoanalyzeminiy_OBJECTS = ubongo-analyze-miniy.lo
+ubongoanalyzeminiy_OBJECTS = ubongo-analyze-miniy.lo $(getopt_OBJECTS)
 ubongoanalyzeminiy_LIBS    = $(libubongo)
 ubongoanalyzeminiy_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
 ubongoanalyze3d_SOURCES = ubongo-analyze-3d.cpp
-ubongoanalyze3d_OBJECTS = ubongo-analyze-3d.lo
+ubongoanalyze3d_OBJECTS = ubongo-analyze-3d.lo $(getopt_OBJECTS)
 ubongoanalyze3d_LIBS    = $(libubongo3d)
 ubongoanalyze3d_LDFLAGS = -L$(libubongo3d_builddir) -lubongo3d
 
@@ -340,6 +342,10 @@ ubongo-analyze-3d.lo: ubongo-analyze-3d.cpp \
                       $(libubongo3d_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
 	    $(CXXFLAGS) -o $@ -c ubongo-analyze-3d.cpp
+
+getopt.lo: getopt.c getopt.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -o $@ -c getopt.c
 
 ubongo-solve-orig.cpp: ubongo-solve-x.cpp.in
 	rm -f $@
