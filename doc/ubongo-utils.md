@@ -40,9 +40,7 @@ Here is an example:
 Each character '#' is a square printed on the board.  The actual board
 corresponding with the text file above looks like:
 
-<div class="example">
-<img src="board1.png" alt="an image of a board">
-</div>
+![A board](board1.png)
 
 To specify pieces placed on the board, upper letters ('A', 'B', 'C' ...)
 are used.  An unique letter is assigned to each piece in an Ubongo
@@ -50,144 +48,105 @@ variant.
 
 Ubongo:
 
-<table>
-<tr>
-<td>A:<img src="orig-piece-A.png" alt="Ubongo A"></td>
-<td>B:<img src="orig-piece-B.png" alt="Ubongo B"></td>
-<td>C:<img src="orig-piece-C.png" alt="Ubongo C"></td>
-<td>D:<img src="orig-piece-D.png" alt="Ubongo D"></td>
-<td>E:<img src="orig-piece-E.png" alt="Ubongo E"></td>
-<td>F:<img src="orig-piece-F.png" alt="Ubongo F"></td>
-<td>G:<img src="orig-piece-G.png" alt="Ubongo G"></td>
-<td>H:<img src="orig-piece-H.png" alt="Ubongo H"></td>
-</tr>
-<tr>
-<td>I:<img src="orig-piece-I.png" alt="Ubongo I"></td>
-<td>J:<img src="orig-piece-J.png" alt="Ubongo J"></td>
-<td>K:<img src="orig-piece-K.png" alt="Ubongo K"></td>
-<td>L:<img src="orig-piece-L.png" alt="Ubongo L"></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</table>
+A: ![Ubongo piece A](orig-piece-A.png)
+B: ![Ubongo piece B](orig-piece-B.png)
+C: ![Ubongo piece C](orig-piece-C.png)
+D: ![Ubongo piece D](orig-piece-D.png)
+E: ![Ubongo piece E](orig-piece-E.png)
+F: ![Ubongo piece F](orig-piece-F.png)
+G: ![Ubongo piece G](orig-piece-G.png)
+H: ![Ubongo piece H](orig-piece-H.png)
+
+I: ![Ubongo piece I](orig-piece-I.png)
+J: ![Ubongo piece J](orig-piece-J.png)
+K: ![Ubongo piece K](orig-piece-K.png)
+L: ![Ubongo piece L](orig-piece-L.png)
 
 Ubongo Duel:
 
-<table>
-<tr>
-<td>A:<img src="duel-piece-A.png" alt="Duel A"></td>
-<td>B:<img src="duel-piece-B.png" alt="Duel B"></td>
-<td>C:<img src="duel-piece-C.png" alt="Duel C"></td>
-<td>D:<img src="duel-piece-D.png" alt="Duel D"></td>
-<td>E:<img src="duel-piece-E.png" alt="Duel E"></td>
-<td>F:<img src="duel-piece-F.png" alt="Duel F"></td>
-<td>G:<img src="duel-piece-G.png" alt="Duel G"></td>
-<td>H:<img src="duel-piece-H.png" alt="Duel H"></td>
-</tr>
-<tr>
-<td>I:<img src="duel-piece-I.png" alt="Duel I"></td>
-<td>J:<img src="duel-piece-J.png" alt="Duel J"></td>
-<td>K:<img src="duel-piece-K.png" alt="Duel K"></td>
-<td>L:<img src="duel-piece-L.png" alt="Duel L"></td>
-<td>M:<img src="duel-piece-M.png" alt="Duel M"></td>
-<td>N:<img src="duel-piece-N.png" alt="Duel N"></td>
-<td>O:<img src="duel-piece-O.png" alt="Duel O"></td>
-<td>P:<img src="duel-piece-P.png" alt="Duel P"></td>
-</tr>
-<tr>
-<td>Q:<img src="duel-piece-Q.png" alt="Duel Q"></td>
-<td>R:<img src="duel-piece-R.png" alt="Duel R"></td>
-<td>S:<img src="duel-piece-S.png" alt="Duel S"></td>
-<td>T:<img src="duel-piece-T.png" alt="Duel T"></td>
-<td>U:<img src="duel-piece-U.png" alt="Duel U"></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</table>
+A: ![Ubongo Duel Piece A](duel-piece-A.png)
+B: ![Ubongo Duel Piece B](duel-piece-B.png)
+C: ![Ubongo Duel Piece C](duel-piece-C.png)
+D: ![Ubongo Duel Piece D](duel-piece-D.png)
+E: ![Ubongo Duel Piece E](duel-piece-E.png)
+F: ![Ubongo Duel Piece F](duel-piece-F.png)
+G: ![Ubongo Duel Piece G](duel-piece-G.png)
+H: ![Ubongo Duel Piece H](duel-piece-H.png)
+
+I: ![Ubongo Duel Piece I](duel-piece-I.png)
+J: ![Ubongo Duel Piece J](duel-piece-J.png)
+K: ![Ubongo Duel Piece K](duel-piece-K.png)
+L: ![Ubongo Duel Piece L](duel-piece-L.png)
+M: ![Ubongo Duel Piece M](duel-piece-M.png)
+N: ![Ubongo Duel Piece N](duel-piece-N.png)
+O: ![Ubongo Duel Piece O](duel-piece-O.png)
+P: ![Ubongo Duel Piece P](duel-piece-P.png)
+
+Q: ![Ubongo Duel Piece Q](duel-piece-Q.png)
+R: ![Ubongo Duel Piece R](duel-piece-R.png)
+S: ![Ubongo Duel Piece S](duel-piece-S.png)
+T: ![Ubongo Duel Piece T](duel-piece-T.png)
+U: ![Ubongo Duel Piece U](duel-piece-U.png)
 
 Ubongo Mini - Blue Tiles:
 
-<table>
-<tr>
-<td>A:<img src="minib-piece-A.png" alt="Mini Blue A"></td>
-<td>B:<img src="minib-piece-B.png" alt="Mini Blue B"></td>
-<td>C:<img src="minib-piece-C.png" alt="Mini Blue C"></td>
-<td>D:<img src="minib-piece-D.png" alt="Mini Blue D"></td>
-<td>E:<img src="minib-piece-E.png" alt="Mini Blue E"></td>
-<td>F:<img src="minib-piece-F.png" alt="Mini Blue F"></td>
-<td>G:<img src="minib-piece-G.png" alt="Mini Blue G"></td>
-</tr>
-</table>
+A: ![Ubongo Mini Blue Piece A](minib-piece-A.png)
+B: ![Ubongo Mini Blue Piece B](minib-piece-B.png)
+C: ![Ubongo Mini Blue Piece C](minib-piece-C.png)
+D: ![Ubongo Mini Blue Piece D](minib-piece-D.png)
+E: ![Ubongo Mini Blue Piece E](minib-piece-E.png)
+F: ![Ubongo Mini Blue Piece F](minib-piece-F.png)
+G: ![Ubongo Mini Blue Piece G](minib-piece-G.png)
 
 Ubongo Mini - Green Tiles:
 
-<table>
-<tr>
-<td>A:<img src="minig-piece-A.png" alt="Mini Green A"></td>
-<td>B:<img src="minig-piece-B.png" alt="Mini Green B"></td>
-<td>C:<img src="minig-piece-C.png" alt="Mini Green C"></td>
-<td>D:<img src="minig-piece-D.png" alt="Mini Green D"></td>
-<td>E:<img src="minig-piece-E.png" alt="Mini Green E"></td>
-<td>F:<img src="minig-piece-F.png" alt="Mini Green F"></td>
-<td>G:<img src="minig-piece-G.png" alt="Mini Green G"></td>
-</tr>
-</table>
+A: ![Ubongo Mini Green Piece A](minig-piece-A.png)
+B: ![Ubongo Mini Green Piece B](minig-piece-B.png)
+C: ![Ubongo Mini Green Piece C](minig-piece-C.png)
+D: ![Ubongo Mini Green Piece D](minig-piece-D.png)
+E: ![Ubongo Mini Green Piece E](minig-piece-E.png)
+F: ![Ubongo Mini Green Piece F](minig-piece-F.png)
+G: ![Ubongo Mini Green Piece G](minig-piece-G.png)
 
 Ubongo Mini - Red Tiles:
 
-<table>
-<tr>
-<td>A:<img src="minir-piece-A.png" alt="Mini Red A"></td>
-<td>B:<img src="minir-piece-B.png" alt="Mini Red B"></td>
-<td>C:<img src="minir-piece-C.png" alt="Mini Red C"></td>
-<td>D:<img src="minir-piece-D.png" alt="Mini Red D"></td>
-<td>E:<img src="minir-piece-E.png" alt="Mini Red E"></td>
-<td>F:<img src="minir-piece-F.png" alt="Mini Red F"></td>
-<td>G:<img src="minir-piece-G.png" alt="Mini Red G"></td>
-</tr>
-</table>
+A: ![Ubongo Mini Red Piece A](minir-piece-A.png)
+B: ![Ubongo Mini Red Piece B](minir-piece-B.png)
+C: ![Ubongo Mini Red Piece C](minir-piece-C.png)
+D: ![Ubongo Mini Red Piece D](minir-piece-D.png)
+E: ![Ubongo Mini Red Piece E](minir-piece-E.png)
+F: ![Ubongo Mini Red Piece F](minir-piece-F.png)
+G: ![Ubongo Mini Red Piece G](minir-piece-G.png)
 
 Ubongo Mini - Yellow Tiles:
 
-<table>
-<tr>
-<td>A:<img src="miniy-piece-A.png" alt="Mini Yellow A"></td>
-<td>B:<img src="miniy-piece-B.png" alt="Mini Yellow B"></td>
-<td>C:<img src="miniy-piece-C.png" alt="Mini Yellow C"></td>
-<td>D:<img src="miniy-piece-D.png" alt="Mini Yellow D"></td>
-<td>E:<img src="miniy-piece-E.png" alt="Mini Yellow E"></td>
-<td>F:<img src="miniy-piece-F.png" alt="Mini Yellow F"></td>
-<td>G:<img src="miniy-piece-G.png" alt="Mini Yellow G"></td>
-</tr>
-</table>
+A: ![Ubongo Mini Yellow Piece A](miniy-piece-A.png)
+B: ![Ubongo Mini Yellow Piece B](miniy-piece-B.png)
+C: ![Ubongo Mini Yellow Piece C](miniy-piece-C.png)
+D: ![Ubongo Mini Yellow Piece D](miniy-piece-D.png)
+E: ![Ubongo Mini Yellow Piece E](miniy-piece-E.png)
+F: ![Ubongo Mini Yellow Piece F](miniy-piece-F.png)
+G: ![Ubongo Mini Yellow Piece G](miniy-piece-G.png)
 
 Ubongo 3-D:
 
-<table>
-<tr>
-<td>A:<img src="3d-piece-A.png" alt="3-D A"></td>
-<td>B:<img src="3d-piece-B.png" alt="3-D B"></td>
-<td>C:<img src="3d-piece-C.png" alt="3-D C"></td>
-<td>D:<img src="3d-piece-D.png" alt="3-D D"></td>
-<td>E:<img src="3d-piece-E.png" alt="3-D E"></td>
-<td>F:<img src="3d-piece-F.png" alt="3-D F"></td>
-<td>G:<img src="3d-piece-G.png" alt="3-D G"></td>
-<td>H:<img src="3d-piece-H.png" alt="3-D H"></td>
-</tr>
-<tr>
-<td>I:<img src="3d-piece-I.png" alt="3-D I"></td>
-<td>J:<img src="3d-piece-J.png" alt="3-D J"></td>
-<td>K:<img src="3d-piece-K.png" alt="3-D K"></td>
-<td>L:<img src="3d-piece-L.png" alt="3-D L"></td>
-<td>M:<img src="3d-piece-M.png" alt="3-D M"></td>
-<td>N:<img src="3d-piece-N.png" alt="3-D N"></td>
-<td>O:<img src="3d-piece-O.png" alt="3-D O"></td>
-<td>P:<img src="3d-piece-P.png" alt="3-D P"></td>
-</tr>
-</table>
+A: ![Ubongo 3-D Piece A](3d-piece-A.png)
+B: ![Ubongo 3-D Piece B](3d-piece-B.png)
+C: ![Ubongo 3-D Piece C](3d-piece-C.png)
+D: ![Ubongo 3-D Piece D](3d-piece-D.png)
+E: ![Ubongo 3-D Piece E](3d-piece-E.png)
+F: ![Ubongo 3-D Piece F](3d-piece-F.png)
+G: ![Ubongo 3-D Piece G](3d-piece-G.png)
+H: ![Ubongo 3-D Piece H](3d-piece-H.png)
+
+I: ![Ubongo 3-D Piece I](3d-piece-I.png)
+J: ![Ubongo 3-D Piece J](3d-piece-J.png)
+K: ![Ubongo 3-D Piece K](3d-piece-K.png)
+L: ![Ubongo 3-D Piece L](3d-piece-L.png)
+M: ![Ubongo 3-D Piece M](3d-piece-M.png)
+N: ![Ubongo 3-D Piece N](3d-piece-N.png)
+O: ![Ubongo 3-D Piece O](3d-piece-O.png)
+P: ![Ubongo 3-D Piece P](3d-piece-P.png)
 
 Suppose that you'd like to solve a puzzle for Ubongo Duel, with the
 board above saved as the text file 'board1.txt', and with the piece
@@ -206,9 +165,7 @@ a solution:
 
 It means that the solution looks like:
 
-<div class="example">
-<img src="solution1.png" alt="an image of a solution">
-</div>
+![Solution](solution1.png)
 
 'Solver' program for Ubongo 3-D, 'ubongo-solve-3d' command, outputs
 text data slightly different from other solver programs:
@@ -404,9 +361,7 @@ type:
 It generates 'board1.html' and some PNG files at the current directory.
 The created HTML page looks like:
 
-<div class="example">
-<img src="board1.png" alt="">
-</div>
+![HTML Converter output](screenshot1.png)
 
 If you want to create an HTML page of a solution, do it like this way:
 
@@ -416,17 +371,7 @@ If you want to create an HTML page of a solution, do it like this way:
 It generates 'solution1.html' and PNG files at the current directory.
 The HTML page looks like:
 
-<div class="example">
-Board:<br>
-<img src="board1.png" alt=""><br>
-<hr>
-No.1:&nbsp;
-<img src="duel-piece-small-R.png" alt="R">
-<img src="duel-piece-small-C.png" alt="C">
-<img src="duel-piece-small-L.png" alt="L">
-<br>
-<img src="./solution1.png" alt="">
-</div>
+![HTML Converter output](screenshot2.png)
 
 To convert a list of combinations of pieces, run the following commands:
 
@@ -435,29 +380,7 @@ To convert a list of combinations of pieces, run the following commands:
 
 It makes 'combinations1.html' and PNG files.  The HTML page looks like:
 
-<div class="example">
-Board:<br>
-<img src="board1.png" alt=""><br>
-<hr>
-No.1:&nbsp;
-<img src="duel-piece-small-R.png" alt="R">
-<img src="duel-piece-small-C.png" alt="C">
-<img src="duel-piece-small-L.png" alt="L">
-<br>
-<hr>
-No.2:&nbsp;
-<img src="duel-piece-small-C.png" alt="C">
-<img src="duel-piece-small-B.png" alt="B">
-<img src="duel-piece-small-E.png" alt="E">
-<br>
-<hr>
-No.3:&nbsp;
-<img src="duel-piece-small-M.png" alt="M">
-<img src="duel-piece-small-C.png" alt="C">
-<img src="duel-piece-small-B.png" alt="B">
-<br>
-(snip)
-</div>
+![HTML Converter output](screenshot3.png)
 
 'combinations1.html' may contains solutions.  'HTML Converter' also
 converts solutions.
@@ -467,33 +390,7 @@ converts solutions.
 
 The generated HTML page looks like:
 
-<div class="example">
-Board:<br>
-<img src="board1.png" alt=""><br>
-<hr>
-No.1:&nbsp;
-<img src="duel-piece-small-R.png" alt="R">
-<img src="duel-piece-small-C.png" alt="C">
-<img src="duel-piece-small-L.png" alt="L">
-<br>
-<img src="solution1.png" alt="">
-<hr>
-No.2:&nbsp;
-<img src="duel-piece-small-C.png" alt="C">
-<img src="duel-piece-small-B.png" alt="B">
-<img src="duel-piece-small-E.png" alt="E">
-<br>
-<img src="solution2.png" alt="">
-<hr>
-No.3:&nbsp;
-<img src="duel-piece-small-N.png" alt="N">
-<img src="duel-piece-small-C.png" alt="C">
-<img src="duel-piece-small-B.png" alt="B">
-<br>
-<img src="solution3.png" alt="">
-<br>
-(snip)
-</div>
+![HTML Converter output](screenshot4.png)
 
 The common form of the analyzer commands is:
 
@@ -586,7 +483,7 @@ The default value is '.'.
 * --title=TITLE
 
 Specify title of an HTML page.
-The default value is "<GAME TITLE> Problems" if '--problem' option
-is specifed, or "<GAME TITLE> Solutions" otherwise.
-<GAME TITLE> here is "Ubongo", "Ubongo Duel", "Ubongo Mini" or
+The default value is "_GAME TITLE_ Problems" if '--problem' option
+is specifed, or "_GAME TITLE_ Solutions" otherwise.
+_GAME TITLE_ here is "Ubongo", "Ubongo Duel", "Ubongo Mini" or
 "Ubongo 3-D".
