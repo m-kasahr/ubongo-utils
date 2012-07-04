@@ -11,7 +11,7 @@ installation procedure of ubongo-utils.
 * Ruby
 
 'HTML Converter' of ubongo-utils is written in Ruby.
-ubongo-utils also uses Ruby for generating source codes using Ruby.
+ubongo-utils also uses Ruby for generating source codes.
 
 * ImageMagick
 
