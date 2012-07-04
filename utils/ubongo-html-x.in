@@ -253,8 +253,9 @@ def create_html_file(basename, html_directory, mode, solution_file_path,
       while true
         solution_data += line
         line = (solution_file.gets rescue nil)
+        break if line == nil
 	line.gsub!(/;.*$/, '')
-        break if line == nil || line =~ /^$/
+        break line =~ /^$/
       end
 
       #
@@ -342,8 +343,9 @@ def create_solution_files(basename, output_prefix, solution_file_path,
       while true
         solution_data += line
         line = (solution_file.gets rescue nil)
+        break if line == nil
 	line.gsub!(/;.*$/, '')
-        break if line == nil || line =~ /^$/
+        break line =~ /^$/
       end
 
       #
