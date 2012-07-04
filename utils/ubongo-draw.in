@@ -59,7 +59,7 @@ end
 #
 def read_color_file(file_path)
   if (file = open(file_path, 'r') rescue nil) == nil
-    warn("#{$0} failed to open the color file, #{$!}: '#{file_path}'")
+    warn("#{$0}: failed to open the color file: '#{file_path}'")
     return
   end
 
@@ -86,7 +86,7 @@ def read_matrix_file(file_path)
     file = $stdin
   else
     if (file = open(file_path, 'r') rescue nil) == nil
-      warn("failed to open the matrix file, #{$!}: #{file_path}")
+      warn("#{$0}: failed to open the matrix file: #{file_path}")
       return
     end
   end
@@ -131,7 +131,7 @@ def create_ppm_file(file_path, colors, matrix, square_size)
   # Open a PPM file.
   #
   if (file = open(file_path, 'w')) == nil
-    warn("failed to open the file, #{$!}: #{file_path}")
+    warn("#{$0}: failed to open the file: #{file_path}")
     return false
   end
 
@@ -376,16 +376,16 @@ else
   $colors = read_color_file($color_file_path)
   $colors = create_colorset() if $colors == nil
 end
+exit(1) if $colors == nil
 
 #
 # Read a matrix file.
 #
 $matrix = read_matrix_file($matrix_file_path)
-exit(1) if $colors == nil
-
+exit(1) if $matrix == nil
 normalize_matrix($matrix)
 
 #
 # Create a PNG file of matrix data.
 #
-create_png_file($png_file_path, $colors, $matrix, $square_size)
+create_png_file($png_file_path, $colors, $matrix, $square_size) or exit(1)

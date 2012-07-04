@@ -103,6 +103,8 @@ def read_piece_order_file()
     order[$1] = file.lineno;
   end
 
+  ('A'..'Z').each {|id| order[id] = -1 if !order.include?(id)}
+
   file.close
   return order
 end
@@ -150,7 +152,7 @@ def create_all_piece_png_files(basename, output_prefix, pieces, parameters)
   #
   if !FileTest.directory?(png_directory)
     if (FileUtils.mkdir_p(png_directory) rescue -1) < 0
-      warn("#{$0}: failed to create a directory, #{$!}: #{png_directory}")
+      warn("#{$0}: failed to create a directory: #{png_directory}")
       exit(1)
     end
   end
@@ -181,7 +183,7 @@ def create_html_file(basename, html_directory, mode, solution_file_path,
   #
   if !FileTest.directory?(html_directory)
     if (FileUtils.mkdir_p(html_directory) rescue -1) < 0
-      warn("#{$0}: failed to create a directory, #{$!}: #{html_directory}")
+      warn("#{$0}: failed to create a directory: #{html_directory}")
       exit(1)
     end
   end
@@ -301,14 +303,14 @@ def create_solution_files(basename, output_prefix, solution_file_path,
   #
   if !FileTest.directory?(board_directory)
     if (FileUtils.mkdir_p(board_directory) rescue -1) < 0
-      warn("#{$0}: failed to create a directory, #{$!}: #{board_directory}")
+      warn("#{$0}: failed to create a directory: #{board_directory}")
       exit(1)
     end
   end
 
   if !FileTest.directory?(solution_directory)
     if (FileUtils.mkdir_p(solution_directory) rescue -1) < 0
-      warn("#{$0}: failed to create a directory, #{$!}: #{solution_directory}")
+      warn("#{$0}: failed to create a directory: #{solution_directory}")
       exit(1)
     end
   end
@@ -317,7 +319,7 @@ def create_solution_files(basename, output_prefix, solution_file_path,
   # Open a text file.
   #
   if (solution_file = open(solution_file_path, 'r') rescue nil) == nil
-    abort("failed to open '#{solution_file_path}', #{$!}")
+    abort("failed to open the file: #{solution_file_path}")
   end
 
   #
