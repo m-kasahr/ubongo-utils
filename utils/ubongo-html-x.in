@@ -110,7 +110,7 @@ end
 #
 # Create a board (without pieces) file as PNG image.
 #
-def create_board_png_file(png_file_path, png_data, color_file_path, size)
+def create_board_png_file(png_file_path, png_data, size)
   begin
     command = "#{UBONGO_DRAW} --color-file=#{COLOR_FILE_PATH} " +
       "--size=#{size} - #{png_file_path}"
@@ -127,10 +127,9 @@ end
 #
 # Create a piece file as a PNG image.
 #
-def create_piece_png_file(png_file_path, text_file_path, color_file_path,
-                          parameters)
+def create_piece_png_file(png_file_path, text_file_path, parameters)
   begin
-    command = "#{UBONGO_DRAW} --color-file=#{color_file_path} " +
+    command = "#{UBONGO_DRAW} --color-file=#{COLOR_FILE_PATH} " +
       "--size=#{$parameters['problem-size']} #{text_file_path} " +
       "#{png_file_path}"
     file = open("| #{command}", 'w')
@@ -165,8 +164,7 @@ def create_all_piece_png_files(basename, output_prefix, pieces, parameters)
 
     png_file_name = sprintf(PIECE_PNG_FILE_NAME_FORMAT, piece)
     png_file_path = sprintf("%s/%s", png_directory, png_file_name)
-    create_piece_png_file(png_file_path, text_file_path, color_file_path,
-                          parameters)
+    create_piece_png_file(png_file_path, text_file_path, parameters)
   end
 end
 
@@ -289,7 +287,7 @@ end
 # Create board and solution files.
 #
 def create_solution_files(basename, output_prefix, solution_file_path,
-                          color_file_path, parameters)
+                          parameters)
   board_directory = sprintf("%s/%s", output_prefix,
                             parameters['board-directory'])
   solution_directory = sprintf("%s/%s", output_prefix,
@@ -353,8 +351,8 @@ def create_solution_files(basename, output_prefix, solution_file_path,
         board_data = solution_data.gsub(/[A-Z]/, '#')
         png_file_name = sprintf(BOARD_PNG_FILE_NAME_FORMAT, basename)
         png_file_path = sprintf("%s/%s", board_directory, png_file_name)
-        create_board_png_file(png_file_path, board_data, color_file_path,
-                              parameters['solution-size'])
+        create_board_png_file(png_file_path, board_data,
+			      parameters['solution-size'])
       end
 
       #
@@ -363,7 +361,7 @@ def create_solution_files(basename, output_prefix, solution_file_path,
       png_file_name = sprintf(SOLUTION_PNG_FILE_NAME_FORMAT,
                               basename, problem_no, solution_no)
       png_file_path = sprintf("%s/%s", solution_directory, png_file_name)
-      create_board_png_file(png_file_path, solution_data, color_file_path,
+      create_board_png_file(png_file_path, solution_data,
                             parameters['solution-size'])
     end
   end
