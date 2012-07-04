@@ -352,6 +352,7 @@ command for each Ubongo variant.
 * `ubongo-html-minig`  (for Ubongo Mini - green tiles)
 * `ubongo-html-minir`  (for Ubongo Mini - red tiles)
 * `ubongo-html-miniy`  (for Ubongo Mini - yellow tiles)
+* `ubongo-html-3d`  (for Ubongo 3-D)
 
 If you'd like to convert the board file 'board1.txt' for Ubongo Duel,
 type:
