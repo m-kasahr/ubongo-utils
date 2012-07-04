@@ -1,3 +1,6 @@
+# libtool's work-directory.
+.libs
+
 # Executables.
 ubongo-analyze-3d
 ubongo-analyze-duel
