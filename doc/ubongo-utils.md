@@ -386,7 +386,7 @@ It makes 'combinations1.html' and PNG files.  The HTML page looks like:
 'combinations1.html' may contains solutions.  'HTML Converter' also
 converts solutions.
 
-    $ ubongo-analyze-duel --solution board1.txt 3 > combinations1.txt
+    $ ubongo-analyze-duel --show-solution board1.txt 3 > combinations1.txt
     $ ubongo-html-duel combinations.txt
 
 The generated HTML page looks like:
