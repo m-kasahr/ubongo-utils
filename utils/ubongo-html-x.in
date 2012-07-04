@@ -236,14 +236,6 @@ def create_html_file(basename, html_directory, mode, solution_file_path,
       problem_no += 1
       solution_no = 0
 
-      if problem_no == 1
-        png_file_name = sprintf(BOARD_PNG_FILE_NAME_FORMAT, basename)
-        png_file_path = sprintf("%s/%s", parameters['board-directory'],
-                                png_file_name)
-        html_file.print("Board:<br>\n")
-        html_file.print("<img src=\"#{png_file_path}\" alt=\"\"><br>\n")
-      end
-
       html_file.print("<hr>\n")
       html_file.print("No.#{problem_no}:&nbsp;\n")
 
@@ -257,20 +249,30 @@ def create_html_file(basename, html_directory, mode, solution_file_path,
       html_file.print("<br>\n")
 
     elsif line =~ /^[.#A-Z]+$/
+      solution_data = ''
+      while true
+        solution_data += line
+        line = (solution_file.gets rescue nil)
+	line.gsub!(/;.*$/, '')
+        break if line == nil || line =~ /^$/
+      end
+
       #
       # Solution data.
       #
-      solution_no += 1
-      png_file_name = sprintf(SOLUTION_PNG_FILE_NAME_FORMAT,
-                              basename, problem_no, solution_no)
-      png_file_path = sprintf("%s/%s", parameters['solution-directory'],
-                              png_file_name)
-      html_file.print("<img src=\"#{png_file_path}\" alt=\"\">\n")
-
-      while true
-        line = (solution_file.gets rescue nil)
-        break if line == nil || line =~ /^$/
+      if problem_no == 0 && solution_no == 0 && solution_data =~ /^[#.\r\n=]+$/
+	html_file.print("Board:<br>\n")
+        png_file_name = sprintf(BOARD_PNG_FILE_NAME_FORMAT, basename)
+        png_file_path = sprintf("%s/%s", parameters['board-directory'],
+				png_file_name)
+      else
+	solution_no += 1
+	png_file_name = sprintf(SOLUTION_PNG_FILE_NAME_FORMAT,
+				basename, problem_no, solution_no)
+	png_file_path = sprintf("%s/%s", parameters['solution-directory'],
+				png_file_name)
       end
+      html_file.print("<img src=\"#{png_file_path}\" alt=\"\">\n")
     end
   end
 
@@ -336,23 +338,24 @@ def create_solution_files(basename, output_prefix, solution_file_path,
       #
       # Solution data.
       #
-      solution_no += 1
       solution_data = ''
       while true
         solution_data += line
         line = (solution_file.gets rescue nil)
+	line.gsub!(/;.*$/, '')
         break if line == nil || line =~ /^$/
       end
 
       #
       # Write a problem, at the end of the first solution.
       #
-      if problem_no == 1 && solution_no == 1
-        board_data = solution_data.gsub(/[A-Z]/, '#')
+      if problem_no == 0 && solution_no == 0 && solution_data =~ /^[#.\r\n=]+$/
         png_file_name = sprintf(BOARD_PNG_FILE_NAME_FORMAT, basename)
         png_file_path = sprintf("%s/%s", board_directory, png_file_name)
-        create_board_png_file(png_file_path, board_data,
+	create_board_png_file(png_file_path, solution_data,
 			      parameters['solution-size'])
+      else
+	solution_no += 1
       end
 
       #

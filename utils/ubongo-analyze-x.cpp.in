@@ -116,8 +116,9 @@ analyze_puzzles(const char *board_file_name, int piece_count,
 	do {
 	    solution_count++;
 	    if (mode == show_all_solutions) {
-		ss << "--- Solution " << solution_count << std::endl;
-		ss << puzzle.dump_board() << std::endl;
+		ss << puzzle.dump_board();
+		ss << "; Solution " << solution_count << std::endl;
+		ss << std::endl;
 	    } else if (mode == show_one_solution && solution_count == 1) {
 		ss << puzzle.dump_board() << std::endl;
 	    }

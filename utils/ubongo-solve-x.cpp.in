@@ -103,15 +103,16 @@ solve_puzzle(Puzzle &puzzle, bool all_flag = false) {
 	if (all_flag) {
 	    if (solution_count > 1)
 		std::cout << std::endl;
-	    std::cout << "--- Solution " << solution_count << std::endl;
 	    std::cout << solver.get_puzzle().dump_board();
+	    std::cout << "; Solution " << solution_count << std::endl;
+	    std::cout << std::endl;
 	} else {
 	    std::cout << solver.get_puzzle().dump_board();
 	    break;
 	}
     }
     if (solution_count == 0)
-	std::cout << "- No solution" << std::endl;
+	std::cout << "; No solution" << std::endl;
 }
 
 //
