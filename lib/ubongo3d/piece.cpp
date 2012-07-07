@@ -184,6 +184,16 @@ namespace Ubongo3d {
 	    set_shape(shape);
     }
 
+    Piece::Piece(const std::string &shape)
+	: id(blank),
+	  cubes(),
+	  located(false),
+	  location(),
+	  direction((Direction)0),
+	  symmetry_ids() {
+	set_shape(shape);
+    }
+
     bool
     Piece::has_shape() const {
 	return (cubes[0].size() > 0);
@@ -330,6 +340,11 @@ namespace Ubongo3d {
       failed:
 	cubes[0].clear();
 	return false;
+    }
+
+    bool
+    Piece::set_shape(const std::string &shape) {
+	return set_shape(shape.c_str());
     }
 
     Location

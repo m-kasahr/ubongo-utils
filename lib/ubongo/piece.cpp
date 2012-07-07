@@ -145,6 +145,16 @@ namespace Ubongo {
 	    set_shape(shape);
     }
 
+    Piece::Piece(const std::string &shape)
+	: id(blank),
+	  squares(),
+	  located(false),
+	  location(),
+	  direction(right0),
+	  symmetries() {
+	set_shape(shape);
+    }
+
     bool
     Piece::has_shape() const {
 	return (squares[right0].size() > 0);
@@ -279,6 +289,11 @@ namespace Ubongo {
       failed:
 	squares[right0].clear();
 	return false;
+    }
+
+    bool
+    Piece::set_shape(const std::string &shape) {
+	return set_shape(shape.c_str());
     }
 
     Location
