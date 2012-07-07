@@ -245,7 +245,7 @@ main(int argc, char *argv[]) {
     //
     static const char *short_options = "af:hv";
     static struct option long_options[] = {
-	{"all",          required_argument, NULL, 'a'},
+	{"all",          no_argument,       NULL, 'a'},
 	{"file",         required_argument, NULL, 'f'},
 	{"help",         no_argument,       NULL, 'h'},
 	{"version",      no_argument,       NULL, 'v'},
