@@ -78,6 +78,9 @@ namespace Ubongo3d {
 	/// Status ID for unavailable cube (not used in a game).
 	static const char unavailable = '.';
 
+	// The maximum number of characters in a line of file.
+	static const int max_file_line_length = 256;
+
 	///
 	/// Default constructor.
 	///
@@ -189,6 +192,24 @@ namespace Ubongo3d {
 	///
 	bool
 	set_shape(const std::string &shape);
+
+	///
+	/// Set shape of the board, by reading a file.
+	///
+	/// @param file_name File on which shape of the board is written.
+	/// @return True if 'shape' is valid.
+	///
+	bool
+	set_shape_by_file(const char *file_name);
+
+	///
+	/// Set shape of the board, by reading a file.
+	///
+	/// @param file_name File on which shape of the board is written.
+	/// @return True if 'shape' is valid.
+	///
+	bool
+	set_shape_by_file(const std::string &file_name);
 
 	///
 	/// Put a piece on the board.

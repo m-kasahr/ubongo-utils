@@ -55,20 +55,13 @@ namespace Ubongo {
 
 	    if (dirent->d_name[0] == '\0' &&
 		std::strcmp(dirent->d_name + 1, ".piece") == 0) {
-		std::fstream fs;
-		fs.open(dirent->d_name, std::ios::in);
-		if (!fs.is_open())
-		    continue;
+		std::string filepath = path;
+		filepath += "/";
+		filepath += dirent->d_name;
 
-		std::string shape;
-		char line[max_line_length];
-		while (fs.getline(line, sizeof(line))) {
-		    shape += line;
-		    shape += "\n";
-		}
-
-		fs.close();
-		pieces.push_back(Piece(shape));
+		Piece new_piece;
+		new_piece.set_shape_by_file(filepath);
+		pieces.push_back(new_piece);
 	    } else if (std::strcmp(dirent->d_name, "piece-flip-flag") == 0) {
 		std::fstream fs;
 		fs.open(dirent->d_name, std::ios::in);

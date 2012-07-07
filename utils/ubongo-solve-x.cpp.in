@@ -31,11 +31,11 @@ extern "C" {
 }
 
 #include <cstdlib>
-#include <string>
 #include <cstring>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <list>
+#include <string>
 #include <vector>
 #include "@lib@/pieceset_@name@.h"
 #include "@lib@/solver.h"
@@ -53,36 +53,6 @@ enum run_mode {
     argument_mode = 0,
     file_mode = 1,
 };
-
-//
-// Read a board file.
-//
-void
-read_board_file(const char *file_name, Board &board) {
-
-    std::fstream fs;
-    fs.open(file_name, std::ios::in);
-    if (!fs.is_open()) {
-	std::cerr << argv0 << ": failed to open the board file: " << file_name
-		  << std::endl;
-	std::exit(1);
-    }
-
-    std::string shape;
-    char line[shape_file_max_line_length];
-    while (fs.getline(line, sizeof(line))) {
-	shape += line;
-	shape += "\n";
-    }
-    fs.close();
-
-    board.set_shape(shape.c_str());
-    if (!board.has_shape()) {
-	std::cerr << argv0 << ": malformed board data: " << file_name
-		  << std::endl;
-	std::exit(1);
-    }
-}
 
 //
 // Solve a puzzle.
@@ -119,13 +89,7 @@ solve_puzzle(Puzzle &puzzle, bool all_flag = false) {
 // Solve the given puzzle (argument mode).
 //
 void
-run_argument_mode(const char *board_file_name, char *piece_names[],
-    bool all_flag = false) {
-    //
-    // Read a board file.
-    //
-    Board board;
-    read_board_file(board_file_name, board);
+run_argument_mode(Board &board, char *piece_names[], bool all_flag = false) {
 
     std::vector<Piece> pieces;
     PieceSet_@pieceset_suffix@ pieceset;
@@ -150,14 +114,8 @@ run_argument_mode(const char *board_file_name, char *piece_names[],
 // Solve the given puzzles (file mode).
 //
 void
-run_file_mode(const char *board_file_name, const char *problem_file_name,
+run_file_mode(Board &board, const char *problem_file_name,
     bool all_flag = false) {
-    //
-    // Read a board file.
-    //
-    Board board;
-    read_board_file(board_file_name, board);
-
     //
     // Open a problem file.
     //
@@ -318,13 +276,23 @@ main(int argc, char *argv[]) {
     }
 
     //
+    // Read a board file.
+    //
+    Board board;
+    try {
+	board.set_shape_by_file(argv[::optind]);
+    } catch (std::ios_base::failure e) {
+	std::cerr << argv[0] << ": " << e.what() << std::endl;
+	exit(1);
+    }
+
+    //
     // Solve the puzzles.
     //
-    if (mode == argument_mode) {
-	run_argument_mode(argv[::optind], argv + ::optind + 1, all_flag);
-    } else {
-	run_file_mode(argv[::optind], problem_file_name, all_flag);
-    }
+    if (mode == argument_mode)
+	run_argument_mode(board, argv + ::optind + 1, all_flag);
+    else
+	run_file_mode(board, problem_file_name, all_flag);
 
     return 0;
 }

@@ -26,6 +26,8 @@
 // SUCH DAMAGE.
 //
 
+#include <fstream>
+#include <iostream>
 #include <stdexcept>
 #include "ubongo3d/piece.h"
 
@@ -345,6 +347,31 @@ namespace Ubongo3d {
     bool
     Piece::set_shape(const std::string &shape) {
 	return set_shape(shape.c_str());
+    }
+
+    bool
+    Piece::set_shape_by_file(const char *file_name) {
+	std::fstream fs;
+	fs.open(file_name, std::ios::in);
+	if (!fs.is_open()) {
+	    std::string message = "failed to open the file: ";
+	    message += file_name;
+	    throw std::ios_base::failure(message);
+	}
+
+	std::string shape;
+	char line[max_file_line_length];
+	while (fs.getline(line, sizeof(line))) {
+	    shape += line;
+	    shape += "\n";
+	}
+	fs.close();
+	return set_shape(shape);
+    }
+
+    bool
+    Piece::set_shape_by_file(const std::string &file_name) {
+	return set_shape_by_file(file_name.c_str());
     }
 
     Location

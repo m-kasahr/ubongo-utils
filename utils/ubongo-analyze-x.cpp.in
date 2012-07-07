@@ -31,11 +31,11 @@ extern "C" {
 }
 
 #include <cstdlib>
-#include <string>
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <list>
+#include <sstream>
+#include <string>
 #include <vector>
 #include "@lib@/pieceset_@name@.h"
 #include "@lib@/analyzer.h"
@@ -59,45 +59,14 @@ enum Output_Mode {
 };
 
 //
-// Read a board file.
-//
-void
-read_board_file(const char *file_name, Board &board) {
-
-    std::fstream fs;
-    fs.open(file_name, std::ios::in);
-    if (!fs.is_open()) {
-	std::cerr << "failed to open the board file: " << file_name
-		  << std::endl;
-	std::exit(1);
-    }
-
-    std::string shape;
-    char line[max_file_line_length];
-    while (fs.getline(line, sizeof(line))) {
-	shape += line;
-	shape += "\n";
-    }
-    fs.close();
-
-    board.set_shape(shape.c_str());
-    if (!board.has_shape()) {
-	std::cerr << "malformed board data: " << file_name << std::endl;
-	std::exit(1);
-    }
-}
-
-//
 // Analyze puzzles.
 //
 void
-analyze_puzzles(const char *board_file_name, int piece_count,
+analyze_puzzles(Board &board, const PieceSet &pieceset, int piece_count,
     int max_solutions, Output_Mode mode) {
     //
-    // Read a board file.
+    // Dump 'board'.
     //
-    Board board;
-    read_board_file(board_file_name, board);
     std::cout << board.dump();
     std::cout << "; squares=" << board.get_blank_count() << std::endl;
     std::cout << std::endl;
@@ -106,7 +75,6 @@ analyze_puzzles(const char *board_file_name, int piece_count,
     // Analyze.
     //
     int puzzle_count = 0;
-    PieceSet_@pieceset_suffix@ pieceset;
     Analyzer analyzer(board, pieceset, piece_count);
 
     while (analyzer.find_solvable_puzzle()) {
@@ -147,9 +115,17 @@ main(int argc, char *argv[]) {
     //
     // Parse options.
     //
-    static const char *short_options = "am:hsv";
+#ifdef UBONGO_SOLVE_GENERIC
+    static const char *short_options = "ad:hm:sv";
+#else
+    static const char *short_options = "ahm:sv";
+#endif
+
     static struct option long_options[] = {
 	{"show-all-solutions", no_argument,       NULL, 'a'},
+#ifdef UBONGO_SOLVE_GENERIC
+	{"pieceset",           required_argument, NULL, 'd'},
+#endif
 	{"max-solutions",      required_argument, NULL, 'm'},
 	{"help",               no_argument,       NULL, 'h'},
 	{"show-solution",      no_argument,       NULL, 's'},
@@ -159,6 +135,9 @@ main(int argc, char *argv[]) {
 
     int max_solutions = 0;
     Output_Mode output_mode = hide_solution;
+#ifdef UBONGO_SOLVE_GENERIC
+    std::string pieceset_directory = ".";
+#endif
 
     for (;;) {
 	char ch;
@@ -169,6 +148,11 @@ main(int argc, char *argv[]) {
 	case 'a':
 	    output_mode = show_all_solutions;
 	    break;
+#ifdef UBONGO_SOLVE_GENERIC
+	case 'd':
+	    pieceset_directory = ::optarg;
+	    break;
+#endif
 	case 'h':
 	    std::cout << "Usage: ubongo-analyze-@name@ [option...] BOARD-FILE N"
 		      << std::endl;
@@ -224,7 +208,18 @@ main(int argc, char *argv[]) {
     }
 
     //
-    // Create puzzles.
+    // Read a board file.
+    //
+    Board board;
+    try {
+	board.set_shape_by_file(argv[::optind]);
+    } catch (std::ios_base::failure e) {
+	std::cerr << argv[0] << ": " << e.what() << std::endl;
+	exit(1);
+    }
+
+    //
+    // Create a pieceset.
     //
     int piece_count = std::atoi(argv[::optind + 1]);
     if (piece_count <= 0) {
@@ -235,6 +230,20 @@ main(int argc, char *argv[]) {
 	std::exit(1);
     }
 
-    analyze_puzzles(argv[::optind], piece_count, max_solutions, output_mode);
+#ifdef UBONGO_SOLVE_GENERIC
+    try {
+	PieceSet_ReadDir pieceset(pieceset_directory);
+    } catch (std::ios_base::failure e) {
+	std::cerr << argv[0] << ": " << e.what() << std::endl;
+	exit(1);
+    }
+#else
+    PieceSet_@pieceset_suffix@ pieceset;
+#endif
+
+    //
+    // Analyze the puzzle board.
+    //
+    analyze_puzzles(board, pieceset, piece_count, max_solutions, output_mode);
     return 0;
 }

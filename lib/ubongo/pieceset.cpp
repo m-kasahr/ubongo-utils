@@ -26,8 +26,8 @@
 // SUCH DAMAGE.
 //
 
-#include <cstring>
 #include <climits>
+#include <cstring>
 #include <stdexcept>
 #include "ubongo/pieceset.h"
 

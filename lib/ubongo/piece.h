@@ -92,6 +92,9 @@ namespace Ubongo {
 	// A blank square, in a piece shape string.
 	static const char blank = '.';
 
+	// The maximum number of characters in a line of file.
+	static const int max_file_line_length = 256;
+
 	///
 	/// Default constructor.
 	///
@@ -271,6 +274,24 @@ namespace Ubongo {
 	///
 	bool
 	set_shape(const std::string &shape);
+
+	///
+	/// Set shape of the piece, by reading a file.
+	///
+	/// @param file_name File on which shape of the piece is written.
+	/// @return True if 'shape' is valid.
+	///
+	bool
+	set_shape_by_file(const char *file_name);
+
+	///
+	/// Set shape of the piece, by reading a file.
+	///
+	/// @param file_name File on which shape of the piece is written.
+	/// @return True if 'shape' is valid.
+	///
+	bool
+	set_shape_by_file(const std::string &file_name);
 
 	///
 	/// Get location of a square in the piece on the board.
