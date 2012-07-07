@@ -26,6 +26,7 @@
 // SUCH DAMAGE.
 //
 
+#include <stdexcept>
 #include "ubongo/solver.h"
 
 #ifdef DEBUG

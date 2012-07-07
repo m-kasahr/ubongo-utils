@@ -55,13 +55,13 @@ dataminir_srcdir = $(top_srcdir)/data/minir
 dataminiy_srcdir = $(top_srcdir)/data/miniy
 
 libubongo_HEADERS = analyzer.h board.h common.h piece.h pieceset.h \
-                    pieceset_orig.h pieceset_duel.h pieceset_minib.h \
-                    pieceset_minig.h pieceset_minir.h pieceset_miniy.h \
-                    puzzle.h solver.h
+                    pieceset_readdir.h pieceset_orig.h pieceset_duel.h \
+                    pieceset_minib.h pieceset_minig.h pieceset_minir.h \
+                    pieceset_miniy.h puzzle.h solver.h
 libubongo_SOURCES = analyzer.cpp board.cpp piece.cpp pieceset.cpp \
-                    puzzle.cpp solver.cpp
-libubongo_OBJECTS = analyzer.lo board.lo piece.lo pieceset.lo puzzle.lo \
-                    solver.lo
+                    pieceset_readdir.cpp puzzle.cpp solver.cpp
+libubongo_OBJECTS = analyzer.lo board.lo piece.lo pieceset.lo \
+                    pieceset_readdir.lo puzzle.lo solver.lo
 
 DISTFILES = Makefile.in make-pieceset.rb $(libubongo_SOURCES) \
             analyzer.h board.h common.h piece.h pieceset.h puzzle.h solver.h
@@ -121,6 +121,7 @@ analyzer.lo: analyzer.cpp board.h pieceset.h puzzle.h solver.h
 board.lo: board.cpp board.h piece.h common.h
 piece.lo: piece.cpp piece.h common.h
 pieceset.lo: pieceset.cpp pieceset.h piece.h
+pieceset_readdir.lo: pieceset_readdir.cpp pieceset_readdir.h pieceset.h
 puzzle.lo: puzzle.cpp puzzle.h board.h piece.h common.h
 solver.lo: solver.cpp solver.h puzzle.h board.h piece.h common.h
 

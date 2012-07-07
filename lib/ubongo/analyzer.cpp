@@ -28,7 +28,6 @@
 
 #include "ubongo/analyzer.h"
 #include "ubongo/solver.h"
-#include <iostream>
 
 #ifdef DEBUG
 #include <iostream>

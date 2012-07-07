@@ -99,6 +99,15 @@ namespace Ubongo3d {
 	Piece(const char *shape);
 
 	///
+	/// Constructor.
+	///
+	/// @param shape Shape of the piece.
+	///
+	/// Construct an object, call set_shape(shape).
+	///
+	Piece(const std::string &shape);
+
+	///
 	/// Examine whether the piece has a shape or not.
 	///
 	/// @return True if the piece has a shape.
@@ -218,6 +227,15 @@ namespace Ubongo3d {
 	///
 	bool
 	set_shape(const char *shape);
+
+	///
+	/// Set shape of the piece.
+	///
+	/// @param shape Shape of the piece.
+	/// @return True if 'shape' is valid.
+	///
+	bool
+	set_shape(const std::string &shape);
 
 	///
 	/// Get location of a cube in the piece on the board.

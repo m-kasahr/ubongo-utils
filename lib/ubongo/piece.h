@@ -29,7 +29,6 @@
 #ifndef UBONGO_PIECE_H
 #define UBONGO_PIECE_H
 
-#include <stdexcept>
 #include <string>
 #include <vector>
 #include "ubongo/common.h"

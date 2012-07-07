@@ -26,6 +26,7 @@
 // SUCH DAMAGE.
 //
 
+#include <stdexcept>
 #include "ubongo/piece.h"
 
 namespace Ubongo {

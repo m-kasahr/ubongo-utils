@@ -51,6 +51,17 @@ namespace Ubongo3d {
 	    set_shape(shape);
     }
 
+    Board::Board(const std::string &shape)
+	: width(0),
+	  height(0), 
+	  depth(0), 
+	  initial_blank_count(0),
+	  current_blank_count(0),
+	  initial_board(),
+	  current_board() {
+	set_shape(shape);
+    }
+
     bool
     Board::has_shape() const {
 	return (width > 0 && height > 0 && depth > 0);
@@ -228,6 +239,11 @@ namespace Ubongo3d {
 
 	current_blank_count += piece.get_size();
 	return true;
+    }
+
+    bool
+    Board::set_shape(const std::string &shape) {
+	return set_shape(shape.c_str());
     }
 
     std::string

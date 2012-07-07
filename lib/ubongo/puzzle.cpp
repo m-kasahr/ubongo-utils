@@ -26,8 +26,8 @@
 // SUCH DAMAGE.
 //
 
+#include <stdexcept>
 #include "ubongo/puzzle.h"
-#include <iostream>
 
 namespace Ubongo {
     void

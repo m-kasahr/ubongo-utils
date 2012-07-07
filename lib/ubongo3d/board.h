@@ -91,6 +91,13 @@ namespace Ubongo3d {
 	Board(const char *shape);
 
 	///
+	/// Constructor.
+	///
+	/// @param Shape the initial shape of the board.
+	///
+	Board(const std::string &shape);
+
+	///
 	/// Examine whether the board has a shape or not.
 	///
 	/// @return True if the board has a shape.
@@ -173,6 +180,15 @@ namespace Ubongo3d {
 	///
 	bool
 	set_shape(const char *shape);
+
+	///
+	/// Set shape of the board.
+	///
+	/// @param shape The initial shape of the board.
+	/// @return True if 'shape' is valid.
+	///
+	bool
+	set_shape(const std::string &shape);
 
 	///
 	/// Put a piece on the board.

@@ -26,6 +26,7 @@
 // SUCH DAMAGE.
 //
 
+#include <stdexcept>
 #include "ubongo3d/puzzle.h"
 
 namespace Ubongo3d {
