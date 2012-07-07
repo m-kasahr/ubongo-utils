@@ -40,6 +40,15 @@ namespace Ubongo {
 	    complete = true;
 	    return;
 	}
+
+	//
+	// Set 'piece_indice' to initial state.
+	//
+	// In case 'piece_count' is 3 and pieceset.size() is 5,
+	// 'piece_indice' will be initialized as:
+	//
+	//     {0, 1, 2}
+	//
 	piece_indice.resize(piece_count);
 	for (int i = 0; i < piece_count; i++)
 	    piece_indice[i] = i;
@@ -111,7 +120,21 @@ namespace Ubongo {
 	    }
 
 	    //
-	    // Step forward.
+	    // Step forward 'piece_indice'.
+	    //
+	    // In case 'piece_count' is 3 and pieceset.size() is 5,
+	    // 'piece_indice' in this loop will be changed in
+	    // the following steps:
+	    //
+	    //     {0, 1, 2}   -- set by reset_piece_indice()
+	    //     {0, 1, 3}
+	    //     {0, 1, 4}
+	    //     {0, 2, 3}
+	    //     {0, 2, 4}
+	    //     {0, 3, 4}
+	    //     {1, 2, 3}
+	    //     {1, 2, 4}
+	    //     {2, 3, 4}   -- comlete
 	    //
 	    int i = piece_count - 1;
 	    if (piece_indice[i] + 1 < pieceset.size())
