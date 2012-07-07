@@ -29,9 +29,6 @@
 #ifndef UBONGO3D_PIECESET_H
 #define UBONGO3D_PIECESET_H
 
-#include <stdexcept>
-#include <climits>
-#include <cstring>
 #include <string>
 #include <vector>
 #include "ubongo3d/common.h"

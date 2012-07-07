@@ -29,7 +29,6 @@
 #ifndef UBONGO3D_PIECE_H
 #define UBONGO3D_PIECE_H
 
-#include <stdexcept>
 #include <string>
 #include <vector>
 #include "ubongo3d/common.h"
