@@ -1,0 +1,80 @@
+subdir = test
+top_builddir = ..
+srcdir = @srcdir@
+top_srcdir = $(srcdir)/$(top_builddir)
+VPATH = @srcdir@
+
+PACKAGE_NAME = @PACKAGE_NAME@
+PACKAGE_VERSION = @PACKAGE_VERSION@
+PACKAGE = $(PACKAGE_NAME)-$(PACKAGE_VERSION)
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+libdir = @libdir@
+datarootdir = @datarootdir@
+datadir = @datadir@
+pkgdatadir = $(datadir)/$(PACKAGE_NAME)
+pkgdataorigdir = $(pkgdatadir)/orig
+pkgdatadueldir = $(pkgdatadir)/duel
+pkgdataminibdir = $(pkgdatadir)/minib
+pkgdataminigdir = $(pkgdatadir)/minig
+pkgdataminirdir = $(pkgdatadir)/minir
+pkgdataminiydir = $(pkgdatadir)/miniy
+pkgdata3ddir = $(pkgdatadir)/3d
+includedir = @includedir@
+ubongoincludedir = $(includedir)/ubongo
+ubongo3dincludedir = $(includedir)/ubongo3d
+pkgdocdir = @pkgdocdir@
+
+CXX = @CXX@
+RANLIB = @RANLIB@
+LIBTOOL = @LIBTOOL@
+SHELL = @SHELL@
+RUBY = @RUBY@
+CONVERT = @CONVERT@
+MARKDOWN = @MARKDOWN@
+MKDIR_P = @MKDIR_P@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_SCRIPT = @INSTALL_SCRIPT@
+
+utils_builddir = $(top_builddir)/utils
+
+DISTFILES = Makefile.in do-test.sh.in
+CLEANFILES = do-test.sh
+LIBTOOL_CLEANFILES = 
+
+.SUFFIXES:
+.SUFFIXES: .cpp .lo
+
+.PHONY: all clean distclean install uninstall dist-local
+
+all: 
+
+install: all
+
+uninstall:
+
+clean:
+	rm -f $(FILEANFILES)
+	rm -f orig/*.out
+
+distclean: clean
+	-rm -f Makefile
+
+dist-local:
+	$(MKDIR_P) $(top_builddir)/$(PACKAGE)/$(subdir)
+	for i in $(DISTFILES); do \
+	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
+	done
+
+test: do-test.sh
+	$(SHELL) ./do-test.sh
+
+do-test.sh: do-test.sh.in
+	rm -f $@
+	sed -e 's|[@]utils_builddir[@]|$(utils_builddir)|' \
+	    $(srcdir)/do-test.sh.in > $@
+	chmod 0755 $@

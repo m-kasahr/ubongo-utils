@@ -1,0 +1,69 @@
+#! /bin/sh
+
+do_test() {
+    TEST_DIR="$1"
+    TEST_ID="$2"
+    TEST_SCRIPT="$TEST_ID.sh"
+    EXPECTED_FILE="$TEST_ID.exp"
+    OUTPUT_FILE="$TEST_ID.out"
+
+    (
+ 	cd "$TEST_DIR"
+	if [ $? -ne 0 ]; then
+	    echo "$0: failed to change the directory to $TEST_DIR" 1>&2
+	    return 1
+	fi
+
+	if [ ! -x "$TEST_SCRIPT" ]; then
+	    echo "$0: no test script $TEST_SCRIPT" 1>&2
+	    return 1
+	fi
+	if [ ! -f "$EXPECTED_FILE" ]; then
+	    echo "$0: warning: no expected output file $EXPECTED_FILE" 1>&2
+	fi
+
+	rm -f "$OUTPUT_FILE"
+
+	case "@utils_builddir@" in
+	/*)
+	    env PATH="@utils_builddir@:$PATH" \
+		"./$TEST_SCRIPT" > "$OUTPUT_FILE"
+	    echo "; Exitcode: $?" >> "$OUTPUT_FILE"
+	    ;;
+	*)
+	    env PATH="../@utils_builddir@:$PATH" \
+		"./$TEST_SCRIPT" > "$OUTPUT_FILE"
+	    echo "; Exitcode: $?" >> "$OUTPUT_FILE"
+	    ;;
+	esac
+
+	if cmp "$EXPECTED_FILE" "$OUTPUT_FILE" > /dev/null 2>&1; then
+	    echo "$TEST_DIR: $TEST_ID: pass"
+	    return 0
+	else
+	    echo "$TEST_DIR: $TEST_ID: fail"
+	    return 1
+	fi
+    )
+}
+
+do_test_set() {
+    TEST_DIR="$1"
+
+    if [ ! -d "$TEST_DIR" ]; then
+	echo "$0: no such directory $TEST_DIR" 1>&2
+	return 1
+    fi
+
+    ls -1 "$TEST_DIR" | while read I; do
+	case "$I" in
+	*.sh)
+	    TEST_ID="`echo X$I | sed -e 's/^X//' -e 's/\.sh$//'`"
+	    do_test "$TEST_DIR" "$TEST_ID"
+	    RESULT=$?
+	    ;;
+	esac
+    done
+}
+
+do_test_set orig

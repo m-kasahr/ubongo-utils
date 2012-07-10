@@ -14433,7 +14433,7 @@ else
 fi
 
 
-ac_config_files="$ac_config_files Makefile lib/ubongo/Makefile lib/ubongo3d/Makefile utils/Makefile data/3d/Makefile data/duel/Makefile data/minib/Makefile data/minig/Makefile data/minir/Makefile data/miniy/Makefile data/orig/Makefile doc/Makefile"
+ac_config_files="$ac_config_files Makefile lib/ubongo/Makefile lib/ubongo3d/Makefile utils/Makefile data/3d/Makefile data/duel/Makefile data/minib/Makefile data/minig/Makefile data/minir/Makefile data/miniy/Makefile data/orig/Makefile doc/Makefile test/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -15551,6 +15551,7 @@ do
     "data/miniy/Makefile") CONFIG_FILES="$CONFIG_FILES data/miniy/Makefile" ;;
     "data/orig/Makefile") CONFIG_FILES="$CONFIG_FILES data/orig/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
+    "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
 
   *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
   esac

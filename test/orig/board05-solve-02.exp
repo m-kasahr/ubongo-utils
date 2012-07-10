@@ -1,0 +1,229 @@
+* A C D E K
+ACKKK
+ACCKK
+.DEEE
+DDD.E
+; Solution 1
+
+ACCKK
+ACKKK
+.DEEE
+DDD.E
+; Solution 2
+
+ADKKK
+ADDKK
+.DECC
+EEE.C
+; Solution 3
+
+AKKKC
+AKKCC
+.DEEE
+DDD.E
+; Solution 4
+
+AKKCC
+AKKCD
+.KEDD
+EEE.D
+; Solution 5
+
+AKKCC
+AKKKC
+.DEEE
+DDD.E
+; Solution 6
+
+AAECC
+EEECD
+.KKDD
+KKK.D
+; Solution 7
+
+AAKKK
+CCKKD
+.CEDD
+EEE.D
+; Solution 8
+
+AAKKK
+DDDKK
+.DECC
+EEE.C
+; Solution 9
+
+AAKKK
+EEEKK
+.DECC
+DDD.C
+; Solution 10
+
+CAAKK
+CCKKK
+.DEEE
+DDD.E
+; Solution 11
+
+CEEAA
+CCEKK
+.DEKK
+DDD.K
+; Solution 12
+
+CEEKK
+CCEKK
+.DEKA
+DDD.A
+; Solution 13
+
+CKKKA
+CCKKA
+.DEEE
+DDD.E
+; Solution 14
+
+CCEEE
+CKKKE
+.DKKA
+DDD.A
+; Solution 15
+
+CCKKA
+CKKKA
+.DEEE
+DDD.E
+; Solution 16
+
+CCKKK
+CAKKD
+.AEDD
+EEE.D
+; Solution 17
+
+CCKKK
+CEKKD
+.EADD
+EEA.D
+; Solution 18
+
+CCKKK
+CAAKK
+.DEEE
+DDD.E
+; Solution 19
+
+CCKKK
+CEDKK
+.EDDA
+EED.A
+; Solution 20
+
+EEEAA
+ECCKK
+.DCKK
+DDD.K
+; Solution 21
+
+EEECC
+EAACD
+.KKDD
+KKK.D
+; Solution 22
+
+EEECC
+EKKCD
+.KKDD
+AAK.D
+; Solution 23
+
+EEECC
+EKKKC
+.DKKA
+DDD.A
+; Solution 24
+
+EEEKK
+ECCKK
+.DCKA
+DDD.A
+; Solution 25
+
+EEECC
+AAECD
+.KKDD
+KKK.D
+; Solution 26
+
+EAACC
+EEECD
+.KKDD
+KKK.D
+; Solution 27
+
+KKACC
+KKACD
+.KEDD
+EEE.D
+; Solution 28
+
+KKCAA
+KKCCD
+.KEDD
+EEE.D
+; Solution 29
+
+KKKAA
+KKCEE
+.DCCE
+DDD.E
+; Solution 30
+
+KKKAA
+KKDEE
+.CDDE
+CCD.E
+; Solution 31
+
+KKKAA
+KKEEE
+.DECC
+DDD.C
+; Solution 32
+
+KKKAA
+KKEED
+.CEDD
+CCE.D
+; Solution 33
+
+KKKCC
+KKAAC
+.DEEE
+DDD.E
+; Solution 34
+
+KKKCA
+KKCCA
+.DEEE
+DDD.E
+; Solution 35
+
+KKAAC
+KKKCC
+.DEEE
+DDD.E
+; Solution 36
+
+KKCCA
+KKKCA
+.DEEE
+DDD.E
+; Solution 37
+
+KKEEE
+KKKCE
+.DCCA
+DDD.A
+; Solution 38
+; Exitcode: 0

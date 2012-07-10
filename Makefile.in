@@ -46,7 +46,7 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
         dist dist-gzip dist-bzip2
 
 SUBDIRS = lib/ubongo lib/ubongo3d utils data/orig data/duel data/minib \
-    data/minig data/minir data/miniy data/3d doc
+    data/minig data/minir data/miniy data/3d doc test
 
 DISTFILES = LICENSE.md README.md RELEASE-NOTES.md INSTALL.md \
             Makefile.in aclocal.m4 config.guess config.status config.sub \

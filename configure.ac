@@ -53,5 +53,5 @@ dnl *
 AC_CONFIG_FILES([Makefile lib/ubongo/Makefile lib/ubongo3d/Makefile
     utils/Makefile data/3d/Makefile data/duel/Makefile  data/minib/Makefile
     data/minig/Makefile data/minir/Makefile data/miniy/Makefile
-    data/orig/Makefile doc/Makefile])
+    data/orig/Makefile doc/Makefile test/Makefile])
 AC_OUTPUT
