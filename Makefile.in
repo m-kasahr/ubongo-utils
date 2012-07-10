@@ -42,8 +42,8 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 
 .SUFFIXES:
 
-.PHONY: all clean distclean install uninstall dist-local \
-        dist dist-gzip dist-bzip2
+.PHONY: all clean distclean install uninstall test dist-local \
+        dist-gzip dist-bzip2 test
 
 SUBDIRS = lib/ubongo lib/ubongo3d utils data/orig data/duel data/minib \
     data/minig data/minir data/miniy data/3d doc test
@@ -97,6 +97,8 @@ dist-bzip2:
 	tar cf - $(PACKAGE) | bzip2 -c --best > $(PACKAGE).tar.bz2
 	rm -rf $(PACKAGE)
 
+test: test-subdirs
+
 all-subdirs:
 	for I in $(SUBDIRS); do \
 	    (cd $$I && $(MAKE) all) || exit 1; \
@@ -120,4 +122,9 @@ install-subdirs:
 uninstall-subdirs:
 	for I in $(SUBDIRS); do \
 	    (cd $$I && $(MAKE) uninstall DESTDIR=$(DESTDIR)) || exit 1; \
+	done
+
+test-subdirs:
+	for I in $(SUBDIRS); do \
+	    (cd $$I && $(MAKE) test DESTDIR=$(DESTDIR)) || exit 1; \
 	done

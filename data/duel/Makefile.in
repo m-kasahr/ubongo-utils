@@ -52,7 +52,7 @@ LIBTOOL_CLEANFILES =
 .SUFFIXES:
 .SUFFIXES: .cpp .lo
 
-.PHONY: all clean distclean install uninstall dist-local
+.PHONY: all clean distclean install uninstall dist-local test
 
 all:
 
@@ -80,3 +80,5 @@ dist-local:
 	for i in $(DISTFILES); do \
 	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
 	done
+
+test:

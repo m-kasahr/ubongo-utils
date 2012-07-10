@@ -179,7 +179,7 @@ LIBTOOL_CLEANFILES = $(PROGRAMS) \
 
 .SUFFIXES:
 
-.PHONY: all clean distclean install uninstall dist-local
+.PHONY: all clean distclean install uninstall dist-local test
 
 all: $(PROGRAMS) $(SCRIPTS)
 
@@ -213,6 +213,8 @@ dist-local:
 	for i in $(DISTFILES); do \
 	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
 	done
+
+test:
 
 ubongo-solve-orig: $(ubongosolveorig_OBJECTS) $(ubongosolveorig_LIBS)
 	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \

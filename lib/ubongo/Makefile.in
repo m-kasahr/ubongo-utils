@@ -72,7 +72,7 @@ LIBTOOL_CLEANFILES = libubongo.la $(libubongo_OBJECTS)
 .SUFFIXES:
 .SUFFIXES: .cpp .lo
 
-.PHONY: all clean distclean install uninstall dist-local
+.PHONY: all clean distclean install uninstall dist-local test
 
 .cpp.lo:
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
@@ -111,6 +111,8 @@ dist-local:
 	for i in $(DISTFILES); do \
 	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
 	done
+
+test:
 
 libubongo.la: $(libubongo_OBJECTS)
 	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \

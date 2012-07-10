@@ -49,7 +49,7 @@ LIBTOOL_CLEANFILES =
 .SUFFIXES:
 .SUFFIXES: .cpp .lo
 
-.PHONY: all clean distclean install uninstall dist-local
+.PHONY: all clean distclean install uninstall dist-local test
 
 all: 
 

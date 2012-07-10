@@ -42,7 +42,7 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 
 .SUFFIXES:
 
-.PHONY: all clean distclean install uninstall dist-local
+.PHONY: all clean distclean install uninstall dist-local test
 
 pkgdoc_FILES = ubongo-utils.md ubongo-utils.html \
                orig-piece-A.png orig-piece-B.png orig-piece-C.png \
@@ -105,6 +105,8 @@ dist-local: $(srcdir)/ubongo-utils.html
 	for i in $(DISTFILES); do \
 	    cp -p $(srcdir)/$$i $(top_builddir)/$(PACKAGE)/$(subdir)/$$i; \
 	done
+
+test:
 
 $(srcdir)/ubongo-utils.html: $(srcdir)/ubongo-utils.html.header \
                              $(srcdir)/ubongo-utils.html.footer \
