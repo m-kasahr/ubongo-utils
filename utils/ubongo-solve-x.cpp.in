@@ -89,10 +89,10 @@ solve_puzzle(Puzzle &puzzle, bool all_flag = false) {
 // Solve the given puzzle (argument mode).
 //
 void
-run_argument_mode(Board &board, char *piece_names[], bool all_flag = false) {
+run_argument_mode(Board &board, const PieceSet &pieceset,
+    char *piece_names[], bool all_flag = false) {
 
     std::vector<Piece> pieces;
-    PieceSet_@pieceset_suffix@ pieceset;
 
     for (size_t i = 0; piece_names[i] != NULL; i++) {
 	try {
@@ -114,8 +114,8 @@ run_argument_mode(Board &board, char *piece_names[], bool all_flag = false) {
 // Solve the given puzzles (file mode).
 //
 void
-run_file_mode(Board &board, const char *problem_file_name,
-    bool all_flag = false) {
+run_file_mode(Board &board, const PieceSet &pieceset, 
+    const char *problem_file_name, bool all_flag = false) {
     //
     // Open a problem file.
     //
@@ -126,8 +126,6 @@ run_file_mode(Board &board, const char *problem_file_name,
 		  << problem_file_name << std::endl;
 	std::exit(1);
     }
-
-    PieceSet_@pieceset_suffix@ pieceset;
 
     int lineno = 0;
     char line_buffer[shape_file_max_line_length];
@@ -201,12 +199,20 @@ main(int argc, char *argv[]) {
     //
     // Parse options.
     //
+#ifdef UBONGO_SOLVE_DIR
+    static const char *short_options = "af:hp:v";
+#else
     static const char *short_options = "af:hv";
+#endif
+
     static struct option long_options[] = {
-	{"all",          no_argument,       NULL, 'a'},
-	{"file",         required_argument, NULL, 'f'},
-	{"help",         no_argument,       NULL, 'h'},
-	{"version",      no_argument,       NULL, 'v'},
+	{"all",                no_argument,       NULL, 'a'},
+	{"file",               required_argument, NULL, 'f'},
+	{"help",               no_argument,       NULL, 'h'},
+#ifdef UBONGO_SOLVE_DIR
+	{"pieceset-directory", no_argument,       NULL, 'p'},
+#endif
+	{"version",            no_argument,       NULL, 'v'},
 	{NULL, 0, NULL, 0}
     };
 
@@ -214,6 +220,9 @@ main(int argc, char *argv[]) {
     bool all_flag = false;
     argv0 = argv[0];
     run_mode mode = argument_mode;
+#ifdef UBONGO_SOLVE_DIR
+    std::string pieceset_directory = ".";
+#endif
 
     for (;;) {
 	char ch;
@@ -240,6 +249,11 @@ main(int argc, char *argv[]) {
 		      << std::endl;
 	    std::cout << "  -h, --help     Give this help, then exit."
 		      << std::endl;
+#ifdef UBONGO_SOLVE_DIR
+	    std::cout << "  -p DIR, --pieceset-directory DIR" << std::endl;
+	    std::cout << "                 Specify piece-set directory. "
+		      << "(default: .)" << std::endl;
+#endif
 	    std::cout << "  -v, --version  Display version number, then exit."
 		      << std::endl;
 	    std::cout << std::endl;
@@ -248,6 +262,11 @@ main(int argc, char *argv[]) {
 	    std::cout << "  PIECE          Piece letter." << std::endl;
 	    std::cout << std::endl;
 	    std::exit(0);
+#ifdef UBONGO_SOLVE_DIR
+	case 'p':
+	    pieceset_directory = ::optarg;
+	    break;
+#endif
 	case 'v':
 	    std::cout << "ubongo-solve version " << VERSION << std::endl;
 	    exit(0);
@@ -275,24 +294,32 @@ main(int argc, char *argv[]) {
 	std::exit(1);
     }
 
-    //
-    // Read a board file.
-    //
-    Board board;
     try {
+	//
+	// Create a piece-set.
+	//
+#ifdef UBONGO_SOLVE_DIR
+	PieceSet_Dir pieceset(pieceset_directory);
+#else
+	PieceSet_@pieceset_suffix@ pieceset;
+#endif
+	//
+	// Read a board file.
+	//
+	Board board;
 	board.set_shape_by_file(argv[::optind]);
+
+	//
+	// Solve the puzzles.
+	//
+	if (mode == argument_mode)
+	    run_argument_mode(board, pieceset, argv + ::optind + 1, all_flag);
+	else
+	    run_file_mode(board, pieceset, problem_file_name, all_flag);
     } catch (std::ios_base::failure e) {
 	std::cerr << argv[0] << ": " << e.what() << std::endl;
 	exit(1);
     }
-
-    //
-    // Solve the puzzles.
-    //
-    if (mode == argument_mode)
-	run_argument_mode(board, argv + ::optind + 1, all_flag);
-    else
-	run_file_mode(board, problem_file_name, all_flag);
 
     return 0;
 }

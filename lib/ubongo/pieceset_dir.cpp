@@ -36,11 +36,11 @@ extern "C" {
 #include <cstring>
 #include <fstream>
 #include <vector>
-#include "ubongo/pieceset_readdir.h"
+#include "ubongo/pieceset_dir.h"
 
 namespace Ubongo {
     void
-    PieceSet_ReadDir::scan_dir(const char *path, std::vector<Piece> &pieces,
+    PieceSet_Dir::scan_dir(const char *path, std::vector<Piece> &pieces,
 	bool &piece_flip_flag) {
 	DIR *dir = ::opendir(path);
 	if (dir == NULL)
@@ -50,21 +50,25 @@ namespace Ubongo {
 	    struct dirent *dirent = ::readdir(dir);
 	    if (dirent == NULL)
 		break;
-	    if (!S_ISREG(dirent->d_type))
+
+	    std::string filepath = path;
+	    filepath += "/";
+	    filepath += dirent->d_name;
+
+	    struct stat st;
+	    if (::stat(filepath.c_str(), &st) < 0)
+		continue;
+	    if (!S_ISREG(st.st_mode))
 		continue;
 
-	    if (dirent->d_name[0] == '\0' &&
+	    if (dirent->d_name[0] != '\0' &&
 		std::strcmp(dirent->d_name + 1, ".piece") == 0) {
-		std::string filepath = path;
-		filepath += "/";
-		filepath += dirent->d_name;
-
 		Piece new_piece;
 		new_piece.set_shape_by_file(filepath);
 		pieces.push_back(new_piece);
 	    } else if (std::strcmp(dirent->d_name, "piece-flip-flag") == 0) {
 		std::fstream fs;
-		fs.open(dirent->d_name, std::ios::in);
+		fs.open(filepath.c_str(), std::ios::in);
 		if (!fs.is_open())
 		    continue;
 
@@ -79,11 +83,11 @@ namespace Ubongo {
 	::closedir(dir);
     }
 
-    PieceSet_ReadDir::PieceSet_ReadDir()
+    PieceSet_Dir::PieceSet_Dir()
 	: PieceSet() {
     }
 
-    PieceSet_ReadDir::PieceSet_ReadDir(const char *path)
+    PieceSet_Dir::PieceSet_Dir(const char *path)
 	: PieceSet() {
 	std::vector<Piece> pieces;
 	bool piece_flip_flag;
@@ -91,7 +95,7 @@ namespace Ubongo {
 	set_components(pieces, piece_flip_flag);
     }
 
-    PieceSet_ReadDir::PieceSet_ReadDir(const std::string &path)
+    PieceSet_Dir::PieceSet_Dir(const std::string &path)
 	: PieceSet() {
 	std::vector<Piece> pieces;
 	bool piece_flip_flag;

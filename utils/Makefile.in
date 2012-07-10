@@ -94,6 +94,11 @@ ubongosolveminiy_OBJECTS = ubongo-solve-miniy.lo $(getopt_OBJECTS)
 ubongosolveminiy_lIBS    = $(libubongo)
 ubongosolveminiy_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
+ubongosolvedir_SOURCES = ubongo-solve-dir.cpp
+ubongosolvedir_OBJECTS = ubongo-solve-dir.lo $(getopt_OBJECTS)
+ubongosolvedir_lIBS    = $(libubongo)
+ubongosolvedir_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
 ubongosolve3d_SOURCES = ubongo-solve-3d.cpp
 ubongosolve3d_OBJECTS = ubongo-solve-3d.lo $(getopt_OBJECTS)
 ubongosolve3d_lIBS    = $(libubongo3d)
@@ -129,6 +134,11 @@ ubongoanalyzeminiy_OBJECTS = ubongo-analyze-miniy.lo $(getopt_OBJECTS)
 ubongoanalyzeminiy_LIBS    = $(libubongo)
 ubongoanalyzeminiy_LDFLAGS = -L$(libubongo_builddir) -lubongo
 
+ubongoanalyzedir_SOURCES = ubongo-analyze-dir.cpp
+ubongoanalyzedir_OBJECTS = ubongo-analyze-dir.lo $(getopt_OBJECTS)
+ubongoanalyzedir_lIBS    = $(libubongo)
+ubongoanalyzedir_LDFLAGS = -L$(libubongo_builddir) -lubongo
+
 ubongoanalyze3d_SOURCES = ubongo-analyze-3d.cpp
 ubongoanalyze3d_OBJECTS = ubongo-analyze-3d.lo $(getopt_OBJECTS)
 ubongoanalyze3d_LIBS    = $(libubongo3d)
@@ -136,9 +146,10 @@ ubongoanalyze3d_LDFLAGS = -L$(libubongo3d_builddir) -lubongo3d
 
 PROGRAMS = ubongo-solve-orig ubongo-solve-duel ubongo-solve-minib \
            ubongo-solve-minig ubongo-solve-minir ubongo-solve-miniy \
-           ubongo-solve-3d ubongo-analyze-orig ubongo-analyze-duel \
-           ubongo-analyze-minib ubongo-analyze-minig ubongo-analyze-minir \
-           ubongo-analyze-miniy ubongo-analyze-3d 
+           ubongo-solve-dir ubongo-solve-3d ubongo-analyze-orig \
+           ubongo-analyze-duel ubongo-analyze-minib ubongo-analyze-minig \
+           ubongo-analyze-minir ubongo-analyze-miniy ubongo-analyze-dir \
+           ubongo-analyze-3d 
 
 SCRIPTS = ubongo-draw ubongo-html-orig ubongo-html-duel ubongo-html-minib \
           ubongo-html-minig ubongo-html-minir ubongo-html-miniy \
@@ -151,20 +162,20 @@ CLEANFILES = $(SCRIPTS) \
              $(ubongosolveorig_SOURCES) $(ubongosolveduel_SOURCES) \
              $(ubongosolveminib_SOURCES) $(ubongosolveminig_SOURCES) \
              $(ubongosolveminir_SOURCES) $(ubongosolveminiy_SOURCES) \
-             $(ubongosolve3d_SOURCES) \
+             $(ubongosolvedir_SOURCES) $(ubongosolve3d_SOURCES) \
              $(ubongoanalyzeorig_SOURCES) $(ubongoanalyzeduel_SOURCES) \
              $(ubongoanalyzeminib_SOURCES) $(ubongoanalyzeminig_SOURCES) \
              $(ubongoanalyzeminir_SOURCES) $(ubongoanalyzeminiy_SOURCES) \
-             $(ubongoanalyze3d_SOURCES)
+             $(ubongoanalyzedir_SOURCES) $(ubongoanalyze3d_SOURCES)
 LIBTOOL_CLEANFILES = $(PROGRAMS) \
              $(ubongosolveorig_OBJECTS) $(ubongosolveduel_OBJECTS) \
              $(ubongosolveminib_OBJECTS) $(ubongosolveminig_OBJECTS) \
              $(ubongosolveminir_OBJECTS) $(ubongosolveminiy_OBJECTS) \
-             $(ubongosolve3d_OBJECTS) \
+             $(ubongosolvedir_OBJECTS) $(ubongosolve3d_OBJECTS) \
              $(ubongoanalyzeorig_OBJECTS) $(ubongoanalyzeduel_OBJECTS) \
              $(ubongoanalyzeminib_OBJECTS) $(ubongoanalyzeminig_OBJECTS) \
              $(ubongoanalyzeminir_OBJECTS) $(ubongoanalyzeminiy_OBJECTS) \
-             $(ubongoanalyze3d_OBJECTS)
+             $(ubongoanalyzedir_OBJECTS) $(ubongoanalyze3d_OBJECTS)
 
 .SUFFIXES:
 
@@ -227,6 +238,10 @@ ubongo-solve-miniy: $(ubongosolveminiy_OBJECTS) $(ubongosolveminiy_LIBS)
 	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
 	    $(ubongosolveminiy_OBJECTS) $(ubongosolveminiy_LDFLAGS)
 
+ubongo-solve-dir: $(ubongosolvedir_OBJECTS) $(ubongosolvedir_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongosolvedir_OBJECTS) $(ubongosolvedir_LDFLAGS)
+
 ubongo-solve-3d: $(ubongosolve3d_OBJECTS) $(ubongosolve3d_LIBS)
 	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
 	    $(ubongosolve3d_OBJECTS) $(ubongosolve3d_LDFLAGS)
@@ -254,6 +269,10 @@ ubongo-analyze-minir: $(ubongoanalyzeminir_OBJECTS) $(ubongoanalyzeminir_LIBS)
 ubongo-analyze-miniy: $(ubongoanalyzeminiy_OBJECTS) $(ubongoanalyzeminiy_LIBS)
 	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
 	    $(ubongoanalyzeminiy_OBJECTS) $(ubongoanalyzeminiy_LDFLAGS)
+
+ubongo-analyze-dir: $(ubongoanalyzedir_OBJECTS) $(ubongoanalyzedir_LIBS)
+	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
+	    $(ubongoanalyzedir_OBJECTS) $(ubongoanalyzedir_LDFLAGS)
 
 ubongo-analyze-3d: $(ubongoanalyze3d_OBJECTS) $(ubongoanalyze3d_LIBS)
 	$(LIBTOOL) --mode=link --tag=CXX $(CXX) $(LDFLAGS) -o $@ \
@@ -294,6 +313,12 @@ ubongo-solve-miniy.lo: ubongo-solve-miniy.cpp \
                        $(libubongo_srcdir)/solver.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
 	    $(CXXFLAGS) -o $@ -c ubongo-solve-miniy.cpp
+
+ubongo-solve-dir.lo: ubongo-solve-dir.cpp \
+                       $(libubongo_builddir)/pieceset_dir.h \
+                       $(libubongo_srcdir)/solver.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -DUBONGO_SOLVE_DIR -o $@ -c ubongo-solve-dir.cpp
 
 ubongo-solve-3d.lo: ubongo-solve-3d.cpp \
                     $(libubongo3d_builddir)/pieceset_3d.h \
@@ -336,6 +361,12 @@ ubongo-analyze-miniy.lo: ubongo-analyze-miniy.cpp \
                          $(libubongo_srcdir)/analyzer.h
 	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
 	    $(CXXFLAGS) -o $@ -c ubongo-analyze-miniy.cpp
+
+ubongo-analyze-dir.lo: ubongo-analyze-dir.cpp \
+                         $(libubongo_builddir)/pieceset_dir.h \
+                         $(libubongo_srcdir)/analyzer.h
+	$(LIBTOOL) --mode=compile --tag=CXX $(CXX) $(DEFS) $(INCLUDES) \
+	    $(CXXFLAGS) -DUBONGO_ANALYZE_DIR -o $@ -c ubongo-analyze-dir.cpp
 
 ubongo-analyze-3d.lo: ubongo-analyze-3d.cpp \
                       $(libubongo3d_builddir)/pieceset_3d.h \
@@ -395,6 +426,14 @@ ubongo-solve-miniy.cpp: ubongo-solve-x.cpp.in
 	    -e 's|[@]pieceset_suffix[@]|MiniY|' \
 	    $(srcdir)/ubongo-solve-x.cpp.in > $@
 
+ubongo-solve-dir.cpp: ubongo-solve-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|dir|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|Dir|' \
+	    $(srcdir)/ubongo-solve-x.cpp.in > $@
+
 ubongo-solve-3d.cpp: ubongo-solve-x.cpp.in
 	rm -f $@
 	sed -e 's|[@]name[@]|3d|' \
@@ -449,6 +488,14 @@ ubongo-analyze-miniy.cpp: ubongo-analyze-x.cpp.in
 	    -e 's|[@]lib[@]|ubongo|' \
 	    -e 's|[@]namespace[@]|Ubongo|' \
 	    -e 's|[@]pieceset_suffix[@]|MiniY|' \
+	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
+
+ubongo-analyze-dir.cpp: ubongo-analyze-x.cpp.in
+	rm -f $@
+	sed -e 's|[@]name[@]|dir|' \
+	    -e 's|[@]lib[@]|ubongo|' \
+	    -e 's|[@]namespace[@]|Ubongo|' \
+	    -e 's|[@]pieceset_suffix[@]|Dir|' \
 	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
 
 ubongo-analyze-3d.cpp: ubongo-analyze-x.cpp.in

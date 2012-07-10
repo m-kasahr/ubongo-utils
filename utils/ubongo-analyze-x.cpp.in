@@ -115,19 +115,19 @@ main(int argc, char *argv[]) {
     //
     // Parse options.
     //
-#ifdef UBONGO_SOLVE_GENERIC
-    static const char *short_options = "ad:hm:sv";
+#ifdef UBONGO_ANALYZE_DIR
+    static const char *short_options = "ahm:p:sv";
 #else
     static const char *short_options = "ahm:sv";
 #endif
 
     static struct option long_options[] = {
 	{"show-all-solutions", no_argument,       NULL, 'a'},
-#ifdef UBONGO_SOLVE_GENERIC
-	{"pieceset",           required_argument, NULL, 'd'},
-#endif
-	{"max-solutions",      required_argument, NULL, 'm'},
 	{"help",               no_argument,       NULL, 'h'},
+	{"max-solutions",      required_argument, NULL, 'm'},
+#ifdef UBONGO_ANALYZE_DIR
+	{"pieceset-directory", no_argument,       NULL, 'p'},
+#endif
 	{"show-solution",      no_argument,       NULL, 's'},
 	{"version",            no_argument,       NULL, 'v'},
 	{NULL, 0, NULL, 0}
@@ -135,7 +135,7 @@ main(int argc, char *argv[]) {
 
     int max_solutions = 0;
     Output_Mode output_mode = hide_solution;
-#ifdef UBONGO_SOLVE_GENERIC
+#ifdef UBONGO_ANALYZE_DIR
     std::string pieceset_directory = ".";
 #endif
 
@@ -148,11 +148,6 @@ main(int argc, char *argv[]) {
 	case 'a':
 	    output_mode = show_all_solutions;
 	    break;
-#ifdef UBONGO_SOLVE_GENERIC
-	case 'd':
-	    pieceset_directory = ::optarg;
-	    break;
-#endif
 	case 'h':
 	    std::cout << "Usage: ubongo-analyze-@name@ [option...] BOARD-FILE N"
 		      << std::endl;
@@ -160,6 +155,11 @@ main(int argc, char *argv[]) {
 	    std::cout << "  -a, --show-all-solutions" << std::endl;
 	    std::cout << "                 Show all solutions. Imply '-s'."
 		      << std::endl;
+#ifdef UBONGO_ANALYZE_DIR
+	    std::cout << "  -p DIR, --pieceset-directory DIR" << std::endl;
+	    std::cout << "                 Specify piece-set directory. "
+		      << "(default: .)" << std::endl;
+#endif
 	    std::cout << "  -m N, --max-solutions=N" << std::endl;
 	    std::cout << "                 Output puzzles with 1..N solutions only."
 		      << std::endl;
@@ -177,6 +177,11 @@ main(int argc, char *argv[]) {
 	case 'm':
 	    max_solutions = std::atoi(::optarg);
 	    break;
+#ifdef UBONGO_ANALYZE_DIR
+	case 'p':
+	    pieceset_directory = ::optarg;
+	    break;
+#endif
 	case 's':
 	    if (output_mode == hide_solution)
 		output_mode = show_one_solution;
@@ -219,7 +224,7 @@ main(int argc, char *argv[]) {
     }
 
     //
-    // Create a pieceset.
+    // Create a piece-set.
     //
     int piece_count = std::atoi(argv[::optind + 1]);
     if (piece_count <= 0) {
@@ -230,20 +235,31 @@ main(int argc, char *argv[]) {
 	std::exit(1);
     }
 
-#ifdef UBONGO_SOLVE_GENERIC
     try {
-	PieceSet_ReadDir pieceset(pieceset_directory);
+	//
+	// Create a piece-set.
+	//
+#ifdef UBONGO_ANALYZE_DIR
+	PieceSet_Dir pieceset(pieceset_directory);
+#else
+	PieceSet_@pieceset_suffix@ pieceset;
+#endif
+
+	//
+	// Read a board file.
+	//
+	Board board;
+	board.set_shape_by_file(argv[::optind]);
+
+	//
+	// Analyze the puzzle board.
+	//
+	analyze_puzzles(board, pieceset, piece_count, max_solutions,
+	    output_mode);
     } catch (std::ios_base::failure e) {
 	std::cerr << argv[0] << ": " << e.what() << std::endl;
 	exit(1);
     }
-#else
-    PieceSet_@pieceset_suffix@ pieceset;
-#endif
 
-    //
-    // Analyze the puzzle board.
-    //
-    analyze_puzzles(board, pieceset, piece_count, max_solutions, output_mode);
     return 0;
 }
