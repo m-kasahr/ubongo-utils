@@ -193,6 +193,11 @@ main(int argc, char *argv[]) {
 	    std::exit(0);
 	case 'm':
 	    max_solutions = std::atoi(::optarg);
+	    if (max_solutions <= 0) {
+		std::cerr << argv0 << ": invalid argument: " << max_solutions
+			  << std::endl;
+		std::exit(1);
+	    }
 	    break;
 #ifdef UBONGO_ANALYZE_DIR
 	case 'p':
