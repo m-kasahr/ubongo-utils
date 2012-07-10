@@ -190,7 +190,6 @@ main(int argc, char *argv[]) {
 	    std::cout << "ubongo-analyze version " << VERSION << std::endl;
 	    exit(0);
 	default:
-	    std::cerr << argv[0] << ": invalid option -- " << ch << std::endl;
 	    std::cerr << "Try `" << argv[0] << " --help' for more details"
 		      << std::endl;
 	    std::exit(1);
