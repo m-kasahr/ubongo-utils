@@ -75,7 +75,6 @@ solve_puzzle(Puzzle &puzzle, bool all_flag = false) {
 		std::cout << std::endl;
 	    std::cout << solver.get_puzzle().dump_board();
 	    std::cout << "; Solution " << solution_count << std::endl;
-	    std::cout << std::endl;
 	} else {
 	    std::cout << solver.get_puzzle().dump_board();
 	    break;
