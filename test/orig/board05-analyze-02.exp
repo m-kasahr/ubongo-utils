@@ -1,0 +1,584 @@
+#####
+#####
+.####
+###.#
+; squares=18
+
+* A B C I J ; solutions=23
+AJCCI
+AJBCI
+.JBII
+JJB.I
+
+* A B C I K ; solutions=28
+AIIII
+ACIKK
+.CCKK
+BBB.K
+
+* A B C I L ; solutions=2
+ABBBI
+ALLII
+.LCCI
+LLC.I
+
+* A B C J K ; solutions=46
+ABBBJ
+AJJJJ
+.KKCC
+KKK.C
+
+* A B C J L ; solutions=3
+JJJJA
+CCLJA
+.CLLL
+BBB.L
+
+* A B C K L ; solutions=6
+AAKKK
+CCLKK
+.CLLL
+BBB.L
+
+* A B D E I ; solutions=14
+ABBBI
+AEDII
+.EDDI
+EED.I
+
+* A B D E J ; solutions=16
+ABBBJ
+AJJJJ
+.DEEE
+DDD.E
+
+* A B D E K ; solutions=29
+ABKKK
+ABKKD
+.BEDD
+EEE.D
+
+* A B D E L ; solutions=5
+AAELL
+EEELB
+.DLLB
+DDD.B
+
+* A B D F I ; solutions=4
+FFFFI
+AADII
+.DDDI
+BBB.I
+
+* A B D F J ; solutions=15
+BBBJJ
+FFFFJ
+.DAAJ
+DDD.J
+
+* A B D F K ; solutions=13
+ABBBF
+AKKKF
+.DKKF
+DDD.F
+
+* A B D F L ; solutions=3
+LAABF
+LLLBF
+.DLBF
+DDD.F
+
+* A B D G I ; solutions=8
+ABBBI
+AGGII
+.DGGI
+DDD.I
+
+* A B D G J ; solutions=2
+AJJJJ
+AJGGD
+.GGDD
+BBB.D
+
+* A B D G K ; solutions=8
+AGBBB
+AGGKK
+.DGKK
+DDD.K
+
+* A B D G L ; solutions=2
+LBBBA
+LLLGA
+.DLGG
+DDD.G
+
+* A B D H I ; solutions=3
+AIIII
+AHHID
+.HHDD
+BBB.D
+
+* A B D H J ; solutions=3
+AJJJJ
+AJHHB
+.DHHB
+DDD.B
+
+* A B D H K ; solutions=14
+HHBAA
+HHBKK
+.DBKK
+DDD.K
+
+* A B D H L ; solutions=4
+AHHLL
+AHHLB
+.DLLB
+DDD.B
+
+* A B E F I ; solutions=2
+FFFFA
+IIIIA
+.IEEE
+BBB.E
+
+* A B E F J ; solutions=13
+AFFFF
+AJJJJ
+.JEEE
+BBB.E
+
+* A B E F K ; solutions=37
+ABKKF
+ABKKF
+.BEKF
+EEE.F
+
+* A B E F L ; solutions=2
+EEEBF
+ELLBF
+.LABF
+LLA.F
+
+* A B E G I ; solutions=13
+AEEEI
+AEGGI
+.GGII
+BBB.I
+
+* A B E G J ; solutions=13
+ABGJJ
+ABGGJ
+.BEGJ
+EEE.J
+
+* A B E G K ; solutions=20
+AKEEE
+AKKGE
+.KKGG
+BBB.G
+
+* A B E G L ; solutions=3
+EEEAA
+ELLGB
+.LGGB
+LLG.B
+
+* A B E H I ; solutions=6
+ABHHI
+ABHHI
+.BEII
+EEE.I
+
+* A B E H J ; solutions=14
+AEEJJ
+AEHHJ
+.EHHJ
+BBB.J
+
+* A B E H K ; solutions=15
+AHHEE
+AHHEB
+.KKEB
+KKK.B
+
+* A B E H L ; solutions=2
+AEEHH
+AELHH
+.ELLL
+BBB.L
+
+* A B F G I ; solutions=3
+FFFFI
+AAGGI
+.GGII
+BBB.I
+
+* A B F G J ; solutions=1
+GJJBF
+GGJBF
+.GJBF
+AAJ.F
+
+* A B F G K ; solutions=12
+AAKKF
+GGKKF
+.GGKF
+BBB.F
+
+* A B F G L ; solutions=4
+ABBBF
+ALLGF
+.LGGF
+LLG.F
+
+* A B F H I ; solutions=1
+HHIBF
+HHIBF
+.IIBF
+AAI.F
+
+* A B F H J ; solutions=2
+JJJJF
+JAHHF
+.AHHF
+BBB.F
+
+* A B F H K ; solutions=7
+AFFFF
+AHHKK
+.HHKK
+BBB.K
+
+* A B F H L ; solutions=1
+HHLLF
+HHLAF
+.LLAF
+BBB.F
+
+* A B G H I ; solutions=2
+AAHHI
+GGHHI
+.GGII
+BBB.I
+
+* A B G H J ; solutions=6
+AJJJJ
+AHHGJ
+.HHGG
+BBB.G
+
+* A B G H K ; solutions=1
+HHGAA
+HHGGB
+.KKGB
+KKK.B
+
+* A B G H L ; solutions=4
+GAAHH
+GGLHH
+.GLLL
+BBB.L
+
+* A C D E I ; solutions=26
+ADCCI
+ADDCI
+.DEII
+EEE.I
+
+* A C D E J ; solutions=19
+AJJJJ
+AJCEE
+.DCCE
+DDD.E
+
+* A C D E K ; solutions=38
+ACKKK
+ACCKK
+.DEEE
+DDD.E
+
+* A C D E L ; solutions=6
+AEEEC
+AELCC
+.DLLL
+DDD.L
+
+* A C D F I ; solutions=8
+AFFFF
+AIIII
+.DICC
+DDD.C
+
+* A C D F J ; solutions=10
+AJCCF
+AJDCF
+.JDDF
+JJD.F
+
+* A C D F K ; solutions=28
+ACCDF
+ACDDF
+.KKDF
+KKK.F
+
+* A C D F L ; solutions=6
+CFFFF
+CCLAA
+.DLLL
+DDD.L
+
+* A C D G I ; solutions=8
+ACCGI
+ACGGI
+.DGII
+DDD.I
+
+* A C D G J ; solutions=9
+AJJJJ
+ACCGJ
+.DCGG
+DDD.G
+
+* A C D G K ; solutions=14
+ACCGG
+ACGGD
+.KKDD
+KKK.D
+
+* A C D G L ; solutions=1
+LAACC
+LLLGC
+.DLGG
+DDD.G
+
+* A C D H I ; solutions=9
+HHAAI
+HHCII
+.DCCI
+DDD.I
+
+* A C D H J ; solutions=7
+ACCJJ
+ACHHJ
+.DHHJ
+DDD.J
+
+* A C D H K ; solutions=17
+AHHCC
+AHHCD
+.KKDD
+KKK.D
+
+* A C D H L ; solutions=7
+ACCHH
+ACLHH
+.DLLL
+DDD.L
+
+* A C E F I ; solutions=7
+CCFAI
+CEFAI
+.EFII
+EEF.I
+
+* A C E F J ; solutions=11
+AFFFF
+AJJJJ
+.JECC
+EEE.C
+
+* A C E F K ; solutions=26
+ACEEF
+ACCEF
+.KKEF
+KKK.F
+
+* A C E F L ; solutions=5
+AEEEF
+ALLEF
+.LCCF
+LLC.F
+
+* A C E G I ; solutions=9
+CCGAI
+CGGAI
+.GEII
+EEE.I
+
+* A C E G J ; solutions=32
+ACCJJ
+AECGJ
+.EGGJ
+EEG.J
+
+* A C E G K ; solutions=24
+ACEEE
+ACCGE
+.KKGG
+KKK.G
+
+* A C E G L ; solutions=4
+CCEEE
+CLLGE
+.LAGG
+LLA.G
+
+* A C E H I ; solutions=6
+AAHHI
+CCHHI
+.CEII
+EEE.I
+
+* A C E H J ; solutions=1
+AJJHH
+AEJHH
+.EJCC
+EEJ.C
+
+* A C E H K ; solutions=17
+AKKHH
+AKKHH
+.KECC
+EEE.C
+
+* A C E H L ; solutions=2
+EEEHH
+ELLHH
+.LACC
+LLA.C
+
+* A C F G I ; solutions=2
+IIIIF
+AAIGF
+.CGGF
+CCG.F
+
+* A C F G J ; solutions=5
+AJCCF
+AJCGF
+.JGGF
+JJG.F
+
+* A C F G K ; solutions=7
+AKKKF
+AKKGF
+.CGGF
+CCG.F
+
+* A C F G L ; solutions=1
+CCAAF
+CLLGF
+.LGGF
+LLG.F
+
+* A C F H I ; solutions=2
+HHFAI
+HHFAI
+.CFII
+CCF.I
+
+* A C F H J ; solutions=4
+AJFHH
+AJFHH
+.JFCC
+JJF.C
+
+* A C F H K ; solutions=9
+HHAAF
+HHCCF
+.KKCF
+KKK.F
+
+* A C G H I ; solutions=2
+CCHHI
+CGHHI
+.GGII
+AAG.I
+
+* A C G H J ; solutions=7
+AHHJJ
+AHHGJ
+.CGGJ
+CCG.J
+
+* A C G H K ; solutions=5
+AHHCC
+AHHGC
+.KKGG
+KKK.G
+
+* A D E F G ; solutions=18
+ADDDF
+AEDGF
+.EGGF
+EEG.F
+
+* A D E F H ; solutions=7
+AEEEF
+AEHHF
+.DHHF
+DDD.F
+
+* A D E G H ; solutions=6
+EEEHH
+EGGHH
+.DGGA
+DDD.A
+
+* B C D E F ; solutions=14
+BBBCC
+FFFFC
+.DEEE
+DDD.E
+
+* B C D E G ; solutions=9
+BBBCC
+DDDGC
+.DEGG
+EEE.G
+
+* B C D E H ; solutions=10
+BBBHH
+DDDHH
+.DECC
+EEE.C
+
+* B C D F G ; solutions=3
+CFFFF
+CCGGD
+.GGDD
+BBB.D
+
+* B C D F H ; solutions=3
+CBBBF
+CCHHF
+.DHHF
+DDD.F
+
+* B C D G H ; solutions=1
+HHBCC
+HHBGC
+.DBGG
+DDD.G
+
+* B C E F G ; solutions=14
+CCGGF
+CGGEF
+.EEEF
+BBB.F
+
+* B C E F H ; solutions=6
+CCEEF
+CHHEF
+.HHEF
+BBB.F
+
+* B C E G H ; solutions=11
+CCEEE
+CHHGE
+.HHGG
+BBB.G
+
+; puzzles=96
+; Exitcode: 0

@@ -1,0 +1,12 @@
+###..
+#####
+.#..#
+; squares=10
+
+* K L ; solutions=1
+KKL..
+KKLLL
+.K..L
+
+; puzzles=1
+; Exitcode: 0

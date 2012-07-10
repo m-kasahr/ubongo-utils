@@ -1,0 +1,17 @@
+.#
+##
+##
+; squares=5
+
+* A B ; solutions=1
+.B
+AB
+AB
+
+* A C ; solutions=2
+.A
+CA
+CC
+
+; puzzles=2
+; Exitcode: 0
