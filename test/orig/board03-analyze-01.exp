@@ -6,4 +6,4 @@
 * A B ; solutions=1
 * A C ; solutions=2
 ; puzzles=2
-; Exitcode: 0
+; exitcode=0

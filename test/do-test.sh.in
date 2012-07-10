@@ -33,7 +33,7 @@ do_test() {
 	*)
 	    env PATH="../@utils_builddir@:$PATH" \
 		"./$TEST_SCRIPT" > "$OUTPUT_FILE"
-	    echo "; Exitcode: $?" >> "$OUTPUT_FILE"
+	    echo "; exitcode=$?" >> "$OUTPUT_FILE"
 	    ;;
 	esac
 
