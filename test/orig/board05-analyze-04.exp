@@ -1,0 +1,128 @@
+#####
+#####
+.####
+###.#
+; squares=18
+
+* A B C I L ; solutions=2
+ABBBI
+ALLII
+.LCCI
+LLC.I
+
+* A B D G J ; solutions=2
+AJJJJ
+AJGGD
+.GGDD
+BBB.D
+
+* A B D G L ; solutions=2
+LBBBA
+LLLGA
+.DLGG
+DDD.G
+
+* A B E F I ; solutions=2
+FFFFA
+IIIIA
+.IEEE
+BBB.E
+
+* A B E F L ; solutions=2
+EEEBF
+ELLBF
+.LABF
+LLA.F
+
+* A B E H L ; solutions=2
+AEEHH
+AELHH
+.ELLL
+BBB.L
+
+* A B F G J ; solutions=1
+GJJBF
+GGJBF
+.GJBF
+AAJ.F
+
+* A B F H I ; solutions=1
+HHIBF
+HHIBF
+.IIBF
+AAI.F
+
+* A B F H J ; solutions=2
+JJJJF
+JAHHF
+.AHHF
+BBB.F
+
+* A B F H L ; solutions=1
+HHLLF
+HHLAF
+.LLAF
+BBB.F
+
+* A B G H I ; solutions=2
+AAHHI
+GGHHI
+.GGII
+BBB.I
+
+* A B G H K ; solutions=1
+HHGAA
+HHGGB
+.KKGB
+KKK.B
+
+* A C D G L ; solutions=1
+LAACC
+LLLGC
+.DLGG
+DDD.G
+
+* A C E H J ; solutions=1
+AJJHH
+AEJHH
+.EJCC
+EEJ.C
+
+* A C E H L ; solutions=2
+EEEHH
+ELLHH
+.LACC
+LLA.C
+
+* A C F G I ; solutions=2
+IIIIF
+AAIGF
+.CGGF
+CCG.F
+
+* A C F G L ; solutions=1
+CCAAF
+CLLGF
+.LGGF
+LLG.F
+
+* A C F H I ; solutions=2
+HHFAI
+HHFAI
+.CFII
+CCF.I
+
+* A C G H I ; solutions=2
+CCHHI
+CGHHI
+.GGII
+AAG.I
+
+* B C D G H ; solutions=1
+HHBCC
+HHBGC
+.DBGG
+DDD.G
+
+; puzzles=20
+; exitcode=0

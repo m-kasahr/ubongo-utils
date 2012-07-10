@@ -1,0 +1,16 @@
+#####
+#####
+.####
+###.#
+; squares=18
+
+* A B F G J ; solutions=1
+* A B F H I ; solutions=1
+* A B F H L ; solutions=1
+* A B G H K ; solutions=1
+* A C D G L ; solutions=1
+* A C E H J ; solutions=1
+* A C F G L ; solutions=1
+* B C D G H ; solutions=1
+; puzzles=8
+; exitcode=0
