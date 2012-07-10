@@ -92,7 +92,7 @@ analyze_puzzles(Board &board, const PieceSet &pieceset, int piece_count,
 	    }
 	} while (analyzer.find_next_solution());
 
-	if (max_solutions != 0 && solution_count > max_solutions)
+	if (max_solutions > 0 && solution_count > max_solutions)
 	    continue;
 
 	std::cout << "* ";
