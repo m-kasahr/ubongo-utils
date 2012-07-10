@@ -3,6 +3,7 @@
 
 # Executables.
 ubongo-analyze-3d
+ubongo-analyze-dir
 ubongo-analyze-duel
 ubongo-analyze-minib
 ubongo-analyze-minig
@@ -19,6 +20,7 @@ ubongo-html-minir
 ubongo-html-miniy
 ubongo-html-orig
 ubongo-solve-3d
+ubongo-solve-dir
 ubongo-solve-duel
 ubongo-solve-minib
 ubongo-solve-minig
@@ -28,6 +30,7 @@ ubongo-solve-orig
 
 # Built sources.
 ubongo-analyze-3d.cpp
+ubongo-analyze-dir.cpp
 ubongo-analyze-duel.cpp
 ubongo-analyze-minib.cpp
 ubongo-analyze-minig.cpp
@@ -35,6 +38,7 @@ ubongo-analyze-minir.cpp
 ubongo-analyze-miniy.cpp
 ubongo-analyze-orig.cpp
 ubongo-solve-3d.cpp
+ubongo-solve-dir.cpp
 ubongo-solve-duel.cpp
 ubongo-solve-minib.cpp
 ubongo-solve-minig.cpp
