@@ -1,0 +1,31 @@
+* A B C D E
+AAAAD.
+AEEDDD
+BBBDC.
+..CCC.
+
+* A B C E F
+BAAAA.
+BAFFFF
+BEEFC.
+..CCC.
+
+* A B C E G
+CAAAA.
+CAGGEE
+CCGGG.
+..BBB.
+
+* B C D E G
+BEEDD.
+BCCCDD
+BCGGD.
+..GGG.
+
+* B C E F G
+BCCCF.
+BCFFFF
+BGGGE.
+..GGE.
+
+; exitcode=0

@@ -1,0 +1,13 @@
+#####.
+######
+#####.
+..###.
+; squares=19
+
+* A B C D E ; solutions=5
+* A B C E F ; solutions=3
+* A B C E G ; solutions=2
+* B C D E G ; solutions=12
+* B C E F G ; solutions=9
+; puzzles=5
+; exitcode=0

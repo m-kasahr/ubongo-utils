@@ -1,0 +1,10 @@
+#####.
+######
+#####.
+####..
+; squares=20
+
+* A B D E G ; solutions=2
+* A C E F G ; solutions=1
+; puzzles=2
+; exitcode=0
