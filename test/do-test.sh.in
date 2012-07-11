@@ -48,22 +48,30 @@ do_test() {
 }
 
 do_test_set() {
-    TEST_DIR="$1"
+    TEST_SET_DIR="$1"
 
-    if [ ! -d "$TEST_DIR" ]; then
-	echo "$0: no such directory $TEST_DIR" 1>&2
+    if [ ! -d "$TEST_SET_DIR" ]; then
+	echo "$0: no such directory $TEST_SET_DIR" 1>&2
 	return 1
     fi
 
-    ls -1 "$TEST_DIR" | while read I; do
-	case "$I" in
+    ls -1 "$TEST_SET_DIR" | while read FILE; do
+	case "$FILE" in
 	*.sh)
-	    TEST_ID="`echo X$I | sed -e 's/^X//' -e 's/\.sh$//'`"
-	    do_test "$TEST_DIR" "$TEST_ID"
-	    RESULT=$?
+	    do_test "$TEST_SET_DIR" "`basename $FILE .sh`"
 	    ;;
 	esac
     done
 }
 
-do_test_set orig
+do_test_set_all() {
+    ls -1 . | while read DIR; do
+	[ "X$DIR" = "X." -o "X$DIR" = "X.." ] && continue
+	if [ -d "$DIR" -a -f "$DIR/board01" ]; then
+	    echo "===> Tests in $DIR <==="
+	    do_test_set "$DIR"
+	fi
+    done
+}
+
+do_test_set_all

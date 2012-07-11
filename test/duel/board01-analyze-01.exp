@@ -1,0 +1,61 @@
+####..
+#####.
+.#####
+#####.
+#...#.
+; squares=21
+
+* A C E O ; solutions=1
+* A D H O ; solutions=1
+* A D O P ; solutions=2
+* A H L U ; solutions=1
+* B C D Q ; solutions=1
+* B C G Q ; solutions=1
+* B D E O ; solutions=1
+* B D F L ; solutions=1
+* B D G H ; solutions=1
+* B D G M ; solutions=1
+* B D H O ; solutions=1
+* B D L M ; solutions=1
+* B D L Q ; solutions=1
+* B D M O ; solutions=1
+* B D N O ; solutions=1
+* B D O P ; solutions=2
+* B D O R ; solutions=1
+* B D Q U ; solutions=1
+* B E J O ; solutions=1
+* B G I L ; solutions=1
+* B J O P ; solutions=1
+* C D M O ; solutions=1
+* C D M T ; solutions=1
+* C D O R ; solutions=1
+* C E G L ; solutions=2
+* C G N T ; solutions=1
+* C G O S ; solutions=1
+* C H L O ; solutions=1
+* C J M O ; solutions=1
+* C J O P ; solutions=1
+* C J O R ; solutions=1
+* C L M U ; solutions=2
+* C L N O ; solutions=1
+* C L Q U ; solutions=1
+* C L R U ; solutions=1
+* C P T U ; solutions=1
+* D E L O ; solutions=1
+* D G I O ; solutions=1
+* D G O R ; solutions=1
+* D H L U ; solutions=1
+* D I O T ; solutions=1
+* D L N O ; solutions=1
+* D L O P ; solutions=2
+* D L O R ; solutions=1
+* D M T U ; solutions=1
+* D N O U ; solutions=1
+* D O Q T ; solutions=1
+* D O R T ; solutions=1
+* D O R U ; solutions=1
+* E J L O ; solutions=1
+* G L O Q ; solutions=1
+* J O S U ; solutions=1
+; puzzles=52
+; exitcode=0
