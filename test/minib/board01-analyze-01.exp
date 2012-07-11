@@ -1,0 +1,14 @@
+####.
+#####
+#####
+; squares=14
+
+* A B C D ; solutions=2
+* A B C F ; solutions=2
+* A C D G ; solutions=3
+* A C F G ; solutions=1
+* A D E G ; solutions=6
+* A E F G ; solutions=2
+* C D E F ; solutions=5
+; puzzles=7
+; exitcode=0
