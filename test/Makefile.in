@@ -60,6 +60,12 @@ uninstall:
 clean:
 	rm -f $(FILEANFILES)
 	rm -f orig/*.out
+	rm -f duel/*.out
+	rm -f minib/*.out
+	rm -f minig/*.out
+	rm -f minir/*.out
+	rm -f miniy/*.out
+	rm -f 3d/*.out
 
 distclean: clean
 	-rm -f Makefile
