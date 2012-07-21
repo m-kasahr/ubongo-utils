@@ -98,6 +98,9 @@ libubongo3d_la_LIBADD =
 am_libubongo3d_la_OBJECTS = analyzer.lo board.lo piece.lo pieceset.lo \
 	puzzle.lo solver.lo
 libubongo3d_la_OBJECTS = $(am_libubongo3d_la_OBJECTS)
+libubongo3d_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(libubongo3d_la_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -255,6 +258,7 @@ libubongo3d_la_SOURCES = analyzer.cpp \
                          puzzle.cpp \
                          solver.cpp
 
+libubongo3d_la_LDFLAGS = -version-info $(LIBUBONGO3D_VERSION_INFO)
 ubongo3dinclude_HEADERS = analyzer.h \
                           board.h \
                           common.h \
@@ -335,7 +339,7 @@ clean-libLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 libubongo3d.la: $(libubongo3d_la_OBJECTS) $(libubongo3d_la_DEPENDENCIES) $(EXTRA_libubongo3d_la_DEPENDENCIES) 
-	$(CXXLINK) -rpath $(libdir) $(libubongo3d_la_OBJECTS) $(libubongo3d_la_LIBADD) $(LIBS)
+	$(libubongo3d_la_LINK) -rpath $(libdir) $(libubongo3d_la_OBJECTS) $(libubongo3d_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -625,7 +629,7 @@ uninstall-am: uninstall-libLTLIBRARIES \
 
 pieceset_3d.h: make-pieceset3d.rb
 	rm -f $@
-	$(RUBY) $(srcdir)/make-pieceset3d.rb Orig $(dataorig_srcdir) > $@
+	$(RUBY) $(srcdir)/make-pieceset3d.rb 3d $(top_srcdir)/data/3d > $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

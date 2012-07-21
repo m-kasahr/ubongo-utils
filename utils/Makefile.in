@@ -74,81 +74,135 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_ubongo_analyze_3d_OBJECTS = ubongo-analyze-3d.$(OBJEXT)
+am_ubongo_analyze_3d_OBJECTS =  \
+	ubongo_analyze_3d-ubongo-analyze-3d.$(OBJEXT)
 ubongo_analyze_3d_OBJECTS = $(am_ubongo_analyze_3d_OBJECTS)
 @COND_GETOPT_FALSE@am__DEPENDENCIES_1 = getopt.lo
 ubongo_analyze_3d_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo3d/libubongo3d.la
+ubongo_analyze_3d_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_analyze_3d_LDFLAGS) $(LDFLAGS) -o $@
 am_ubongo_analyze_dir_OBJECTS =  \
 	ubongo_analyze_dir-ubongo-analyze-dir.$(OBJEXT)
 ubongo_analyze_dir_OBJECTS = $(am_ubongo_analyze_dir_OBJECTS)
 ubongo_analyze_dir_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
 ubongo_analyze_dir_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CXXLD) \
-	$(ubongo_analyze_dir_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_ubongo_analyze_duel_OBJECTS = ubongo-analyze-duel.$(OBJEXT)
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_analyze_dir_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_analyze_duel_OBJECTS =  \
+	ubongo_analyze_duel-ubongo-analyze-duel.$(OBJEXT)
 ubongo_analyze_duel_OBJECTS = $(am_ubongo_analyze_duel_OBJECTS)
 ubongo_analyze_duel_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_analyze_minib_OBJECTS = ubongo-analyze-minib.$(OBJEXT)
+ubongo_analyze_duel_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_analyze_duel_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_analyze_minib_OBJECTS =  \
+	ubongo_analyze_minib-ubongo-analyze-minib.$(OBJEXT)
 ubongo_analyze_minib_OBJECTS = $(am_ubongo_analyze_minib_OBJECTS)
 ubongo_analyze_minib_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_analyze_minig_OBJECTS = ubongo-analyze-minig.$(OBJEXT)
+ubongo_analyze_minib_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_analyze_minib_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_analyze_minig_OBJECTS =  \
+	ubongo_analyze_minig-ubongo-analyze-minig.$(OBJEXT)
 ubongo_analyze_minig_OBJECTS = $(am_ubongo_analyze_minig_OBJECTS)
 ubongo_analyze_minig_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_analyze_minir_OBJECTS = ubongo-analyze-minir.$(OBJEXT)
+ubongo_analyze_minig_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_analyze_minig_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_analyze_minir_OBJECTS =  \
+	ubongo_analyze_minir-ubongo-analyze-minir.$(OBJEXT)
 ubongo_analyze_minir_OBJECTS = $(am_ubongo_analyze_minir_OBJECTS)
 ubongo_analyze_minir_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_analyze_miniy_OBJECTS = ubongo-analyze-miniy.$(OBJEXT)
+ubongo_analyze_minir_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_analyze_minir_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_analyze_miniy_OBJECTS =  \
+	ubongo_analyze_miniy-ubongo-analyze-miniy.$(OBJEXT)
 ubongo_analyze_miniy_OBJECTS = $(am_ubongo_analyze_miniy_OBJECTS)
 ubongo_analyze_miniy_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_analyze_orig_OBJECTS = ubongo-analyze-orig.$(OBJEXT)
+ubongo_analyze_miniy_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_analyze_miniy_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_analyze_orig_OBJECTS =  \
+	ubongo_analyze_orig-ubongo-analyze-orig.$(OBJEXT)
 ubongo_analyze_orig_OBJECTS = $(am_ubongo_analyze_orig_OBJECTS)
 ubongo_analyze_orig_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_solve_3d_OBJECTS = ubongo-solve-3d.$(OBJEXT)
+ubongo_analyze_orig_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_analyze_orig_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_solve_3d_OBJECTS =  \
+	ubongo_solve_3d-ubongo-solve-3d.$(OBJEXT)
 ubongo_solve_3d_OBJECTS = $(am_ubongo_solve_3d_OBJECTS)
 ubongo_solve_3d_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo3d/libubongo3d.la
+ubongo_solve_3d_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_solve_3d_LDFLAGS) $(LDFLAGS) -o $@
 am_ubongo_solve_dir_OBJECTS =  \
 	ubongo_solve_dir-ubongo-solve-dir.$(OBJEXT)
 ubongo_solve_dir_OBJECTS = $(am_ubongo_solve_dir_OBJECTS)
 ubongo_solve_dir_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
 ubongo_solve_dir_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
-	$(LIBTOOLFLAGS) --mode=link $(CXXLD) \
-	$(ubongo_solve_dir_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
-	$(LDFLAGS) -o $@
-am_ubongo_solve_duel_OBJECTS = ubongo-solve-duel.$(OBJEXT)
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_solve_dir_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_solve_duel_OBJECTS =  \
+	ubongo_solve_duel-ubongo-solve-duel.$(OBJEXT)
 ubongo_solve_duel_OBJECTS = $(am_ubongo_solve_duel_OBJECTS)
 ubongo_solve_duel_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_solve_minib_OBJECTS = ubongo-solve-minib.$(OBJEXT)
+ubongo_solve_duel_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_solve_duel_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_solve_minib_OBJECTS =  \
+	ubongo_solve_minib-ubongo-solve-minib.$(OBJEXT)
 ubongo_solve_minib_OBJECTS = $(am_ubongo_solve_minib_OBJECTS)
 ubongo_solve_minib_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_solve_minig_OBJECTS = ubongo-solve-minig.$(OBJEXT)
+ubongo_solve_minib_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_solve_minib_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_solve_minig_OBJECTS =  \
+	ubongo_solve_minig-ubongo-solve-minig.$(OBJEXT)
 ubongo_solve_minig_OBJECTS = $(am_ubongo_solve_minig_OBJECTS)
 ubongo_solve_minig_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_solve_minir_OBJECTS = ubongo-solve-minir.$(OBJEXT)
+ubongo_solve_minig_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_solve_minig_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_solve_minir_OBJECTS =  \
+	ubongo_solve_minir-ubongo-solve-minir.$(OBJEXT)
 ubongo_solve_minir_OBJECTS = $(am_ubongo_solve_minir_OBJECTS)
 ubongo_solve_minir_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_solve_miniy_OBJECTS = ubongo-solve-miniy.$(OBJEXT)
+ubongo_solve_minir_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_solve_minir_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_solve_miniy_OBJECTS =  \
+	ubongo_solve_miniy-ubongo-solve-miniy.$(OBJEXT)
 ubongo_solve_miniy_OBJECTS = $(am_ubongo_solve_miniy_OBJECTS)
 ubongo_solve_miniy_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
-am_ubongo_solve_orig_OBJECTS = ubongo-solve-orig.$(OBJEXT)
+ubongo_solve_miniy_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_solve_miniy_LDFLAGS) $(LDFLAGS) -o $@
+am_ubongo_solve_orig_OBJECTS =  \
+	ubongo_solve_orig-ubongo-solve-orig.$(OBJEXT)
 ubongo_solve_orig_OBJECTS = $(am_ubongo_solve_orig_OBJECTS)
 ubongo_solve_orig_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(top_builddir)/lib/ubongo/libubongo.la
+ubongo_solve_orig_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+	$(CXXFLAGS) $(ubongo_solve_orig_LDFLAGS) $(LDFLAGS) -o $@
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
     $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
@@ -354,71 +408,105 @@ bin_SCRIPTS = ubongo-draw \
 @COND_GETOPT_FALSE@GETOPT_LDADD = getopt.lo
 @COND_GETOPT_TRUE@GETOPT_LDADD = 
 ubongo_solve_orig_SOURCES = ubongo-solve-orig.cpp
+ubongo_solve_orig_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_orig_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_solve_orig_LDFLAGS = -rpath $(libdir)
 ubongo_solve_duel_SOURCES = ubongo-solve-duel.cpp
+ubongo_solve_duel_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_duel_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_solve_duel_LDFLAGS = -rpath $(libdir)
 ubongo_solve_minib_SOURCES = ubongo-solve-minib.cpp
+ubongo_solve_minib_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_minib_LDADD = $(GETOPT_LDADD) \
                             $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_solve_minib_LDFLAGS = 
 ubongo_solve_minig_SOURCES = ubongo-solve-minig.cpp
+ubongo_solve_minig_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_minig_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_solve_minig_LDFLAGS = -rpath $(libdir)
 ubongo_solve_minir_SOURCES = ubongo-solve-minir.cpp
+ubongo_solve_minir_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_minir_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_solve_minir_LDFLAGS = -rpath $(libdir)
 ubongo_solve_miniy_SOURCES = ubongo-solve-miniy.cpp
+ubongo_solve_miniy_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_miniy_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_solve_miniy_LDFLAGS = -rpath $(libdir)
 ubongo_solve_dir_SOURCES = ubongo-solve-dir.cpp
-ubongo_solve_dir_CXXFLAGS = -DUBONGO_SOLVE_DIR
+ubongo_solve_dir_CPPFLAGS = -DUBONGO_SOLVE_DIR \
+                            -I$(top_srcdir)/lib -I$(top_builddir)/lib
+
 ubongo_solve_dir_LDADD = $(GETOPT_LDADD) \
                          $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_solve_dir_LDFLAGS = -rpath $(libdir)
 ubongo_solve_3d_SOURCES = ubongo-solve-3d.cpp
+ubongo_solve_3d_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_3d_LDADD = $(GETOPT_LDADD) \
                         $(top_builddir)/lib/ubongo3d/libubongo3d.la
 
+ubongo_solve_3d_LDFLAGS = -rpath $(libdir)
 ubongo_analyze_orig_SOURCES = ubongo-analyze-orig.cpp
+ubongo_analyze_orig_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_orig_LDADD = $(GETOPT_LDADD) \
                             $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_analyze_orig_LDFLAGS = -rpath $(libdir)
 ubongo_analyze_duel_SOURCES = ubongo-analyze-duel.cpp
+ubongo_analyze_duel_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_duel_LDADD = $(GETOPT_LDADD) \
                             $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_analyze_duel_LDFLAGS = -rpath $(libdir)
 ubongo_analyze_minib_SOURCES = ubongo-analyze-minib.cpp
+ubongo_analyze_minib_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_minib_LDADD = $(GETOPT_LDADD) \
                              $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_analyze_minib_LDFLAGS = -rpath $(libdir)
 ubongo_analyze_minig_SOURCES = ubongo-analyze-minig.cpp
+ubongo_analyze_minig_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_minig_LDADD = $(GETOPT_LDADD) \
                              $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_analyze_minig_LDFLAGS = -rpath $(libdir)
 ubongo_analyze_minir_SOURCES = ubongo-analyze-minir.cpp
+ubongo_analyze_minir_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_minir_LDADD = $(GETOPT_LDADD) \
                              $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_analyze_minir_LDFLAGS = -rpath $(libdir)
 ubongo_analyze_miniy_SOURCES = ubongo-analyze-miniy.cpp
+ubongo_analyze_miniy_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_miniy_LDADD = $(GETOPT_LDADD) \
                              $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_analyze_miniy_LDFLAGS = -rpath $(libdir)
 ubongo_analyze_dir_SOURCES = ubongo-analyze-dir.cpp
-ubongo_analyze_dir_CXXFLAGS = -DUBONGO_ANALYZE_DIR
+ubongo_analyze_dir_CPPFLAGS = -DUBONGO_ANALYZE_DIR \
+                              -I$(top_srcdir)/lib -I$(top_builddir)/lib
+
 ubongo_analyze_dir_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
 
+ubongo_analyze_dir_LDFLAGS = -rpath $(libdir)
 ubongo_analyze_3d_SOURCES = ubongo-analyze-3d.cpp
+ubongo_analyze_3d_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_3d_LDADD = $(GETOPT_LDADD) \
                           $(top_builddir)/lib/ubongo3d/libubongo3d.la
 
+ubongo_analyze_3d_LDFLAGS = -rpath $(libdir)
 CLEANFILES = ubongo-solve-orig.cpp \
              ubongo-solve-duel.cpp \
              ubongo-solve-minib.cpp \
@@ -535,52 +623,52 @@ clean-binPROGRAMS:
 	rm -f $$list
 ubongo-analyze-3d$(EXEEXT): $(ubongo_analyze_3d_OBJECTS) $(ubongo_analyze_3d_DEPENDENCIES) $(EXTRA_ubongo_analyze_3d_DEPENDENCIES) 
 	@rm -f ubongo-analyze-3d$(EXEEXT)
-	$(CXXLINK) $(ubongo_analyze_3d_OBJECTS) $(ubongo_analyze_3d_LDADD) $(LIBS)
+	$(ubongo_analyze_3d_LINK) $(ubongo_analyze_3d_OBJECTS) $(ubongo_analyze_3d_LDADD) $(LIBS)
 ubongo-analyze-dir$(EXEEXT): $(ubongo_analyze_dir_OBJECTS) $(ubongo_analyze_dir_DEPENDENCIES) $(EXTRA_ubongo_analyze_dir_DEPENDENCIES) 
 	@rm -f ubongo-analyze-dir$(EXEEXT)
 	$(ubongo_analyze_dir_LINK) $(ubongo_analyze_dir_OBJECTS) $(ubongo_analyze_dir_LDADD) $(LIBS)
 ubongo-analyze-duel$(EXEEXT): $(ubongo_analyze_duel_OBJECTS) $(ubongo_analyze_duel_DEPENDENCIES) $(EXTRA_ubongo_analyze_duel_DEPENDENCIES) 
 	@rm -f ubongo-analyze-duel$(EXEEXT)
-	$(CXXLINK) $(ubongo_analyze_duel_OBJECTS) $(ubongo_analyze_duel_LDADD) $(LIBS)
+	$(ubongo_analyze_duel_LINK) $(ubongo_analyze_duel_OBJECTS) $(ubongo_analyze_duel_LDADD) $(LIBS)
 ubongo-analyze-minib$(EXEEXT): $(ubongo_analyze_minib_OBJECTS) $(ubongo_analyze_minib_DEPENDENCIES) $(EXTRA_ubongo_analyze_minib_DEPENDENCIES) 
 	@rm -f ubongo-analyze-minib$(EXEEXT)
-	$(CXXLINK) $(ubongo_analyze_minib_OBJECTS) $(ubongo_analyze_minib_LDADD) $(LIBS)
+	$(ubongo_analyze_minib_LINK) $(ubongo_analyze_minib_OBJECTS) $(ubongo_analyze_minib_LDADD) $(LIBS)
 ubongo-analyze-minig$(EXEEXT): $(ubongo_analyze_minig_OBJECTS) $(ubongo_analyze_minig_DEPENDENCIES) $(EXTRA_ubongo_analyze_minig_DEPENDENCIES) 
 	@rm -f ubongo-analyze-minig$(EXEEXT)
-	$(CXXLINK) $(ubongo_analyze_minig_OBJECTS) $(ubongo_analyze_minig_LDADD) $(LIBS)
+	$(ubongo_analyze_minig_LINK) $(ubongo_analyze_minig_OBJECTS) $(ubongo_analyze_minig_LDADD) $(LIBS)
 ubongo-analyze-minir$(EXEEXT): $(ubongo_analyze_minir_OBJECTS) $(ubongo_analyze_minir_DEPENDENCIES) $(EXTRA_ubongo_analyze_minir_DEPENDENCIES) 
 	@rm -f ubongo-analyze-minir$(EXEEXT)
-	$(CXXLINK) $(ubongo_analyze_minir_OBJECTS) $(ubongo_analyze_minir_LDADD) $(LIBS)
+	$(ubongo_analyze_minir_LINK) $(ubongo_analyze_minir_OBJECTS) $(ubongo_analyze_minir_LDADD) $(LIBS)
 ubongo-analyze-miniy$(EXEEXT): $(ubongo_analyze_miniy_OBJECTS) $(ubongo_analyze_miniy_DEPENDENCIES) $(EXTRA_ubongo_analyze_miniy_DEPENDENCIES) 
 	@rm -f ubongo-analyze-miniy$(EXEEXT)
-	$(CXXLINK) $(ubongo_analyze_miniy_OBJECTS) $(ubongo_analyze_miniy_LDADD) $(LIBS)
+	$(ubongo_analyze_miniy_LINK) $(ubongo_analyze_miniy_OBJECTS) $(ubongo_analyze_miniy_LDADD) $(LIBS)
 ubongo-analyze-orig$(EXEEXT): $(ubongo_analyze_orig_OBJECTS) $(ubongo_analyze_orig_DEPENDENCIES) $(EXTRA_ubongo_analyze_orig_DEPENDENCIES) 
 	@rm -f ubongo-analyze-orig$(EXEEXT)
-	$(CXXLINK) $(ubongo_analyze_orig_OBJECTS) $(ubongo_analyze_orig_LDADD) $(LIBS)
+	$(ubongo_analyze_orig_LINK) $(ubongo_analyze_orig_OBJECTS) $(ubongo_analyze_orig_LDADD) $(LIBS)
 ubongo-solve-3d$(EXEEXT): $(ubongo_solve_3d_OBJECTS) $(ubongo_solve_3d_DEPENDENCIES) $(EXTRA_ubongo_solve_3d_DEPENDENCIES) 
 	@rm -f ubongo-solve-3d$(EXEEXT)
-	$(CXXLINK) $(ubongo_solve_3d_OBJECTS) $(ubongo_solve_3d_LDADD) $(LIBS)
+	$(ubongo_solve_3d_LINK) $(ubongo_solve_3d_OBJECTS) $(ubongo_solve_3d_LDADD) $(LIBS)
 ubongo-solve-dir$(EXEEXT): $(ubongo_solve_dir_OBJECTS) $(ubongo_solve_dir_DEPENDENCIES) $(EXTRA_ubongo_solve_dir_DEPENDENCIES) 
 	@rm -f ubongo-solve-dir$(EXEEXT)
 	$(ubongo_solve_dir_LINK) $(ubongo_solve_dir_OBJECTS) $(ubongo_solve_dir_LDADD) $(LIBS)
 ubongo-solve-duel$(EXEEXT): $(ubongo_solve_duel_OBJECTS) $(ubongo_solve_duel_DEPENDENCIES) $(EXTRA_ubongo_solve_duel_DEPENDENCIES) 
 	@rm -f ubongo-solve-duel$(EXEEXT)
-	$(CXXLINK) $(ubongo_solve_duel_OBJECTS) $(ubongo_solve_duel_LDADD) $(LIBS)
+	$(ubongo_solve_duel_LINK) $(ubongo_solve_duel_OBJECTS) $(ubongo_solve_duel_LDADD) $(LIBS)
 ubongo-solve-minib$(EXEEXT): $(ubongo_solve_minib_OBJECTS) $(ubongo_solve_minib_DEPENDENCIES) $(EXTRA_ubongo_solve_minib_DEPENDENCIES) 
 	@rm -f ubongo-solve-minib$(EXEEXT)
-	$(CXXLINK) $(ubongo_solve_minib_OBJECTS) $(ubongo_solve_minib_LDADD) $(LIBS)
+	$(ubongo_solve_minib_LINK) $(ubongo_solve_minib_OBJECTS) $(ubongo_solve_minib_LDADD) $(LIBS)
 ubongo-solve-minig$(EXEEXT): $(ubongo_solve_minig_OBJECTS) $(ubongo_solve_minig_DEPENDENCIES) $(EXTRA_ubongo_solve_minig_DEPENDENCIES) 
 	@rm -f ubongo-solve-minig$(EXEEXT)
-	$(CXXLINK) $(ubongo_solve_minig_OBJECTS) $(ubongo_solve_minig_LDADD) $(LIBS)
+	$(ubongo_solve_minig_LINK) $(ubongo_solve_minig_OBJECTS) $(ubongo_solve_minig_LDADD) $(LIBS)
 ubongo-solve-minir$(EXEEXT): $(ubongo_solve_minir_OBJECTS) $(ubongo_solve_minir_DEPENDENCIES) $(EXTRA_ubongo_solve_minir_DEPENDENCIES) 
 	@rm -f ubongo-solve-minir$(EXEEXT)
-	$(CXXLINK) $(ubongo_solve_minir_OBJECTS) $(ubongo_solve_minir_LDADD) $(LIBS)
+	$(ubongo_solve_minir_LINK) $(ubongo_solve_minir_OBJECTS) $(ubongo_solve_minir_LDADD) $(LIBS)
 ubongo-solve-miniy$(EXEEXT): $(ubongo_solve_miniy_OBJECTS) $(ubongo_solve_miniy_DEPENDENCIES) $(EXTRA_ubongo_solve_miniy_DEPENDENCIES) 
 	@rm -f ubongo-solve-miniy$(EXEEXT)
-	$(CXXLINK) $(ubongo_solve_miniy_OBJECTS) $(ubongo_solve_miniy_LDADD) $(LIBS)
+	$(ubongo_solve_miniy_LINK) $(ubongo_solve_miniy_OBJECTS) $(ubongo_solve_miniy_LDADD) $(LIBS)
 ubongo-solve-orig$(EXEEXT): $(ubongo_solve_orig_OBJECTS) $(ubongo_solve_orig_DEPENDENCIES) $(EXTRA_ubongo_solve_orig_DEPENDENCIES) 
 	@rm -f ubongo-solve-orig$(EXEEXT)
-	$(CXXLINK) $(ubongo_solve_orig_OBJECTS) $(ubongo_solve_orig_LDADD) $(LIBS)
+	$(ubongo_solve_orig_LINK) $(ubongo_solve_orig_OBJECTS) $(ubongo_solve_orig_LDADD) $(LIBS)
 install-binSCRIPTS: $(bin_SCRIPTS)
 	@$(NORMAL_INSTALL)
 	@list='$(bin_SCRIPTS)'; test -n "$(bindir)" || list=; \
@@ -623,22 +711,22 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-analyze-3d.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-analyze-duel.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-analyze-minib.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-analyze-minig.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-analyze-minir.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-analyze-miniy.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-analyze-orig.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-solve-3d.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-solve-duel.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-solve-minib.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-solve-minig.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-solve-minir.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-solve-miniy.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo-solve-orig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_analyze_3d-ubongo-analyze-3d.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_analyze_duel-ubongo-analyze-duel.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_analyze_minib-ubongo-analyze-minib.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_analyze_minig-ubongo-analyze-minig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_analyze_minir-ubongo-analyze-minir.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_analyze_miniy-ubongo-analyze-miniy.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_analyze_orig-ubongo-analyze-orig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_solve_3d-ubongo-solve-3d.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_solve_duel-ubongo-solve-duel.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_solve_minib-ubongo-solve-minib.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_solve_minig-ubongo-solve-minig.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_solve_minir-ubongo-solve-minir.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_solve_miniy-ubongo-solve-miniy.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ubongo_solve_orig-ubongo-solve-orig.Po@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -661,33 +749,229 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
 
+ubongo_analyze_3d-ubongo-analyze-3d.o: ubongo-analyze-3d.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_3d_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_3d-ubongo-analyze-3d.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_3d-ubongo-analyze-3d.Tpo -c -o ubongo_analyze_3d-ubongo-analyze-3d.o `test -f 'ubongo-analyze-3d.cpp' || echo '$(srcdir)/'`ubongo-analyze-3d.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_3d-ubongo-analyze-3d.Tpo $(DEPDIR)/ubongo_analyze_3d-ubongo-analyze-3d.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-3d.cpp' object='ubongo_analyze_3d-ubongo-analyze-3d.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_3d_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_3d-ubongo-analyze-3d.o `test -f 'ubongo-analyze-3d.cpp' || echo '$(srcdir)/'`ubongo-analyze-3d.cpp
+
+ubongo_analyze_3d-ubongo-analyze-3d.obj: ubongo-analyze-3d.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_3d_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_3d-ubongo-analyze-3d.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_3d-ubongo-analyze-3d.Tpo -c -o ubongo_analyze_3d-ubongo-analyze-3d.obj `if test -f 'ubongo-analyze-3d.cpp'; then $(CYGPATH_W) 'ubongo-analyze-3d.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-3d.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_3d-ubongo-analyze-3d.Tpo $(DEPDIR)/ubongo_analyze_3d-ubongo-analyze-3d.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-3d.cpp' object='ubongo_analyze_3d-ubongo-analyze-3d.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_3d_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_3d-ubongo-analyze-3d.obj `if test -f 'ubongo-analyze-3d.cpp'; then $(CYGPATH_W) 'ubongo-analyze-3d.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-3d.cpp'; fi`
+
 ubongo_analyze_dir-ubongo-analyze-dir.o: ubongo-analyze-dir.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ubongo_analyze_dir_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_dir-ubongo-analyze-dir.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Tpo -c -o ubongo_analyze_dir-ubongo-analyze-dir.o `test -f 'ubongo-analyze-dir.cpp' || echo '$(srcdir)/'`ubongo-analyze-dir.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_dir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_dir-ubongo-analyze-dir.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Tpo -c -o ubongo_analyze_dir-ubongo-analyze-dir.o `test -f 'ubongo-analyze-dir.cpp' || echo '$(srcdir)/'`ubongo-analyze-dir.cpp
 @am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Tpo $(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Po
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-dir.cpp' object='ubongo_analyze_dir-ubongo-analyze-dir.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ubongo_analyze_dir_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_dir-ubongo-analyze-dir.o `test -f 'ubongo-analyze-dir.cpp' || echo '$(srcdir)/'`ubongo-analyze-dir.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_dir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_dir-ubongo-analyze-dir.o `test -f 'ubongo-analyze-dir.cpp' || echo '$(srcdir)/'`ubongo-analyze-dir.cpp
 
 ubongo_analyze_dir-ubongo-analyze-dir.obj: ubongo-analyze-dir.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ubongo_analyze_dir_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_dir-ubongo-analyze-dir.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Tpo -c -o ubongo_analyze_dir-ubongo-analyze-dir.obj `if test -f 'ubongo-analyze-dir.cpp'; then $(CYGPATH_W) 'ubongo-analyze-dir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-dir.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_dir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_dir-ubongo-analyze-dir.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Tpo -c -o ubongo_analyze_dir-ubongo-analyze-dir.obj `if test -f 'ubongo-analyze-dir.cpp'; then $(CYGPATH_W) 'ubongo-analyze-dir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-dir.cpp'; fi`
 @am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Tpo $(DEPDIR)/ubongo_analyze_dir-ubongo-analyze-dir.Po
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-dir.cpp' object='ubongo_analyze_dir-ubongo-analyze-dir.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ubongo_analyze_dir_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_dir-ubongo-analyze-dir.obj `if test -f 'ubongo-analyze-dir.cpp'; then $(CYGPATH_W) 'ubongo-analyze-dir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-dir.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_dir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_dir-ubongo-analyze-dir.obj `if test -f 'ubongo-analyze-dir.cpp'; then $(CYGPATH_W) 'ubongo-analyze-dir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-dir.cpp'; fi`
+
+ubongo_analyze_duel-ubongo-analyze-duel.o: ubongo-analyze-duel.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_duel_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_duel-ubongo-analyze-duel.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_duel-ubongo-analyze-duel.Tpo -c -o ubongo_analyze_duel-ubongo-analyze-duel.o `test -f 'ubongo-analyze-duel.cpp' || echo '$(srcdir)/'`ubongo-analyze-duel.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_duel-ubongo-analyze-duel.Tpo $(DEPDIR)/ubongo_analyze_duel-ubongo-analyze-duel.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-duel.cpp' object='ubongo_analyze_duel-ubongo-analyze-duel.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_duel_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_duel-ubongo-analyze-duel.o `test -f 'ubongo-analyze-duel.cpp' || echo '$(srcdir)/'`ubongo-analyze-duel.cpp
+
+ubongo_analyze_duel-ubongo-analyze-duel.obj: ubongo-analyze-duel.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_duel_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_duel-ubongo-analyze-duel.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_duel-ubongo-analyze-duel.Tpo -c -o ubongo_analyze_duel-ubongo-analyze-duel.obj `if test -f 'ubongo-analyze-duel.cpp'; then $(CYGPATH_W) 'ubongo-analyze-duel.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-duel.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_duel-ubongo-analyze-duel.Tpo $(DEPDIR)/ubongo_analyze_duel-ubongo-analyze-duel.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-duel.cpp' object='ubongo_analyze_duel-ubongo-analyze-duel.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_duel_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_duel-ubongo-analyze-duel.obj `if test -f 'ubongo-analyze-duel.cpp'; then $(CYGPATH_W) 'ubongo-analyze-duel.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-duel.cpp'; fi`
+
+ubongo_analyze_minib-ubongo-analyze-minib.o: ubongo-analyze-minib.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minib_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_minib-ubongo-analyze-minib.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_minib-ubongo-analyze-minib.Tpo -c -o ubongo_analyze_minib-ubongo-analyze-minib.o `test -f 'ubongo-analyze-minib.cpp' || echo '$(srcdir)/'`ubongo-analyze-minib.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_minib-ubongo-analyze-minib.Tpo $(DEPDIR)/ubongo_analyze_minib-ubongo-analyze-minib.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-minib.cpp' object='ubongo_analyze_minib-ubongo-analyze-minib.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minib_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_minib-ubongo-analyze-minib.o `test -f 'ubongo-analyze-minib.cpp' || echo '$(srcdir)/'`ubongo-analyze-minib.cpp
+
+ubongo_analyze_minib-ubongo-analyze-minib.obj: ubongo-analyze-minib.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minib_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_minib-ubongo-analyze-minib.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_minib-ubongo-analyze-minib.Tpo -c -o ubongo_analyze_minib-ubongo-analyze-minib.obj `if test -f 'ubongo-analyze-minib.cpp'; then $(CYGPATH_W) 'ubongo-analyze-minib.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-minib.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_minib-ubongo-analyze-minib.Tpo $(DEPDIR)/ubongo_analyze_minib-ubongo-analyze-minib.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-minib.cpp' object='ubongo_analyze_minib-ubongo-analyze-minib.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minib_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_minib-ubongo-analyze-minib.obj `if test -f 'ubongo-analyze-minib.cpp'; then $(CYGPATH_W) 'ubongo-analyze-minib.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-minib.cpp'; fi`
+
+ubongo_analyze_minig-ubongo-analyze-minig.o: ubongo-analyze-minig.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_minig-ubongo-analyze-minig.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_minig-ubongo-analyze-minig.Tpo -c -o ubongo_analyze_minig-ubongo-analyze-minig.o `test -f 'ubongo-analyze-minig.cpp' || echo '$(srcdir)/'`ubongo-analyze-minig.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_minig-ubongo-analyze-minig.Tpo $(DEPDIR)/ubongo_analyze_minig-ubongo-analyze-minig.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-minig.cpp' object='ubongo_analyze_minig-ubongo-analyze-minig.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_minig-ubongo-analyze-minig.o `test -f 'ubongo-analyze-minig.cpp' || echo '$(srcdir)/'`ubongo-analyze-minig.cpp
+
+ubongo_analyze_minig-ubongo-analyze-minig.obj: ubongo-analyze-minig.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_minig-ubongo-analyze-minig.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_minig-ubongo-analyze-minig.Tpo -c -o ubongo_analyze_minig-ubongo-analyze-minig.obj `if test -f 'ubongo-analyze-minig.cpp'; then $(CYGPATH_W) 'ubongo-analyze-minig.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-minig.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_minig-ubongo-analyze-minig.Tpo $(DEPDIR)/ubongo_analyze_minig-ubongo-analyze-minig.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-minig.cpp' object='ubongo_analyze_minig-ubongo-analyze-minig.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_minig-ubongo-analyze-minig.obj `if test -f 'ubongo-analyze-minig.cpp'; then $(CYGPATH_W) 'ubongo-analyze-minig.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-minig.cpp'; fi`
+
+ubongo_analyze_minir-ubongo-analyze-minir.o: ubongo-analyze-minir.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_minir-ubongo-analyze-minir.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_minir-ubongo-analyze-minir.Tpo -c -o ubongo_analyze_minir-ubongo-analyze-minir.o `test -f 'ubongo-analyze-minir.cpp' || echo '$(srcdir)/'`ubongo-analyze-minir.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_minir-ubongo-analyze-minir.Tpo $(DEPDIR)/ubongo_analyze_minir-ubongo-analyze-minir.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-minir.cpp' object='ubongo_analyze_minir-ubongo-analyze-minir.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_minir-ubongo-analyze-minir.o `test -f 'ubongo-analyze-minir.cpp' || echo '$(srcdir)/'`ubongo-analyze-minir.cpp
+
+ubongo_analyze_minir-ubongo-analyze-minir.obj: ubongo-analyze-minir.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_minir-ubongo-analyze-minir.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_minir-ubongo-analyze-minir.Tpo -c -o ubongo_analyze_minir-ubongo-analyze-minir.obj `if test -f 'ubongo-analyze-minir.cpp'; then $(CYGPATH_W) 'ubongo-analyze-minir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-minir.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_minir-ubongo-analyze-minir.Tpo $(DEPDIR)/ubongo_analyze_minir-ubongo-analyze-minir.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-minir.cpp' object='ubongo_analyze_minir-ubongo-analyze-minir.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_minir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_minir-ubongo-analyze-minir.obj `if test -f 'ubongo-analyze-minir.cpp'; then $(CYGPATH_W) 'ubongo-analyze-minir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-minir.cpp'; fi`
+
+ubongo_analyze_miniy-ubongo-analyze-miniy.o: ubongo-analyze-miniy.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_miniy_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_miniy-ubongo-analyze-miniy.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_miniy-ubongo-analyze-miniy.Tpo -c -o ubongo_analyze_miniy-ubongo-analyze-miniy.o `test -f 'ubongo-analyze-miniy.cpp' || echo '$(srcdir)/'`ubongo-analyze-miniy.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_miniy-ubongo-analyze-miniy.Tpo $(DEPDIR)/ubongo_analyze_miniy-ubongo-analyze-miniy.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-miniy.cpp' object='ubongo_analyze_miniy-ubongo-analyze-miniy.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_miniy_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_miniy-ubongo-analyze-miniy.o `test -f 'ubongo-analyze-miniy.cpp' || echo '$(srcdir)/'`ubongo-analyze-miniy.cpp
+
+ubongo_analyze_miniy-ubongo-analyze-miniy.obj: ubongo-analyze-miniy.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_miniy_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_miniy-ubongo-analyze-miniy.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_miniy-ubongo-analyze-miniy.Tpo -c -o ubongo_analyze_miniy-ubongo-analyze-miniy.obj `if test -f 'ubongo-analyze-miniy.cpp'; then $(CYGPATH_W) 'ubongo-analyze-miniy.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-miniy.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_miniy-ubongo-analyze-miniy.Tpo $(DEPDIR)/ubongo_analyze_miniy-ubongo-analyze-miniy.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-miniy.cpp' object='ubongo_analyze_miniy-ubongo-analyze-miniy.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_miniy_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_miniy-ubongo-analyze-miniy.obj `if test -f 'ubongo-analyze-miniy.cpp'; then $(CYGPATH_W) 'ubongo-analyze-miniy.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-miniy.cpp'; fi`
+
+ubongo_analyze_orig-ubongo-analyze-orig.o: ubongo-analyze-orig.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_orig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_orig-ubongo-analyze-orig.o -MD -MP -MF $(DEPDIR)/ubongo_analyze_orig-ubongo-analyze-orig.Tpo -c -o ubongo_analyze_orig-ubongo-analyze-orig.o `test -f 'ubongo-analyze-orig.cpp' || echo '$(srcdir)/'`ubongo-analyze-orig.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_orig-ubongo-analyze-orig.Tpo $(DEPDIR)/ubongo_analyze_orig-ubongo-analyze-orig.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-orig.cpp' object='ubongo_analyze_orig-ubongo-analyze-orig.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_orig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_orig-ubongo-analyze-orig.o `test -f 'ubongo-analyze-orig.cpp' || echo '$(srcdir)/'`ubongo-analyze-orig.cpp
+
+ubongo_analyze_orig-ubongo-analyze-orig.obj: ubongo-analyze-orig.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_orig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_analyze_orig-ubongo-analyze-orig.obj -MD -MP -MF $(DEPDIR)/ubongo_analyze_orig-ubongo-analyze-orig.Tpo -c -o ubongo_analyze_orig-ubongo-analyze-orig.obj `if test -f 'ubongo-analyze-orig.cpp'; then $(CYGPATH_W) 'ubongo-analyze-orig.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-orig.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_analyze_orig-ubongo-analyze-orig.Tpo $(DEPDIR)/ubongo_analyze_orig-ubongo-analyze-orig.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-analyze-orig.cpp' object='ubongo_analyze_orig-ubongo-analyze-orig.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_analyze_orig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_analyze_orig-ubongo-analyze-orig.obj `if test -f 'ubongo-analyze-orig.cpp'; then $(CYGPATH_W) 'ubongo-analyze-orig.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-analyze-orig.cpp'; fi`
+
+ubongo_solve_3d-ubongo-solve-3d.o: ubongo-solve-3d.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_3d_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_3d-ubongo-solve-3d.o -MD -MP -MF $(DEPDIR)/ubongo_solve_3d-ubongo-solve-3d.Tpo -c -o ubongo_solve_3d-ubongo-solve-3d.o `test -f 'ubongo-solve-3d.cpp' || echo '$(srcdir)/'`ubongo-solve-3d.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_3d-ubongo-solve-3d.Tpo $(DEPDIR)/ubongo_solve_3d-ubongo-solve-3d.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-3d.cpp' object='ubongo_solve_3d-ubongo-solve-3d.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_3d_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_3d-ubongo-solve-3d.o `test -f 'ubongo-solve-3d.cpp' || echo '$(srcdir)/'`ubongo-solve-3d.cpp
+
+ubongo_solve_3d-ubongo-solve-3d.obj: ubongo-solve-3d.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_3d_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_3d-ubongo-solve-3d.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_3d-ubongo-solve-3d.Tpo -c -o ubongo_solve_3d-ubongo-solve-3d.obj `if test -f 'ubongo-solve-3d.cpp'; then $(CYGPATH_W) 'ubongo-solve-3d.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-3d.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_3d-ubongo-solve-3d.Tpo $(DEPDIR)/ubongo_solve_3d-ubongo-solve-3d.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-3d.cpp' object='ubongo_solve_3d-ubongo-solve-3d.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_3d_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_3d-ubongo-solve-3d.obj `if test -f 'ubongo-solve-3d.cpp'; then $(CYGPATH_W) 'ubongo-solve-3d.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-3d.cpp'; fi`
 
 ubongo_solve_dir-ubongo-solve-dir.o: ubongo-solve-dir.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ubongo_solve_dir_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_dir-ubongo-solve-dir.o -MD -MP -MF $(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Tpo -c -o ubongo_solve_dir-ubongo-solve-dir.o `test -f 'ubongo-solve-dir.cpp' || echo '$(srcdir)/'`ubongo-solve-dir.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_dir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_dir-ubongo-solve-dir.o -MD -MP -MF $(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Tpo -c -o ubongo_solve_dir-ubongo-solve-dir.o `test -f 'ubongo-solve-dir.cpp' || echo '$(srcdir)/'`ubongo-solve-dir.cpp
 @am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Tpo $(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Po
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-dir.cpp' object='ubongo_solve_dir-ubongo-solve-dir.o' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ubongo_solve_dir_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_dir-ubongo-solve-dir.o `test -f 'ubongo-solve-dir.cpp' || echo '$(srcdir)/'`ubongo-solve-dir.cpp
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_dir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_dir-ubongo-solve-dir.o `test -f 'ubongo-solve-dir.cpp' || echo '$(srcdir)/'`ubongo-solve-dir.cpp
 
 ubongo_solve_dir-ubongo-solve-dir.obj: ubongo-solve-dir.cpp
-@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ubongo_solve_dir_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_dir-ubongo-solve-dir.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Tpo -c -o ubongo_solve_dir-ubongo-solve-dir.obj `if test -f 'ubongo-solve-dir.cpp'; then $(CYGPATH_W) 'ubongo-solve-dir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-dir.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_dir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_dir-ubongo-solve-dir.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Tpo -c -o ubongo_solve_dir-ubongo-solve-dir.obj `if test -f 'ubongo-solve-dir.cpp'; then $(CYGPATH_W) 'ubongo-solve-dir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-dir.cpp'; fi`
 @am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Tpo $(DEPDIR)/ubongo_solve_dir-ubongo-solve-dir.Po
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-dir.cpp' object='ubongo_solve_dir-ubongo-solve-dir.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(ubongo_solve_dir_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_dir-ubongo-solve-dir.obj `if test -f 'ubongo-solve-dir.cpp'; then $(CYGPATH_W) 'ubongo-solve-dir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-dir.cpp'; fi`
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_dir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_dir-ubongo-solve-dir.obj `if test -f 'ubongo-solve-dir.cpp'; then $(CYGPATH_W) 'ubongo-solve-dir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-dir.cpp'; fi`
+
+ubongo_solve_duel-ubongo-solve-duel.o: ubongo-solve-duel.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_duel_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_duel-ubongo-solve-duel.o -MD -MP -MF $(DEPDIR)/ubongo_solve_duel-ubongo-solve-duel.Tpo -c -o ubongo_solve_duel-ubongo-solve-duel.o `test -f 'ubongo-solve-duel.cpp' || echo '$(srcdir)/'`ubongo-solve-duel.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_duel-ubongo-solve-duel.Tpo $(DEPDIR)/ubongo_solve_duel-ubongo-solve-duel.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-duel.cpp' object='ubongo_solve_duel-ubongo-solve-duel.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_duel_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_duel-ubongo-solve-duel.o `test -f 'ubongo-solve-duel.cpp' || echo '$(srcdir)/'`ubongo-solve-duel.cpp
+
+ubongo_solve_duel-ubongo-solve-duel.obj: ubongo-solve-duel.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_duel_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_duel-ubongo-solve-duel.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_duel-ubongo-solve-duel.Tpo -c -o ubongo_solve_duel-ubongo-solve-duel.obj `if test -f 'ubongo-solve-duel.cpp'; then $(CYGPATH_W) 'ubongo-solve-duel.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-duel.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_duel-ubongo-solve-duel.Tpo $(DEPDIR)/ubongo_solve_duel-ubongo-solve-duel.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-duel.cpp' object='ubongo_solve_duel-ubongo-solve-duel.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_duel_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_duel-ubongo-solve-duel.obj `if test -f 'ubongo-solve-duel.cpp'; then $(CYGPATH_W) 'ubongo-solve-duel.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-duel.cpp'; fi`
+
+ubongo_solve_minib-ubongo-solve-minib.o: ubongo-solve-minib.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minib_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_minib-ubongo-solve-minib.o -MD -MP -MF $(DEPDIR)/ubongo_solve_minib-ubongo-solve-minib.Tpo -c -o ubongo_solve_minib-ubongo-solve-minib.o `test -f 'ubongo-solve-minib.cpp' || echo '$(srcdir)/'`ubongo-solve-minib.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_minib-ubongo-solve-minib.Tpo $(DEPDIR)/ubongo_solve_minib-ubongo-solve-minib.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-minib.cpp' object='ubongo_solve_minib-ubongo-solve-minib.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minib_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_minib-ubongo-solve-minib.o `test -f 'ubongo-solve-minib.cpp' || echo '$(srcdir)/'`ubongo-solve-minib.cpp
+
+ubongo_solve_minib-ubongo-solve-minib.obj: ubongo-solve-minib.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minib_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_minib-ubongo-solve-minib.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_minib-ubongo-solve-minib.Tpo -c -o ubongo_solve_minib-ubongo-solve-minib.obj `if test -f 'ubongo-solve-minib.cpp'; then $(CYGPATH_W) 'ubongo-solve-minib.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-minib.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_minib-ubongo-solve-minib.Tpo $(DEPDIR)/ubongo_solve_minib-ubongo-solve-minib.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-minib.cpp' object='ubongo_solve_minib-ubongo-solve-minib.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minib_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_minib-ubongo-solve-minib.obj `if test -f 'ubongo-solve-minib.cpp'; then $(CYGPATH_W) 'ubongo-solve-minib.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-minib.cpp'; fi`
+
+ubongo_solve_minig-ubongo-solve-minig.o: ubongo-solve-minig.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_minig-ubongo-solve-minig.o -MD -MP -MF $(DEPDIR)/ubongo_solve_minig-ubongo-solve-minig.Tpo -c -o ubongo_solve_minig-ubongo-solve-minig.o `test -f 'ubongo-solve-minig.cpp' || echo '$(srcdir)/'`ubongo-solve-minig.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_minig-ubongo-solve-minig.Tpo $(DEPDIR)/ubongo_solve_minig-ubongo-solve-minig.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-minig.cpp' object='ubongo_solve_minig-ubongo-solve-minig.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_minig-ubongo-solve-minig.o `test -f 'ubongo-solve-minig.cpp' || echo '$(srcdir)/'`ubongo-solve-minig.cpp
+
+ubongo_solve_minig-ubongo-solve-minig.obj: ubongo-solve-minig.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_minig-ubongo-solve-minig.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_minig-ubongo-solve-minig.Tpo -c -o ubongo_solve_minig-ubongo-solve-minig.obj `if test -f 'ubongo-solve-minig.cpp'; then $(CYGPATH_W) 'ubongo-solve-minig.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-minig.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_minig-ubongo-solve-minig.Tpo $(DEPDIR)/ubongo_solve_minig-ubongo-solve-minig.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-minig.cpp' object='ubongo_solve_minig-ubongo-solve-minig.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_minig-ubongo-solve-minig.obj `if test -f 'ubongo-solve-minig.cpp'; then $(CYGPATH_W) 'ubongo-solve-minig.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-minig.cpp'; fi`
+
+ubongo_solve_minir-ubongo-solve-minir.o: ubongo-solve-minir.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_minir-ubongo-solve-minir.o -MD -MP -MF $(DEPDIR)/ubongo_solve_minir-ubongo-solve-minir.Tpo -c -o ubongo_solve_minir-ubongo-solve-minir.o `test -f 'ubongo-solve-minir.cpp' || echo '$(srcdir)/'`ubongo-solve-minir.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_minir-ubongo-solve-minir.Tpo $(DEPDIR)/ubongo_solve_minir-ubongo-solve-minir.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-minir.cpp' object='ubongo_solve_minir-ubongo-solve-minir.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_minir-ubongo-solve-minir.o `test -f 'ubongo-solve-minir.cpp' || echo '$(srcdir)/'`ubongo-solve-minir.cpp
+
+ubongo_solve_minir-ubongo-solve-minir.obj: ubongo-solve-minir.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_minir-ubongo-solve-minir.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_minir-ubongo-solve-minir.Tpo -c -o ubongo_solve_minir-ubongo-solve-minir.obj `if test -f 'ubongo-solve-minir.cpp'; then $(CYGPATH_W) 'ubongo-solve-minir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-minir.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_minir-ubongo-solve-minir.Tpo $(DEPDIR)/ubongo_solve_minir-ubongo-solve-minir.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-minir.cpp' object='ubongo_solve_minir-ubongo-solve-minir.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_minir_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_minir-ubongo-solve-minir.obj `if test -f 'ubongo-solve-minir.cpp'; then $(CYGPATH_W) 'ubongo-solve-minir.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-minir.cpp'; fi`
+
+ubongo_solve_miniy-ubongo-solve-miniy.o: ubongo-solve-miniy.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_miniy_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_miniy-ubongo-solve-miniy.o -MD -MP -MF $(DEPDIR)/ubongo_solve_miniy-ubongo-solve-miniy.Tpo -c -o ubongo_solve_miniy-ubongo-solve-miniy.o `test -f 'ubongo-solve-miniy.cpp' || echo '$(srcdir)/'`ubongo-solve-miniy.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_miniy-ubongo-solve-miniy.Tpo $(DEPDIR)/ubongo_solve_miniy-ubongo-solve-miniy.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-miniy.cpp' object='ubongo_solve_miniy-ubongo-solve-miniy.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_miniy_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_miniy-ubongo-solve-miniy.o `test -f 'ubongo-solve-miniy.cpp' || echo '$(srcdir)/'`ubongo-solve-miniy.cpp
+
+ubongo_solve_miniy-ubongo-solve-miniy.obj: ubongo-solve-miniy.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_miniy_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_miniy-ubongo-solve-miniy.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_miniy-ubongo-solve-miniy.Tpo -c -o ubongo_solve_miniy-ubongo-solve-miniy.obj `if test -f 'ubongo-solve-miniy.cpp'; then $(CYGPATH_W) 'ubongo-solve-miniy.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-miniy.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_miniy-ubongo-solve-miniy.Tpo $(DEPDIR)/ubongo_solve_miniy-ubongo-solve-miniy.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-miniy.cpp' object='ubongo_solve_miniy-ubongo-solve-miniy.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_miniy_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_miniy-ubongo-solve-miniy.obj `if test -f 'ubongo-solve-miniy.cpp'; then $(CYGPATH_W) 'ubongo-solve-miniy.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-miniy.cpp'; fi`
+
+ubongo_solve_orig-ubongo-solve-orig.o: ubongo-solve-orig.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_orig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_orig-ubongo-solve-orig.o -MD -MP -MF $(DEPDIR)/ubongo_solve_orig-ubongo-solve-orig.Tpo -c -o ubongo_solve_orig-ubongo-solve-orig.o `test -f 'ubongo-solve-orig.cpp' || echo '$(srcdir)/'`ubongo-solve-orig.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_orig-ubongo-solve-orig.Tpo $(DEPDIR)/ubongo_solve_orig-ubongo-solve-orig.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-orig.cpp' object='ubongo_solve_orig-ubongo-solve-orig.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_orig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_orig-ubongo-solve-orig.o `test -f 'ubongo-solve-orig.cpp' || echo '$(srcdir)/'`ubongo-solve-orig.cpp
+
+ubongo_solve_orig-ubongo-solve-orig.obj: ubongo-solve-orig.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_orig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT ubongo_solve_orig-ubongo-solve-orig.obj -MD -MP -MF $(DEPDIR)/ubongo_solve_orig-ubongo-solve-orig.Tpo -c -o ubongo_solve_orig-ubongo-solve-orig.obj `if test -f 'ubongo-solve-orig.cpp'; then $(CYGPATH_W) 'ubongo-solve-orig.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-orig.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/ubongo_solve_orig-ubongo-solve-orig.Tpo $(DEPDIR)/ubongo_solve_orig-ubongo-solve-orig.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='ubongo-solve-orig.cpp' object='ubongo_solve_orig-ubongo-solve-orig.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(ubongo_solve_orig_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o ubongo_solve_orig-ubongo-solve-orig.obj `if test -f 'ubongo-solve-orig.cpp'; then $(CYGPATH_W) 'ubongo-solve-orig.cpp'; else $(CYGPATH_W) '$(srcdir)/ubongo-solve-orig.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
