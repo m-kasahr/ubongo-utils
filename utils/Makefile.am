@@ -32,70 +32,102 @@ GETOPT_LDADD = getopt.lo
 endif
 
 ubongo_solve_orig_SOURCES = ubongo-solve-orig.cpp
+ubongo_solve_orig_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_orig_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_solve_orig_LDFLAGS = -rpath $(libdir)
 
 ubongo_solve_duel_SOURCES = ubongo-solve-duel.cpp
+ubongo_solve_duel_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_duel_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_solve_duel_LDFLAGS = -rpath $(libdir)
 
 ubongo_solve_minib_SOURCES = ubongo-solve-minib.cpp
+ubongo_solve_minib_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_minib_LDADD = $(GETOPT_LDADD) \
                             $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_solve_minib_LDFLAGS = 
 
 ubongo_solve_minig_SOURCES = ubongo-solve-minig.cpp
+ubongo_solve_minig_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_minig_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_solve_minig_LDFLAGS = -rpath $(libdir)
 
 ubongo_solve_minir_SOURCES = ubongo-solve-minir.cpp
+ubongo_solve_minir_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_minir_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_solve_minir_LDFLAGS = -rpath $(libdir)
 
 ubongo_solve_miniy_SOURCES = ubongo-solve-miniy.cpp
+ubongo_solve_miniy_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_miniy_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_solve_miniy_LDFLAGS = -rpath $(libdir)
 
 ubongo_solve_dir_SOURCES = ubongo-solve-dir.cpp
-ubongo_solve_dir_CXXFLAGS = -DUBONGO_SOLVE_DIR
+ubongo_solve_dir_CPPFLAGS = -DUBONGO_SOLVE_DIR \
+                            -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_dir_LDADD = $(GETOPT_LDADD) \
                          $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_solve_dir_LDFLAGS = -rpath $(libdir)
 
 ubongo_solve_3d_SOURCES = ubongo-solve-3d.cpp
+ubongo_solve_3d_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_solve_3d_LDADD = $(GETOPT_LDADD) \
                         $(top_builddir)/lib/ubongo3d/libubongo3d.la
+ubongo_solve_3d_LDFLAGS = -rpath $(libdir)
 
 ubongo_analyze_orig_SOURCES = ubongo-analyze-orig.cpp
+ubongo_analyze_orig_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_orig_LDADD = $(GETOPT_LDADD) \
                             $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_analyze_orig_LDFLAGS = -rpath $(libdir)
 
 ubongo_analyze_duel_SOURCES = ubongo-analyze-duel.cpp
+ubongo_analyze_duel_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_duel_LDADD = $(GETOPT_LDADD) \
                             $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_analyze_duel_LDFLAGS = -rpath $(libdir)
 
 ubongo_analyze_minib_SOURCES = ubongo-analyze-minib.cpp
+ubongo_analyze_minib_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_minib_LDADD = $(GETOPT_LDADD) \
                              $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_analyze_minib_LDFLAGS = -rpath $(libdir)
 
 ubongo_analyze_minig_SOURCES = ubongo-analyze-minig.cpp
+ubongo_analyze_minig_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_minig_LDADD = $(GETOPT_LDADD) \
                              $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_analyze_minig_LDFLAGS = -rpath $(libdir)
 
 ubongo_analyze_minir_SOURCES = ubongo-analyze-minir.cpp
+ubongo_analyze_minir_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_minir_LDADD = $(GETOPT_LDADD) \
                              $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_analyze_minir_LDFLAGS = -rpath $(libdir)
 
 ubongo_analyze_miniy_SOURCES = ubongo-analyze-miniy.cpp
+ubongo_analyze_miniy_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_miniy_LDADD = $(GETOPT_LDADD) \
                              $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_analyze_miniy_LDFLAGS = -rpath $(libdir)
 
 ubongo_analyze_dir_SOURCES = ubongo-analyze-dir.cpp
-ubongo_analyze_dir_CXXFLAGS = -DUBONGO_ANALYZE_DIR
+ubongo_analyze_dir_CPPFLAGS = -DUBONGO_ANALYZE_DIR \
+                              -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_dir_LDADD = $(GETOPT_LDADD) \
                            $(top_builddir)/lib/ubongo/libubongo.la
+ubongo_analyze_dir_LDFLAGS = -rpath $(libdir)
 
 ubongo_analyze_3d_SOURCES = ubongo-analyze-3d.cpp
+ubongo_analyze_3d_CPPFLAGS = -I$(top_srcdir)/lib -I$(top_builddir)/lib
 ubongo_analyze_3d_LDADD = $(GETOPT_LDADD) \
                           $(top_builddir)/lib/ubongo3d/libubongo3d.la
+ubongo_analyze_3d_LDFLAGS = -rpath $(libdir)
 
 CLEANFILES = ubongo-solve-orig.cpp \
              ubongo-solve-duel.cpp \

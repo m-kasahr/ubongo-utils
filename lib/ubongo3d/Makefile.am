@@ -8,6 +8,7 @@ libubongo3d_la_SOURCES = analyzer.cpp \
                          pieceset.cpp \
                          puzzle.cpp \
                          solver.cpp
+libubongo3d_la_LDFLAGS = -version-info $(LIBUBONGO3D_VERSION_INFO)
 
 ubongo3dinclude_HEADERS = analyzer.h \
                           board.h \
@@ -24,4 +25,4 @@ CLEANFILES = pieceset_3d.h
 
 pieceset_3d.h: make-pieceset3d.rb
 	rm -f $@
-	$(RUBY) $(srcdir)/make-pieceset3d.rb Orig $(dataorig_srcdir) > $@
+	$(RUBY) $(srcdir)/make-pieceset3d.rb 3d $(top_srcdir)/data/3d > $@

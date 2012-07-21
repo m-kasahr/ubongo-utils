@@ -34,5 +34,5 @@ pkgdata3d_DATA = A.piece \
                  piece-O.png \
                  piece-P.png \
                  piece-order \
-                 ubongo-3d-blocks.svg  \
-                 piece-order
+                 ubongo-3d-blocks.svg 
+

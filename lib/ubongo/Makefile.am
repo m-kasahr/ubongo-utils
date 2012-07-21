@@ -9,6 +9,7 @@ libubongo_la_SOURCES = analyzer.cpp \
                        pieceset_dir.cpp \
                        puzzle.cpp \
                        solver.cpp
+libubongo_la_LDFLAGS = -version-info $(LIBUBONGO_VERSION_INFO)
 
 ubongoinclude_HEADERS = analyzer.h \
                         board.h \
@@ -35,24 +36,24 @@ CLEANFILES = pieceset_orig.h \
 
 pieceset_orig.h: make-pieceset.rb
 	rm -f $@
-	$(RUBY) make-pieceset.rb Orig $(dataorig_srcdir) > $@
+	$(RUBY) $(srcdir)/make-pieceset.rb Orig $(top_srcdir)/data/orig > $@
 
 pieceset_duel.h: make-pieceset.rb
 	rm -f $@
-	$(RUBY) $(srcdir)/make-pieceset.rb Duel $(dataduel_srcdir) > $@
+	$(RUBY) $(srcdir)/make-pieceset.rb Duel $(top_srcdir)/data/duel > $@
 
 pieceset_minib.h: make-pieceset.rb
 	rm -f $@
-	$(RUBY) $(srcdir)/make-pieceset.rb MiniB $(dataminib_srcdir) > $@
+	$(RUBY) $(srcdir)/make-pieceset.rb MiniB $(top_srcdir)/data/minib > $@
 
 pieceset_minig.h: make-pieceset.rb
 	rm -f $@
-	$(RUBY) $(srcdir)/make-pieceset.rb MiniG $(dataminig_srcdir) > $@
+	$(RUBY) $(srcdir)/make-pieceset.rb MiniG $(top_srcdir)/data/minig > $@
 
 pieceset_minir.h: make-pieceset.rb
 	rm -f $@
-	$(RUBY) $(srcdir)/make-pieceset.rb MiniR $(dataminir_srcdir) > $@
+	$(RUBY) $(srcdir)/make-pieceset.rb MiniR $(top_srcdir)/data/minir > $@
 
 pieceset_miniy.h: make-pieceset.rb
 	rm -f $@
-	$(RUBY) $(srcdir)/make-pieceset.rb MiniY $(dataminiy_srcdir) > $@
+	$(RUBY) $(srcdir)/make-pieceset.rb MiniY $(top_srcdir)/data/miniy > $@
