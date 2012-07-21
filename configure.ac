@@ -2,6 +2,7 @@ dnl *
 dnl * Basic definitions.
 dnl *
 AC_INIT([ubongo-utils], [1.0])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 -Wall])
 CXXFLAGS=${CXXFLAGS-"-g -O3"}
 LIBUBONGO_VERSION_INFO=1:0:0
 LIBUBONGO3D_VERSION_INFO=1:0:0
@@ -16,6 +17,7 @@ AC_LANG([C++])
 AC_PROG_CXX
 AC_PROG_MKDIR_P
 AC_PROG_INSTALL
+AM_PROG_AR
 AC_PROG_LIBTOOL
 AC_PATH_PROG([RUBY], [ruby], [/usr/bin/ruby])
 AC_PATH_PROG([CONVERT], [convert], [/usr/bin/convert])
@@ -40,18 +42,21 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM(
 }]], [[::getopt_long(0, 0, 0, 0, 0);]])],
     [ac_cv_func_getopt_long=yes], [ac_cv_func_getopt_long=no])
 AC_MSG_RESULT($ac_cv_func_getopt_long)
-if test $ac_cv_func_getopt_long = yes; then
-    getopt_OBJECTS=
-else
-    getopt_OBJECTS=getpot.lo
-fi
-AC_SUBST(getopt_OBJECTS)
+AM_CONDITIONAL([COND_GETOPT], [test "$ac_cv_func_getopt_long" = yes])
 
 dnl *
 dnl * Output files.
 dnl *
-AC_CONFIG_FILES([Makefile lib/ubongo/Makefile lib/ubongo3d/Makefile
-    utils/Makefile data/3d/Makefile data/duel/Makefile  data/minib/Makefile
-    data/minig/Makefile data/minir/Makefile data/miniy/Makefile
-    data/orig/Makefile doc/Makefile test/Makefile])
+AC_CONFIG_FILES([Makefile
+                 lib/ubongo/Makefile
+                 lib/ubongo3d/Makefile
+                 utils/Makefile
+                 data/3d/Makefile
+                 data/duel/Makefile
+                 data/minib/Makefile
+                 data/minig/Makefile
+                 data/minir/Makefile
+                 data/miniy/Makefile
+                 data/orig/Makefile
+                 doc/Makefile])
 AC_OUTPUT
