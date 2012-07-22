@@ -1,77 +1,50 @@
 #! /bin/sh
 
+SRCDIR="@srcdir@"
+TOP_BUILDDIR="@top_builddir@"
+
+PATH="$TOP_BUILDDIR/utils:$PATH"
+
 do_test() {
-    TEST_DIR="$1"
-    TEST_ID="$2"
-    TEST_SCRIPT="$TEST_ID.sh"
-    EXPECTED_FILE="$TEST_ID.exp"
-    OUTPUT_FILE="$TEST_ID.out"
+    TEST_ID="$1"
+    TEST_NAME="$2"
+    TEST_SCRIPT="$TEST_NAME.sh"
+    EXPECTED_FILE="$TEST_NAME.exp"
+    OUTPUT_FILE="$TEST_NAME.out"
 
-    (
- 	cd "$TEST_DIR"
-	if [ $? -ne 0 ]; then
-	    echo "$0: failed to change the directory to $TEST_DIR" 1>&2
-	    return 1
-	fi
-
-	if [ ! -x "$TEST_SCRIPT" ]; then
-	    echo "$0: no test script $TEST_SCRIPT" 1>&2
-	    return 1
-	fi
-	if [ ! -f "$EXPECTED_FILE" ]; then
-	    echo "$0: warning: no expected output file $EXPECTED_FILE" 1>&2
-	fi
-
-	rm -f "$OUTPUT_FILE"
-
-	case "@utils_builddir@" in
-	/*)
-	    env PATH="@utils_builddir@:$PATH" \
-		"./$TEST_SCRIPT" > "$OUTPUT_FILE"
-	    echo "; Exitcode: $?" >> "$OUTPUT_FILE"
-	    ;;
-	*)
-	    env PATH="../@utils_builddir@:$PATH" \
-		"./$TEST_SCRIPT" > "$OUTPUT_FILE"
-	    echo "; exitcode=$?" >> "$OUTPUT_FILE"
-	    ;;
-	esac
-
-	if cmp "$EXPECTED_FILE" "$OUTPUT_FILE" > /dev/null 2>&1; then
-	    echo "$TEST_DIR: $TEST_ID: pass"
-	    return 0
-	else
-	    echo "$TEST_DIR: $TEST_ID: fail"
-	    return 1
-	fi
-    )
-}
-
-do_test_set() {
-    TEST_SET_DIR="$1"
-
-    if [ ! -d "$TEST_SET_DIR" ]; then
-	echo "$0: no such directory $TEST_SET_DIR" 1>&2
+    if [ ! -x "$SRCDIR/$TEST_SCRIPT" ]; then
+	echo "$0: not ok $TEST_ID - $TEST_NAME # file not found: $TEST_SCRIPT"
 	return 1
     fi
 
-    ls -1 "$TEST_SET_DIR" | while read FILE; do
-	case "$FILE" in
-	*.sh)
-	    do_test "$TEST_SET_DIR" "`basename $FILE .sh`"
-	    ;;
-	esac
+    rm -f "$OUTPUT_FILE"
+
+    $SRCDIR/$TEST_SCRIPT > "$OUTPUT_FILE"
+    echo "; exitcode=$?" >> "$OUTPUT_FILE"
+
+    if [ ! -f "$EXPECTED_FILE" ]; then
+	echo "not ok $TEST_ID - $TEST_NAME # file not found: $EXPECTED_FILE"
+    elif cmp "$EXPECTED_FILE" "$OUTPUT_FILE" > /dev/null 2>&1; then
+	echo "ok $TEST_ID - $TEST_NAME"
+	return 0
+    else
+	echo "not ok $TEST_ID - $TEST_NAME"
+	return 1
+    fi
+}
+
+do_test_all() {
+    I=0
+    for J in $SRCDIR/*.exp; do
+	I=`expr $I + 1`
+    done
+    echo "1..$I"
+
+    I=0
+    for J in $SRCDIR/*.exp; do
+	I=`expr $I + 1`
+	do_test $I "`basename $J .exp`"
     done
 }
 
-do_test_set_all() {
-    ls -1 . | while read DIR; do
-	[ "X$DIR" = "X." -o "X$DIR" = "X.." ] && continue
-	if [ -d "$DIR" -a -f "$DIR/board01" ]; then
-	    echo "===> Tests in $DIR <==="
-	    do_test_set "$DIR"
-	fi
-    done
-}
-
-do_test_set_all
+do_test_all
