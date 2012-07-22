@@ -2,7 +2,7 @@ dnl *
 dnl * Basic definitions.
 dnl *
 AC_INIT([ubongo-utils], [1.0])
-AM_INIT_AUTOMAKE([foreign dist-bzip2 -Wall])
+AM_INIT_AUTOMAKE([foreign dist-bzip2 parallel-tests -Wall])
 CXXFLAGS=${CXXFLAGS-"-g -O3"}
 LIBUBONGO_VERSION_INFO=2:0:1
 LIBUBONGO3D_VERSION_INFO=2:0:1
@@ -58,5 +58,13 @@ AC_CONFIG_FILES([Makefile
                  data/minir/Makefile
                  data/miniy/Makefile
                  data/orig/Makefile
-                 doc/Makefile])
+                 doc/Makefile
+                 test/Makefile
+                 test/orig/Makefile
+                 test/duel/Makefile
+                 test/minib/Makefile
+                 test/minig/Makefile
+                 test/minir/Makefile
+                 test/miniy/Makefile
+                 test/3d/Makefile])
 AC_OUTPUT

@@ -10,7 +10,8 @@ SUBDIRS = lib/ubongo \
           data/minir \
           data/miniy \
           data/3d \
-          doc
+          doc \
+          test
 
 EXTRA_DIST = INSTALL.md \
              LICENSE.md \
