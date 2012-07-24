@@ -95,8 +95,10 @@ am__installdirs = "$(DESTDIR)$(libdir)" \
 	"$(DESTDIR)$(ubongoincludedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libubongo_la_LIBADD =
-am_libubongo_la_OBJECTS = analyzer.lo board.lo piece.lo pieceset.lo \
-	pieceset_dir.lo puzzle.lo solver.lo
+am_libubongo_la_OBJECTS = libubongo_la-analyzer.lo \
+	libubongo_la-board.lo libubongo_la-piece.lo \
+	libubongo_la-pieceset.lo libubongo_la-pieceset_dir.lo \
+	libubongo_la-puzzle.lo libubongo_la-solver.lo
 libubongo_la_OBJECTS = $(am_libubongo_la_OBJECTS)
 libubongo_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -259,6 +261,7 @@ libubongo_la_SOURCES = analyzer.cpp \
                        puzzle.cpp \
                        solver.cpp
 
+libubongo_la_CPPFLAGS = -I.. -I$(srcdir)/..
 libubongo_la_LDFLAGS = -version-info $(LIBUBONGO_VERSION_INFO)
 ubongoinclude_HEADERS = analyzer.h \
                         board.h \
@@ -359,13 +362,13 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/analyzer.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/board.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/piece.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pieceset.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pieceset_dir.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/puzzle.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/solver.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libubongo_la-analyzer.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libubongo_la-board.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libubongo_la-piece.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libubongo_la-pieceset.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libubongo_la-pieceset_dir.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libubongo_la-puzzle.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libubongo_la-solver.Plo@am__quote@
 
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -387,6 +390,55 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
+
+libubongo_la-analyzer.lo: analyzer.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libubongo_la-analyzer.lo -MD -MP -MF $(DEPDIR)/libubongo_la-analyzer.Tpo -c -o libubongo_la-analyzer.lo `test -f 'analyzer.cpp' || echo '$(srcdir)/'`analyzer.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libubongo_la-analyzer.Tpo $(DEPDIR)/libubongo_la-analyzer.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='analyzer.cpp' object='libubongo_la-analyzer.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libubongo_la-analyzer.lo `test -f 'analyzer.cpp' || echo '$(srcdir)/'`analyzer.cpp
+
+libubongo_la-board.lo: board.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libubongo_la-board.lo -MD -MP -MF $(DEPDIR)/libubongo_la-board.Tpo -c -o libubongo_la-board.lo `test -f 'board.cpp' || echo '$(srcdir)/'`board.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libubongo_la-board.Tpo $(DEPDIR)/libubongo_la-board.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='board.cpp' object='libubongo_la-board.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libubongo_la-board.lo `test -f 'board.cpp' || echo '$(srcdir)/'`board.cpp
+
+libubongo_la-piece.lo: piece.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libubongo_la-piece.lo -MD -MP -MF $(DEPDIR)/libubongo_la-piece.Tpo -c -o libubongo_la-piece.lo `test -f 'piece.cpp' || echo '$(srcdir)/'`piece.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libubongo_la-piece.Tpo $(DEPDIR)/libubongo_la-piece.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='piece.cpp' object='libubongo_la-piece.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libubongo_la-piece.lo `test -f 'piece.cpp' || echo '$(srcdir)/'`piece.cpp
+
+libubongo_la-pieceset.lo: pieceset.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libubongo_la-pieceset.lo -MD -MP -MF $(DEPDIR)/libubongo_la-pieceset.Tpo -c -o libubongo_la-pieceset.lo `test -f 'pieceset.cpp' || echo '$(srcdir)/'`pieceset.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libubongo_la-pieceset.Tpo $(DEPDIR)/libubongo_la-pieceset.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='pieceset.cpp' object='libubongo_la-pieceset.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libubongo_la-pieceset.lo `test -f 'pieceset.cpp' || echo '$(srcdir)/'`pieceset.cpp
+
+libubongo_la-pieceset_dir.lo: pieceset_dir.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libubongo_la-pieceset_dir.lo -MD -MP -MF $(DEPDIR)/libubongo_la-pieceset_dir.Tpo -c -o libubongo_la-pieceset_dir.lo `test -f 'pieceset_dir.cpp' || echo '$(srcdir)/'`pieceset_dir.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libubongo_la-pieceset_dir.Tpo $(DEPDIR)/libubongo_la-pieceset_dir.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='pieceset_dir.cpp' object='libubongo_la-pieceset_dir.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libubongo_la-pieceset_dir.lo `test -f 'pieceset_dir.cpp' || echo '$(srcdir)/'`pieceset_dir.cpp
+
+libubongo_la-puzzle.lo: puzzle.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libubongo_la-puzzle.lo -MD -MP -MF $(DEPDIR)/libubongo_la-puzzle.Tpo -c -o libubongo_la-puzzle.lo `test -f 'puzzle.cpp' || echo '$(srcdir)/'`puzzle.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libubongo_la-puzzle.Tpo $(DEPDIR)/libubongo_la-puzzle.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='puzzle.cpp' object='libubongo_la-puzzle.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libubongo_la-puzzle.lo `test -f 'puzzle.cpp' || echo '$(srcdir)/'`puzzle.cpp
+
+libubongo_la-solver.lo: solver.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT libubongo_la-solver.lo -MD -MP -MF $(DEPDIR)/libubongo_la-solver.Tpo -c -o libubongo_la-solver.lo `test -f 'solver.cpp' || echo '$(srcdir)/'`solver.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libubongo_la-solver.Tpo $(DEPDIR)/libubongo_la-solver.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='solver.cpp' object='libubongo_la-solver.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libubongo_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o libubongo_la-solver.lo `test -f 'solver.cpp' || echo '$(srcdir)/'`solver.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
