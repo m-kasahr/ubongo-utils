@@ -93,11 +93,11 @@ pkgdoc_DATA = ubongo-utils.md \
               solution1.txt
 
 EXTRA_DIST = ubongo-utils.html.header \
-             ubongo-utils.html.footer
+             ubongo-utils.html.footer \
+             $(pkgdoc_DATA)
 
-$(srcdir)/ubongo-utils.html: ubongo-utils.html.header \
-                             ubongo-utils.html.footer \
-                             ubongo-utils.md
+ubongo-utils.html: ubongo-utils.html.header \
+                   ubongo-utils.html.footer ubongo-utils.md
 	rm -f $@
 	cat $(srcdir)/ubongo-utils.html.header >> $@
 	$(MARKDOWN) $(srcdir)/ubongo-utils.md >> $@
