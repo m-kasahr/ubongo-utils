@@ -20,7 +20,7 @@ ubongo3dinclude_HEADERS = analyzer.h \
                           puzzle.h \
                           solver.h
 
-EXTRA_DIST = make-pieceset-3d.rb
+EXTRA_DIST = make-pieceset3d.rb
 
 CLEANFILES = pieceset_3d.h
 
