@@ -9,6 +9,7 @@ libubongo_la_SOURCES = analyzer.cpp \
                        pieceset_dir.cpp \
                        puzzle.cpp \
                        solver.cpp
+libubongo_la_CPPFLAGS = -I.. -I$(srcdir)/..
 libubongo_la_LDFLAGS = -version-info $(LIBUBONGO_VERSION_INFO)
 
 ubongoinclude_HEADERS = analyzer.h \

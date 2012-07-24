@@ -8,6 +8,7 @@ libubongo3d_la_SOURCES = analyzer.cpp \
                          pieceset.cpp \
                          puzzle.cpp \
                          solver.cpp
+libubongo3d_la_CPPFLAGS = -I.. -I$(srcdir)/..
 libubongo3d_la_LDFLAGS = -version-info $(LIBUBONGO3D_VERSION_INFO)
 
 ubongo3dinclude_HEADERS = analyzer.h \
