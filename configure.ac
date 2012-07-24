@@ -1,7 +1,7 @@
 dnl *
 dnl * Basic definitions.
 dnl *
-AC_INIT([ubongo-utils], [1.0])
+AC_INIT([ubongo-utils], [1.1])
 AM_INIT_AUTOMAKE([foreign dist-bzip2 parallel-tests -Wall])
 CXXFLAGS=${CXXFLAGS-"-g -O3"}
 LIBUBONGO_VERSION_INFO=2:0:1
