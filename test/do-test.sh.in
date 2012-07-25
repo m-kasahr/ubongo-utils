@@ -18,6 +18,7 @@ echo "; exitcode=$?" >> "$OUTPUT_FILE"
 
 if [ ! -f "$EXPECTED_FILE" ]; then
     echo "not ok 1 - $TEST_NAME # file not found: $EXPECTED_FILE"
+    EXITCODE=1
 elif cmp "$EXPECTED_FILE" "$OUTPUT_FILE" > /dev/null 2>&1; then
     echo "ok 1 - $TEST_NAME"
     EXITCODE=0
