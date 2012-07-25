@@ -1,9 +1,10 @@
 #! /bin/sh
 
-PROBLEM_FILE=problems.tmp
+PROBLEM_FILE=problems.$$
 
-trap "rm -f $PROBLEM_FILE; exit 1" 1 2 3 15
-cat > $PROBLEM_FILE <<__END__
+do_setup() {
+    trap "rm -f $PROBLEM_FILE; exit 1" 1 2 3 15
+    cat > $PROBLEM_FILE <<__END__
 * A B C I J
 * A B C I K
 * A B C I L
@@ -101,9 +102,14 @@ cat > $PROBLEM_FILE <<__END__
 * B C E F H
 * B C E G H
 __END__
+}
 
-ubongo-solve-orig -f $PROBLEM_FILE board05
-EXITCODE=$?
+do_test() {
+    ubongo-solve-orig -f $PROBLEM_FILE board05
+}
 
-rm -f $PROBLEM_FILE
-exit $EXITCODE
+do_teardown() {
+    rm -f $PROBLEM_FILE
+}
+
+. ./do-test.sh

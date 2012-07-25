@@ -2,7 +2,8 @@ noinst_SCRIPTS = do-test.sh
 
 TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) $(srcdir)/../tap-driver.sh
 
-TESTS = do-test.sh
+TESTS = board01-solve-01.sh \
+        board02-solve-01.sh
 
 EXTRA_DIST = board01 \
              board01-solve-01.exp \

@@ -2,49 +2,29 @@
 
 SRCDIR="@srcdir@"
 TOP_BUILDDIR="@top_builddir@"
-
 PATH="$TOP_BUILDDIR/utils:$PATH"
 
-do_test() {
-    TEST_ID="$1"
-    TEST_NAME="$2"
-    TEST_SCRIPT="$TEST_NAME.sh"
-    EXPECTED_FILE="$TEST_NAME.exp"
-    OUTPUT_FILE="$TEST_NAME.out"
+TEST_NAME="`basename $0 .sh`"
+TEST_SCRIPT="$TEST_NAME.sh"
+EXPECTED_FILE="$TEST_NAME.exp"
+OUTPUT_FILE="$TEST_NAME.out"
 
-    if [ ! -x "$SRCDIR/$TEST_SCRIPT" ]; then
-	echo "$0: not ok $TEST_ID - $TEST_NAME # file not found: $TEST_SCRIPT"
-	return 1
-    fi
+rm -f "$OUTPUT_FILE"
+echo "1..1"
+do_setup
 
-    rm -f "$OUTPUT_FILE"
+do_test > "$OUTPUT_FILE" 2>&1
+echo "; exitcode=$?" >> "$OUTPUT_FILE"
 
-    $SRCDIR/$TEST_SCRIPT > "$OUTPUT_FILE"
-    echo "; exitcode=$?" >> "$OUTPUT_FILE"
+if [ ! -f "$EXPECTED_FILE" ]; then
+    echo "not ok 1 - $TEST_NAME # file not found: $EXPECTED_FILE"
+elif cmp "$EXPECTED_FILE" "$OUTPUT_FILE" > /dev/null 2>&1; then
+    echo "ok 1 - $TEST_NAME"
+    EXITCODE=0
+else
+    echo "not ok 1 - $TEST_NAME"
+    EXITCODE=1
+fi
 
-    if [ ! -f "$EXPECTED_FILE" ]; then
-	echo "not ok $TEST_ID - $TEST_NAME # file not found: $EXPECTED_FILE"
-    elif cmp "$EXPECTED_FILE" "$OUTPUT_FILE" > /dev/null 2>&1; then
-	echo "ok $TEST_ID - $TEST_NAME"
-	return 0
-    else
-	echo "not ok $TEST_ID - $TEST_NAME"
-	return 1
-    fi
-}
-
-do_test_all() {
-    I=0
-    for J in $SRCDIR/*.exp; do
-	I=`expr $I + 1`
-    done
-    echo "1..$I"
-
-    I=0
-    for J in $SRCDIR/*.exp; do
-	I=`expr $I + 1`
-	do_test $I "`basename $J .exp`"
-    done
-}
-
-do_test_all
+do_teardown
+exit $EXITCODE
