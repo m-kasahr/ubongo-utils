@@ -383,13 +383,19 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 noinst_SCRIPTS = do-test.sh
 TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) $(srcdir)/../tap-driver.sh
-TESTS = board01-solve-01.sh \
+TESTS = board01-analyze-01.sh \
+        board01-solve-01.sh \
+        board02-analyze-01.sh \
         board02-solve-01.sh
 
 EXTRA_DIST = board01 \
+             board01-analyze-01.exp \
+             board01-analyze-01.sh \
              board01-solve-01.exp \
              board01-solve-01.sh \
              board02 \
+             board02-analyze-01.exp \
+             board02-analyze-01.sh \
              board02-solve-01.exp \
              board02-solve-01.sh
 
@@ -583,9 +589,23 @@ recheck: all
 	        am__force_recheck=am--force-recheck \
 	        TEST_LOGS="$$log_list"; \
 	exit $$?
+board01-analyze-01.sh.log: board01-analyze-01.sh
+	@p='board01-analyze-01.sh'; \
+	b='board01-analyze-01.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 board01-solve-01.sh.log: board01-solve-01.sh
 	@p='board01-solve-01.sh'; \
 	b='board01-solve-01.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board02-analyze-01.sh.log: board02-analyze-01.sh
+	@p='board02-analyze-01.sh'; \
+	b='board02-analyze-01.sh'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

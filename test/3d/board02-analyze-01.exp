@@ -1,0 +1,19 @@
+.#
+##
+##
+==
+.#
+##
+##
+; squares=10
+
+* A I ; solutions=1
+* A M ; solutions=1
+* B I ; solutions=1
+* D I ; solutions=2
+* F I ; solutions=1
+* G I ; solutions=2
+* I K ; solutions=1
+* I M ; solutions=1
+; puzzles=8
+; exitcode=0
