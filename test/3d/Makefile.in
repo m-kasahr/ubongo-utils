@@ -386,7 +386,18 @@ TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) $(srcdir)/../tap-driver.sh
 TESTS = board01-analyze-01.sh \
         board01-solve-01.sh \
         board02-analyze-01.sh \
-        board02-solve-01.sh
+        board02-solve-01.sh \
+        board03-analyze-01.sh \
+        board03-analyze-02.sh \
+        board03-analyze-03.sh \
+        board03-analyze-04.sh \
+        board03-analyze-05.sh \
+        board03-analyze-06.sh \
+        board03-analyze-07.sh \
+        board03-analyze-08.sh \
+        board03-solve-01.sh \
+        board03-solve-02.sh \
+        board03-solve-03.sh
 
 EXTRA_DIST = board01 \
              board01-analyze-01.exp \
@@ -397,7 +408,30 @@ EXTRA_DIST = board01 \
              board02-analyze-01.exp \
              board02-analyze-01.sh \
              board02-solve-01.exp \
-             board02-solve-01.sh
+             board02-solve-01.sh \
+             board03 \
+             board03-analyze-01.exp \
+             board03-analyze-01.sh \
+             board03-analyze-02.exp \
+             board03-analyze-02.sh \
+             board03-analyze-03.exp \
+             board03-analyze-03.sh \
+             board03-analyze-04.exp \
+             board03-analyze-04.sh \
+             board03-analyze-05.exp \
+             board03-analyze-05.sh \
+             board03-analyze-06.exp \
+             board03-analyze-06.sh \
+             board03-analyze-07.exp \
+             board03-analyze-07.sh \
+             board03-analyze-08.exp \
+             board03-analyze-08.sh \
+             board03-solve-01.exp \
+             board03-solve-01.sh \
+             board03-solve-02.exp \
+             board03-solve-02.sh \
+             board03-solve-03.exp \
+             board03-solve-03.sh
 
 all: all-am
 
@@ -613,6 +647,83 @@ board02-analyze-01.sh.log: board02-analyze-01.sh
 board02-solve-01.sh.log: board02-solve-01.sh
 	@p='board02-solve-01.sh'; \
 	b='board02-solve-01.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-analyze-01.sh.log: board03-analyze-01.sh
+	@p='board03-analyze-01.sh'; \
+	b='board03-analyze-01.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-analyze-02.sh.log: board03-analyze-02.sh
+	@p='board03-analyze-02.sh'; \
+	b='board03-analyze-02.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-analyze-03.sh.log: board03-analyze-03.sh
+	@p='board03-analyze-03.sh'; \
+	b='board03-analyze-03.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-analyze-04.sh.log: board03-analyze-04.sh
+	@p='board03-analyze-04.sh'; \
+	b='board03-analyze-04.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-analyze-05.sh.log: board03-analyze-05.sh
+	@p='board03-analyze-05.sh'; \
+	b='board03-analyze-05.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-analyze-06.sh.log: board03-analyze-06.sh
+	@p='board03-analyze-06.sh'; \
+	b='board03-analyze-06.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-analyze-07.sh.log: board03-analyze-07.sh
+	@p='board03-analyze-07.sh'; \
+	b='board03-analyze-07.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-analyze-08.sh.log: board03-analyze-08.sh
+	@p='board03-analyze-08.sh'; \
+	b='board03-analyze-08.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-solve-01.sh.log: board03-solve-01.sh
+	@p='board03-solve-01.sh'; \
+	b='board03-solve-01.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-solve-02.sh.log: board03-solve-02.sh
+	@p='board03-solve-02.sh'; \
+	b='board03-solve-02.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+board03-solve-03.sh.log: board03-solve-03.sh
+	@p='board03-solve-03.sh'; \
+	b='board03-solve-03.sh'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
