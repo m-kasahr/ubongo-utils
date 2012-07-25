@@ -1,0 +1,74 @@
+#####
+##.##
+.#...
+=====
+#####
+##.##
+.#...
+; squares=20
+
+* A B I M ; solutions=2
+IIAAA
+II.AM
+.B...
+=====
+BBMMA
+IB.MM
+.B...
+
+* A F I M ; solutions=2
+IIAAA
+II.AM
+.F...
+=====
+FIMMA
+FF.MM
+.F...
+
+* A I K M ; solutions=2
+KKAAA
+IK.AM
+.K...
+=====
+IIMMA
+II.MM
+.K...
+
+* E F G I ; solutions=1
+GGGII
+GG.EI
+.F...
+=====
+FEEEI
+FF.EI
+.F...
+
+* E G I M ; solutions=1
+MEEEI
+MM.II
+.M...
+=====
+GGGEI
+GG.EI
+.M...
+
+* F G I N ; solutions=1
+GGGNI
+GG.NI
+.F...
+=====
+FNNNI
+FF.II
+.F...
+
+* G I M N ; solutions=1
+MNNNI
+MM.NI
+.M...
+=====
+GGGII
+GG.NI
+.M...
+
+; puzzles=7
+; exitcode=0

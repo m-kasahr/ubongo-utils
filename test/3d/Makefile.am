@@ -5,7 +5,18 @@ TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) $(srcdir)/../tap-driver.sh
 TESTS = board01-analyze-01.sh \
         board01-solve-01.sh \
         board02-analyze-01.sh \
-        board02-solve-01.sh
+        board02-solve-01.sh \
+        board03-analyze-01.sh \
+        board03-analyze-02.sh \
+        board03-analyze-03.sh \
+        board03-analyze-04.sh \
+        board03-analyze-05.sh \
+        board03-analyze-06.sh \
+        board03-analyze-07.sh \
+        board03-analyze-08.sh \
+        board03-solve-01.sh \
+        board03-solve-02.sh \
+        board03-solve-03.sh
 
 EXTRA_DIST = board01 \
              board01-analyze-01.exp \
@@ -16,7 +27,30 @@ EXTRA_DIST = board01 \
              board02-analyze-01.exp \
              board02-analyze-01.sh \
              board02-solve-01.exp \
-             board02-solve-01.sh
+             board02-solve-01.sh \
+             board03 \
+             board03-analyze-01.exp \
+             board03-analyze-01.sh \
+             board03-analyze-02.exp \
+             board03-analyze-02.sh \
+             board03-analyze-03.exp \
+             board03-analyze-03.sh \
+             board03-analyze-04.exp \
+             board03-analyze-04.sh \
+             board03-analyze-05.exp \
+             board03-analyze-05.sh \
+             board03-analyze-06.exp \
+             board03-analyze-06.sh \
+             board03-analyze-07.exp \
+             board03-analyze-07.sh \
+             board03-analyze-08.exp \
+             board03-analyze-08.sh \
+             board03-solve-01.exp \
+             board03-solve-01.sh \
+             board03-solve-02.exp \
+             board03-solve-02.sh \
+             board03-solve-03.exp \
+             board03-solve-03.sh
 
 clean-local:
 	rm -f do-test.sh

@@ -1,0 +1,82 @@
+* A B I M
+IIAAA
+II.AM
+.B...
+=====
+BBMMA
+IB.MM
+.B...
+
+* A D I M
+IDAAA
+II.AM
+.D...
+=====
+IDMMA
+ID.MM
+.D...
+
+* A F I M
+IIAAA
+II.AM
+.F...
+=====
+FIMMA
+FF.MM
+.F...
+
+* A G I M
+IGAAA
+IG.AM
+.G...
+=====
+IIMMA
+IG.MM
+.G...
+
+* A I K M
+KKAAA
+IK.AM
+.K...
+=====
+IIMMA
+II.MM
+.K...
+
+* E F G I
+GGGII
+GG.EI
+.F...
+=====
+FEEEI
+FF.EI
+.F...
+
+* E G I M
+MEEEI
+MM.II
+.M...
+=====
+GGGEI
+GG.EI
+.M...
+
+* F G I N
+GGGNI
+GG.NI
+.F...
+=====
+FNNNI
+FF.II
+.F...
+
+* G I M N
+MNNNI
+MM.NI
+.M...
+=====
+GGGII
+GG.NI
+.M...
+
+; exitcode=0

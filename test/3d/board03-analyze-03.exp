@@ -1,0 +1,18 @@
+#####
+##.##
+.#...
+=====
+#####
+##.##
+.#...
+; squares=20
+
+* A B I M ; solutions=2
+* A F I M ; solutions=2
+* A I K M ; solutions=2
+* E F G I ; solutions=1
+* E G I M ; solutions=1
+* F G I N ; solutions=1
+* G I M N ; solutions=1
+; puzzles=7
+; exitcode=0
