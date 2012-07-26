@@ -1,2 +1,4 @@
 do-test.sh
 *.out
+*.trs
+*.log
