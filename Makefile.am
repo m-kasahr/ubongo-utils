@@ -10,6 +10,7 @@ SUBDIRS = lib/ubongo \
           data/minir \
           data/miniy \
           data/3d \
+          data/pentomino \
           doc \
           test
 

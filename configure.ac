@@ -58,6 +58,7 @@ AC_CONFIG_FILES([Makefile
                  data/minir/Makefile
                  data/miniy/Makefile
                  data/orig/Makefile
+                 data/pentomino/Makefile
                  doc/Makefile
                  test/Makefile
                  test/orig/Makefile
