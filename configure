@@ -15292,7 +15292,7 @@ else
 fi
 
 
-ac_config_files="$ac_config_files Makefile lib/ubongo/Makefile lib/ubongo3d/Makefile utils/Makefile data/3d/Makefile data/duel/Makefile data/minib/Makefile data/minig/Makefile data/minir/Makefile data/miniy/Makefile data/orig/Makefile doc/Makefile test/Makefile test/orig/Makefile test/duel/Makefile test/minib/Makefile test/minig/Makefile test/minir/Makefile test/miniy/Makefile test/3d/Makefile"
+ac_config_files="$ac_config_files Makefile lib/ubongo/Makefile lib/ubongo3d/Makefile utils/Makefile data/3d/Makefile data/duel/Makefile data/minib/Makefile data/minig/Makefile data/minir/Makefile data/miniy/Makefile data/orig/Makefile data/pentomino/Makefile doc/Makefile test/Makefile test/orig/Makefile test/duel/Makefile test/minib/Makefile test/minig/Makefile test/minir/Makefile test/miniy/Makefile test/3d/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -16431,6 +16431,7 @@ do
     "data/minir/Makefile") CONFIG_FILES="$CONFIG_FILES data/minir/Makefile" ;;
     "data/miniy/Makefile") CONFIG_FILES="$CONFIG_FILES data/miniy/Makefile" ;;
     "data/orig/Makefile") CONFIG_FILES="$CONFIG_FILES data/orig/Makefile" ;;
+    "data/pentomino/Makefile") CONFIG_FILES="$CONFIG_FILES data/pentomino/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "test/orig/Makefile") CONFIG_FILES="$CONFIG_FILES test/orig/Makefile" ;;
