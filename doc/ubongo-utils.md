@@ -1,4 +1,4 @@
-ubongo-utils
+Introduction
 ============
 ubongo-utils is a set of utilities for Ubongo, Ubongo Mini, Ubongo Duel
 and Ubongo 3-D puzzle games designed by Grzegorz Rejchtman.
@@ -12,12 +12,12 @@ ubongo-utils currently provides the following programs:
 * Analyzer
 * HTML converter
 
-In the next three sections, I explain how to use those utility programs.
+and some auxiliary utilities.
 
 
 Solver
-------
-The 'Solver' utility solves a puzzle.  ubongo-utils provides a solver
+======
+THE 'Solver' utility solves a puzzle.  ubongo-utils provides a solver
 command for each Ubongo variant.
 
 * `ubongo-solve-orig`   (for Ubongo)
@@ -228,7 +228,7 @@ puzzle has no solution.
 
 
 Analyzer
---------
+========
 The 'Analyzer' utility is similar to 'Solver', but it assists you in
 creating puzzles.  Specifying a board file and how many pieces are
 placed on it, 'Analyzer' outputs all solvable combinations of pieces.
@@ -335,7 +335,7 @@ it has reported no solvable combinations of pieces.
 
 
 HTML Converter
---------------
+==============
 'HTML converter' converts a text file to an HTML file and PNG image
 files.  The text file may contains one of the following data:
 
@@ -488,3 +488,75 @@ The default value is "_GAME TITLE_ Problems" if '--problem' option
 is specifed, or "_GAME TITLE_ Solutions" otherwise.
 _GAME TITLE_ here is "Ubongo", "Ubongo Duel", "Ubongo Mini" or
 "Ubongo 3-D".
+
+
+Auxiliary utilities
+===================
+'ubonbo-utils' provides some auxiliary utilities.  This chapter
+explains them.
+
+Generic solver
+--------------
+Since 'Solver' programs described in the 'Solver' chapter is
+specialized in solving a particular Ubongo variant, it cannot solve
+other 'Filling squares' puzzle.  'ubongo-solve-duel' can solve
+Ubongo Duel puzzles, but it cannot solve other puzzles.
+
+'ubongo-utils' also provides 'Generic Solver' utility named
+'ubongo-solve-dir'.  It can solve and analyze generic 'Filling squares'
+puzzles.
+
+The most famous 'Filling squares' puzzle is 'Pentomino'.  The generic
+solver can solve 'Pentomino' puzzles, of course.
+
+The common form of the 'ubongo-solve-dir' commands is the same as
+other 'Solver':
+
+    ubongo-solve-dir [option...] BOARD-FILE PIECE...
+
+or
+
+    ubongo-solve-dir [option...] -f PROBLEM-FILE BOARD-FILE
+
+In addition, 'ubongo-solve-dir' recognizes '--pieceset-directory'
+('-p' for short) option:
+
+* -p DIR, --pieceset-directory=DIR
+
+Read data about a set of pieces used in the puzzle from DIRECTORY.
+If DIR is not an absolute path, 'ubongo-solve-dir' assumes it is 
+relative to '/usr/local/share/ubongo-utils' (if 'ubongo-utils' has
+been installed under '/usr/local').  The default value of DIRECTORY
+is '.' (the current directory).
+
+'ubongo-duel' installs the following piece-set data under 
+'/usr/local/share/ubongo-utils'.
+
+* orig (Ubongo)
+* duel (Ubongo Duel)
+* minib (Ubongo Mini - blue tiles)
+* minig (Ubongo Mini - green tiles)
+* minir (Ubongo Mini - red tiles)
+* miniy (Ubongo Mini - yellow tiles)
+* pentomino (Pentomino)
+
+Note that piece-set data for Ubongo 3-D also exists but it cannot be
+used by 'ubongo-solve-dir'.  'ubongo-solve-dir' can solve 2-D puzzles
+only.
+
+For example,
+
+    $ ubongo-solve-dir -p duel board1.txt C L R
+
+results the same as:
+
+    $ ubongo-solve-duel board1.txt C L R
+
+but 'ubongo-solve-dir' may be slower than 'ubongo-solve-duel' a bit,
+since 'ubongo-solve-dir' reads data from files.
+
+Generic analyzer
+----------------
+'ubongo-utils' also provides 'Generic analyzer', 'ubongo-analyze-dir'. 
+Its usage is the same as other 'Analyzer' programs and it can recognizes
+'--pieceset-directory' ('-p' for short) option like 'ubongo-solve-dir'.
