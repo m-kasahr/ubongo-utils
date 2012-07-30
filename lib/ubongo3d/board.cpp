@@ -126,6 +126,9 @@ namespace Ubongo3d {
 	depth  = 2;
 	initial_blank_count = 0;
 
+	//
+	// Set 'width', 'height' and 'initial_blank_count'.
+	//
 	int x = 0;
 	int y = 0;
 	for (const char *p = shape; *p != '\0'; p++) {
@@ -133,6 +136,10 @@ namespace Ubongo3d {
 		y++;
 		x = 0;
 	    } else {
+		if (*p == blank)
+		    initial_blank_count += depth;
+		else if (*p != unavailable)
+		    goto failed;
 		if (x >= width)
 		    width = x + 1;
 		if (y >= height)
@@ -141,9 +148,12 @@ namespace Ubongo3d {
 	    }
 	}
 
-	if (width == 0 || height == 0)
+	if (initial_blank_count == 0)
 	    goto failed;
 
+	//
+	// Set 'initial_board'.
+	//
 	initial_board.resize(width * height * depth, unavailable);
 
 	x = 0;
@@ -157,7 +167,6 @@ namespace Ubongo3d {
 		    initial_board[x + y * width + width * height * z]
 			= blank;
 		}
-		initial_blank_count += depth;
 		x++;
 	    } else if (*p == unavailable) {
 		for (int z = 0; z < depth; z++) {
@@ -165,11 +174,12 @@ namespace Ubongo3d {
 			= unavailable;
 		}
 		x++;
-	    } else {
-		goto failed;
 	    }
 	}
 
+	//
+	// Set 'current_board' and 'current_blank_count'.
+	//
 	current_board = initial_board;
 	current_blank_count = initial_blank_count;
 

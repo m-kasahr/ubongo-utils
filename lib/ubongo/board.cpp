@@ -114,6 +114,9 @@ namespace Ubongo {
 	height = 0;
 	initial_blank_count = 0;
 
+	//
+	// Set 'width', 'height' and 'initial_blank_count'.
+	//
 	int x = 0;
 	int y = 0;
 	for (const char *p = shape; *p != '\0'; p++) {
@@ -121,6 +124,10 @@ namespace Ubongo {
 		y++;
 		x = 0;
 	    } else {
+		if (*p == blank)
+		    initial_blank_count++;
+		else if (*p != unavailable)
+		    goto failed;
 		if (x >= width)
 		    width = x + 1;
 		if (y >= height)
@@ -129,9 +136,12 @@ namespace Ubongo {
 	    }
 	}
 
-	if (width == 0 || height == 0)
+	if (initial_blank_count == 0)
 	    goto failed;
 
+	//
+	// Set 'initial_board'.
+	//
 	initial_board.resize(width * height, unavailable);
 
 	x = 0;
@@ -142,16 +152,16 @@ namespace Ubongo {
 		x = 0;
 	    } else if (*p == blank) {
 		initial_board[x + y * width] = blank;
-		initial_blank_count++;
 		x++;
 	    } else if (*p == unavailable) {
 		initial_board[x + y * width] = unavailable;
 		x++;
-	    } else {
-		goto failed;
 	    }
 	}
 
+	//
+	// Set 'current_board' and 'current_blank_count'.
+	//
 	current_board = initial_board;
 	current_blank_count = initial_blank_count;
 
