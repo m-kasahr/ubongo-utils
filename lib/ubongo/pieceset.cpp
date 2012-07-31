@@ -72,11 +72,12 @@ namespace Ubongo {
 
     PieceSet &
     PieceSet::operator=(const PieceSet &source) {
-	if (this == &source)
-	    return *this;
-	pieces = source.pieces;
-	flip_flag = source.flip_flag;
-	reset_id_maps();
+	if (this != &source) {
+	    pieces = source.pieces;
+	    flip_flag = source.flip_flag;
+	    reset_id_maps();
+	}
+	return *this;
     }
 
     void
