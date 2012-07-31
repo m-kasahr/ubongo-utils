@@ -171,7 +171,7 @@ namespace Ubongo {
     Piece::get_square(std::size_t index, Direction direction) const {
 	if (direction < 0 || direction >= direction_count)
 	    throw std::out_of_range("Ubongo::Piece::get_square");
-	if (index < 0 || index >= squares[index].size())
+	if (index >= squares[index].size())
 	    throw std::out_of_range("Ubongo::Piece::get_square");
 	return squares[direction][index];
     }
@@ -327,7 +327,7 @@ namespace Ubongo {
     Piece::get_located_square(std::size_t index) const {
 	if (!located)
 	    throw std::logic_error("Ubongo::Piece::get_located_square");
-	if (index < 0 || index >= squares[index].size())
+	if (index >= squares[index].size())
 	    throw std::out_of_range("Ubongo::Piece::get_located_square");
 
 	return squares[direction][index] + location;

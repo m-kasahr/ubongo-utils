@@ -210,7 +210,7 @@ namespace Ubongo3d {
     Piece::get_cube(std::size_t index, Direction direction) const {
 	if (direction < 0 || direction >= direction_count)
 	    throw std::out_of_range("Ubongo3d::Piece::get_cube");
-	if (index < 0 || index >= cubes[index].size())
+	if (index >= cubes[index].size())
 	    throw std::out_of_range("Ubongo3d::Piece::get_cube");
 	return cubes[direction][index];
     }
@@ -378,7 +378,7 @@ namespace Ubongo3d {
     Piece::get_located_cube(std::size_t index) const {
 	if (!located)
 	    throw std::logic_error("Ubongo3d::Piece::get_located_cube");
-	if (index < 0 || index >= cubes[index].size())
+	if (index >= cubes[index].size())
 	    throw std::out_of_range("Ubongo3d::Piece::get_located_cube");
 
 	return cubes[direction][index] + location;

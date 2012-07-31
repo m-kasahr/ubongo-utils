@@ -96,7 +96,7 @@ namespace Ubongo3d {
 
     const Piece &
     Puzzle::get_piece(std::size_t index) const {
-	if (index < 0 || (std::size_t) index >= pieces.size())
+	if ((std::size_t) index >= pieces.size())
 	    throw std::out_of_range("Ubongo3d::Puzzle::get_piece");
 	return pieces[index];
     }
@@ -161,7 +161,7 @@ namespace Ubongo3d {
     bool
     Puzzle::locate_piece(std::size_t index, const Location &location,
 	Direction direction) {
-	if (index < 0 || index >= pieces.size())
+	if (index >= pieces.size())
 	    throw std::out_of_range("Ubongo3d:Puzzle::locate_piece");
 	if (pieces[index].is_located())
 	    throw std::logic_error("Ubongo3d:Puzzle::locate_piece");
@@ -175,7 +175,7 @@ namespace Ubongo3d {
 
     bool
     Puzzle::unlocate_piece(std::size_t index) {
-	if (index < 0 || index >= pieces.size())
+	if (index >= pieces.size())
 	    throw std::out_of_range("Ubongo3d:Puzzle::unlocate_piece");
 	if (!pieces[index].is_located())
 	    throw std::logic_error("Ubongo3d:Puzzle::unlocate_piece");
@@ -187,7 +187,7 @@ namespace Ubongo3d {
 
     bool
     Puzzle::is_located_piece(std::size_t index) const {
-	if (index < 0 || (std::size_t) index >= pieces.size())
+	if ((std::size_t) index >= pieces.size())
 	    throw std::out_of_range("Ubongo3d::Puzzle::is_located_piece");
 	return pieces[index].is_located();
     }
