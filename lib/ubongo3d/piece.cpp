@@ -383,4 +383,76 @@ namespace Ubongo3d {
 
 	return cubes[direction][index] + location;
     }
+
+    std::string
+    Piece::dump(Direction direction_arg) const {
+	std::string result;
+	int width = 0;
+	int height = 0;
+	int depth = 0;
+
+	//
+	// Calculate 'width', 'height' and 'depth' of the piece.
+	//
+	std::vector<Location>::const_iterator it
+	    = cubes[direction_arg].begin();
+	while (it != cubes[direction_arg].end()) {
+	    if (it->x >= width)
+		width = it->x + 1;
+	    if (it->y >= height)
+		height = it->y + 1;
+	    if (it->z >= depth)
+		depth = it->z + 1;
+	    it++;
+	}
+
+	//
+	// Set 'result' to blank.
+	// In case width=7, hegiht=3 and depth=2 that 'result' (blank)
+	// looks like:
+	//
+	//   ".......\n"
+	//   ".......\n"
+	//   ".......\n"
+	//   "=======\n"
+	//   ".......\n"
+	//   ".......\n"
+	//   ".......\n"
+	//
+	result.resize((width + 1) * (height + 1) * depth - (width + 1), blank);
+
+	for (int z = depth - 1; z > 0; z--) {
+	    size_t offset = z * (width + 1) * (height + 1) - (width + 1);
+	    for (int x = 0; x < width; x++)
+		result[offset + x] = '=';
+	}
+
+	for (int z = depth - 1; z >= 0; z--) {
+	    for (int y = 0; y < height + 1; y++) {
+		size_t offset =
+		      y * (width + 1)
+		    + z * (width + 1) * (height + 1);
+		result[offset] = '\n';
+	    }
+	}
+
+	it = cubes[direction_arg].begin();
+	while (it != cubes[direction_arg].end()) {
+	    size_t offset =
+		  it->x
+		+ it->y * (width + 1)
+		+ it->z * (width + 1) * (height + 1);
+	    result[offset] = id;
+	    it++;
+	}
+
+	return result;
+    }
+
+    std::string
+    Piece::dump() const {
+	if (!located)
+	    throw std::logic_error("Ubongo3d::Piece::dump");
+	return dump(direction);
+    }
 }

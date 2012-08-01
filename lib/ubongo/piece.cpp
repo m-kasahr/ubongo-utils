@@ -332,4 +332,41 @@ namespace Ubongo {
 
 	return squares[direction][index] + location;
     }
+
+    std::string
+    Piece::dump(Direction direction_arg) const {
+	std::string result;
+	int width = 0;
+	int height = 0;
+
+	std::vector<Location>::const_iterator it
+	    = squares[direction_arg].begin();
+	while (it != squares[direction_arg].end()) {
+	    if (it->x >= width)
+		width = it->x + 1;
+	    if (it->y >= height)
+		height = it->y + 1;
+	    it++;
+	}
+
+	result.resize((width + 1) * height, blank);
+
+	for (int y = 0; y < height; y++)
+	    result[width + y * (width + 1)] = '\n';
+
+	it = squares[direction_arg].begin();
+	while (it != squares[direction_arg].end()) {
+	    result[it->x + it->y * (width + 1)] = id;
+	    it++;
+	}
+
+	return result;
+    }
+
+    std::string
+    Piece::dump() const {
+	if (!located)
+	    throw std::logic_error("Ubongo::Piece::dump");
+	return dump(direction);
+    }
 }

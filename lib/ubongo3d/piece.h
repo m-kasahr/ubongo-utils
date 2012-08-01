@@ -275,6 +275,23 @@ namespace Ubongo3d {
 	///
 	Location
 	get_located_cube(std::size_t index) const;
+
+	///
+	/// Dump the shape of the piece.
+	///
+	/// @param direction_arg Direction of the piece.
+	/// @return A string which shows shape of the piece.
+	///
+	std::string
+	dump(Direction direction_arg) const;
+
+	///
+	/// Dump the shape of the piece.
+	///
+	/// @return A string which shows shape of the located piece.
+	///
+	std::string
+	dump() const;
     };
 }
 
