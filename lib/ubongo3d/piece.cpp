@@ -431,7 +431,8 @@ namespace Ubongo3d {
 	    for (int y = 0; y < height + 1; y++) {
 		size_t offset =
 		      y * (width + 1)
-		    + z * (width + 1) * (height + 1);
+		    + z * (width + 1) * (height + 1)
+		    - 1;
 		result[offset] = '\n';
 	    }
 	}
@@ -441,7 +442,7 @@ namespace Ubongo3d {
 	    size_t offset =
 		  it->x
 		+ it->y * (width + 1)
-		+ it->z * (width + 1) * (height + 1);
+		+ (depth - 1 - it->z) * (width + 1) * (height + 1);
 	    result[offset] = id;
 	    it++;
 	}
