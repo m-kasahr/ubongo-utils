@@ -50,7 +50,7 @@ namespace Ubongo3d {
 	//     {0, 1, 2}
 	//
 	piece_indice.resize(piece_count);
-	for (int i = 0; i < piece_count; i++)
+	for (size_t i = 0; i < piece_count; i++)
 	    piece_indice[i] = i;
     }
 
@@ -64,7 +64,7 @@ namespace Ubongo3d {
     }
 
     Analyzer::Analyzer(const Board &board_arg, const PieceSet &pieceset_arg,
-	int piece_count_arg)
+	size_t piece_count_arg)
 	: pieceset(pieceset_arg),
 	  piece_count(piece_count_arg),
 	  piece_indice(piece_count_arg),
@@ -75,11 +75,13 @@ namespace Ubongo3d {
 	solver.set_piece_flip_flag(pieceset_arg.get_flip_flag());
 	reset_piece_indice();
 	board_size = solver.get_puzzle().get_board_size();
+	if (piece_count == 0)
+	    complete = true;
     }
 
     void
     Analyzer::set_components(const Board &board_arg,
-	const PieceSet &pieceset_arg, int piece_count_arg) {
+	const PieceSet &pieceset_arg, size_t piece_count_arg) {
 	complete = false;
 	solver.set_board(board_arg);
 	solver.set_piece_flip_flag(pieceset_arg.get_flip_flag());
@@ -87,11 +89,15 @@ namespace Ubongo3d {
 	piece_count = piece_count_arg;
 	reset_piece_indice();
 	board_size = solver.get_puzzle().get_board_size();
+	if (piece_count == 0)
+	    complete = true;
     }
 
     void
     Analyzer::restart() {
 	complete = false;
+	if (piece_count == 0)
+	    complete = true;
 	solver.restart();
 	reset_piece_indice();
     }
@@ -104,8 +110,8 @@ namespace Ubongo3d {
 	    //
 	    // Select pieces.
 	    //
-	    int total_piece_size = 0;
-	    for (int i = 0; i < piece_count; i++) {
+	    size_t total_piece_size = 0;
+	    for (size_t i = 0; i < piece_count; i++) {
 		selected_pieces[i] = pieceset[piece_indice[i]];
 		total_piece_size += selected_pieces[i].get_size();
 	    }
@@ -136,22 +142,23 @@ namespace Ubongo3d {
 	    //     {1, 2, 4}
 	    //     {2, 3, 4}   -- comlete
 	    //
-	    int i = piece_count - 1;
+	    size_t i = piece_count - 1;
 	    if (piece_indice[i] + 1 < pieceset.size())
 		piece_indice[i]++;
 	    else {
-		i--;
-		while (i >= 0) {
-		    if (piece_indice[i] + 1 < piece_indice[i + 1]) {
-			int new_index = piece_indice[i] + 1;
-			for (int j = i; j < piece_count; j++)
-			    piece_indice[j] = new_index++;
+		for (;;) {
+		    if (i == 0) {
+			complete = true;
 			break;
 		    }
 		    i--;
+		    if (piece_indice[i] + 1 < piece_indice[i + 1]) {
+			int new_index = piece_indice[i] + 1;
+			for (size_t j = i; j < piece_count; j++)
+			    piece_indice[j] = new_index++;
+			break;
+		    }
 		}
-		if (i < 0)
-		    complete = true;
 	    }
 
 	    if (solved)

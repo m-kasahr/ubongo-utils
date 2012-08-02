@@ -45,13 +45,13 @@ namespace Ubongo {
 	PieceSet pieceset;
 
 	// The number of pieces placing on the board.
-	int piece_count;
+	size_t piece_count;
 
 	// Pieces currently placed on the board.
-	std::vector<int> piece_indice;
+	std::vector<size_t> piece_indice;
 
 	// The number of squares on the board.
-	int board_size;
+	size_t board_size;
 
 	// Puzzle solver.
 	Solver solver;
@@ -79,7 +79,7 @@ namespace Ubongo {
 	/// @param piece_count_arg The number of pieces placing on the board.
 	///
 	Analyzer(const Board &board_arg, const PieceSet &pieceset_arg,
-	    int piece_count_arg);
+	    size_t piece_count_arg);
 
 	///
 	/// Set components.
@@ -90,7 +90,7 @@ namespace Ubongo {
 	///
 	void
 	set_components(const Board &board_arg, const PieceSet &pieceset_arg,
-	    int piece_count_arg);
+	    size_t piece_count_arg);
 
 	///
 	/// Reset the analysis.
