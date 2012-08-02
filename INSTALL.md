@@ -41,6 +41,10 @@ Type 'make' to compile the software.
 
     $ make
 
+Optionally, type 'make check' to run tests.
+
+    $ make check
+
 Run 'make install' to install programs, data files and documents.
 Usually, it requires root privilege.  With 'sudo' command, type:
 
