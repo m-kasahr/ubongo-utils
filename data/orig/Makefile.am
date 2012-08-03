@@ -15,3 +15,7 @@ pkgdataorig_DATA = A.piece \
                    colors \
                    piece-flip-flag \
                    piece-order
+
+uninstall-hook:
+	-rmdir $(pkgdataorigdir)
+	-rmdir $(pkgdatadir)

@@ -35,6 +35,9 @@ CLEANFILES = pieceset_orig.h \
              pieceset_minir.h \
              pieceset_miniy.h
 
+uninstall-hook:
+	-rmdir $(ubongoincludedir)
+
 pieceset_orig.h: make-pieceset.rb
 	rm -f $@
 	$(RUBY) $(srcdir)/make-pieceset.rb Orig $(top_srcdir)/data/orig > $@

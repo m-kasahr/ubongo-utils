@@ -15,3 +15,7 @@ pkgdatapentomino_DATA = F.piece \
                         colors \
                         piece-flip-flag \
                         piece-order
+
+uninstall-hook:
+	-rmdir $(pkgdatapentominodir)
+	-rmdir $(pkgdatadir)

@@ -10,3 +10,7 @@ pkgdataminib_DATA = A.piece \
                     colors \
                     piece-flip-flag \
                     piece-order
+
+uninstall-hook:
+	-rmdir $(pkgdataminibdir)
+	-rmdir $(pkgdatadir)

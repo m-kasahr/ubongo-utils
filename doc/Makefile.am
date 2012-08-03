@@ -96,6 +96,10 @@ EXTRA_DIST = ubongo-utils.html.header \
              ubongo-utils.html.footer \
              $(pkgdoc_DATA)
 
+uninstall-hook:
+	-rmdir $(pkgdocdir)
+	-rmdir $(pkgdatadir)
+
 ubongo-utils.html: ubongo-utils.html.header \
                    ubongo-utils.html.footer ubongo-utils.md
 	rm -f $@

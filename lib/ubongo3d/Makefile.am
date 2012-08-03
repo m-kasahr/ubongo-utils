@@ -24,6 +24,9 @@ EXTRA_DIST = make-pieceset3d.rb
 
 CLEANFILES = pieceset_3d.h
 
+uninstall-hook:
+	-rmdir $(ubongo3dincludedir)
+
 pieceset_3d.h: make-pieceset3d.rb
 	rm -f $@
 	$(RUBY) $(srcdir)/make-pieceset3d.rb 3d $(top_srcdir)/data/3d > $@
