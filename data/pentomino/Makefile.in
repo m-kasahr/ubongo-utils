@@ -240,6 +240,7 @@ pkgdatapentomino_DATA = F.piece \
                         piece-flip-flag \
                         piece-order
 
+EXTRA_DIST = $(pkgdatapentomino_DATA)
 all: all-am
 
 .SUFFIXES:

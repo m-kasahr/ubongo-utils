@@ -235,6 +235,7 @@ pkgdataminir_DATA = A.piece \
                     piece-flip-flag \
                     piece-order
 
+EXTRA_DIST = $(pkgdataminir_DATA)
 all: all-am
 
 .SUFFIXES:
