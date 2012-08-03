@@ -1,4 +1,4 @@
-Introduction
+ubongo-utils
 ============
 ubongo-utils is a set of utilities for Ubongo, Ubongo Mini, Ubongo Duel
 and Ubongo 3-D puzzle games designed by Grzegorz Rejchtman.
@@ -16,7 +16,7 @@ and some auxiliary utilities.
 
 
 Solver
-======
+------
 THE 'Solver' utility solves a puzzle.  ubongo-utils provides a solver
 command for each Ubongo variant.
 
@@ -228,7 +228,7 @@ puzzle has no solution.
 
 
 Analyzer
-========
+--------
 The 'Analyzer' utility is similar to 'Solver', but it assists you in
 creating puzzles.  Specifying a board file and how many pieces are
 placed on it, 'Analyzer' outputs all solvable combinations of pieces.
@@ -335,7 +335,7 @@ it has reported no solvable combinations of pieces.
 
 
 HTML Converter
-==============
+--------------
 'HTML converter' converts a text file to an HTML file and PNG image
 files.  The text file may contains one of the following data:
 
@@ -491,12 +491,11 @@ _GAME TITLE_ here is "Ubongo", "Ubongo Duel", "Ubongo Mini" or
 
 
 Auxiliary utilities
-===================
+-------------------
 'ubonbo-utils' provides some auxiliary utilities.  This chapter
 explains them.
 
-Generic solver
---------------
+### Generic solver ###
 Since 'Solver' programs described in the 'Solver' chapter is
 specialized in solving a particular Ubongo variant, it cannot solve
 other 'Filling squares' puzzle.  'ubongo-solve-duel' can solve
@@ -509,7 +508,7 @@ puzzles.
 The most famous 'Filling squares' puzzle is 'Pentomino'.  The generic
 solver can solve 'Pentomino' puzzles, of course.
 
-The common form of the 'ubongo-solve-dir' commands is the same as
+The common form of the 'ubongo-solve-dir' command is the same as
 other 'Solver':
 
     ubongo-solve-dir [option...] BOARD-FILE PIECE...
@@ -555,8 +554,57 @@ results the same as:
 but 'ubongo-solve-dir' may be slower than 'ubongo-solve-duel' a bit,
 since 'ubongo-solve-dir' reads data from files.
 
-Generic analyzer
-----------------
+### Generic analyzer ###
 'ubongo-utils' also provides 'Generic analyzer', 'ubongo-analyze-dir'. 
 Its usage is the same as other 'Analyzer' programs and it can recognizes
 '--pieceset-directory' ('-p' for short) option like 'ubongo-solve-dir'.
+
+### Board shape comparison tool ###
+
+The 'ubongo-compare' command is an utility for checking duplicate of
+board files.  Suppose that the shape data of 'board1.txt' is:
+
+    .###.
+    #####
+    ###.#
+    ###.#
+
+and 'board2.txt' is:
+
+    .###
+    ##..
+    ####
+    ####
+    .###
+
+The two board files have different data, but their shapes are identical.
+The shape rotated right 90 degrees of 'board2.txt' is equivalent to
+'board1.txt'.  Execute 'ubongo-compare':
+
+    ubongo-compare board1.txt board2.txt
+
+then the command reports:
+
+    duplicate: board01
+           and board02
+
+You can specify three or more board files to 'ubongo-compare' at once.
+The common form of the 'ubongo-compare' command is:
+
+    ubongo-compare [option...] BOARD-FILE BOARD-FILE...
+
+It recognizes the following options:
+
+* -h, --help
+
+Print command line usage, then exits.
+
+* -n, --no-flip
+
+During duplicate checks, 'ubongo-compare' rotates and flips board shapes.
+This option tells 'ubongo-compare' not to flip board shapes.  Please
+specify this option when you check board files for Ubongo Mini.
+
+* -v, --version
+
+Print a version number, then exits.
