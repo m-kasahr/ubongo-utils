@@ -232,8 +232,8 @@ end
 for i in 0 .. $nfiles - 2
   for j in i + 1 .. $nfiles - 1
     if compare_matrixes($matrixes[i], $matrixes[j], $flip_flag)
-      print("matched: #{ARGV[i]}\n")
-      print("     and #{ARGV[j]}\n")
+      print("duplicate: #{ARGV[i]}\n")
+      print("       and #{ARGV[j]}\n")
     end
   end
 end
