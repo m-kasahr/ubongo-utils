@@ -7,11 +7,18 @@ body {
     background-color:   #ffffff;
 }
 h1 {
-    font-size:          x-large;
+    font-size:          xx-large;
 }
 h2 {
-    font-size:          large;
+    font-size:          x-large;
     background-color:   #cfcf00;
+    padding:            3px;
+    border-style:       none;
+    border-width:       1px;
+}
+h3 {
+    font-size:          large;
+    background-color:   #9fcf3f;
     padding:            3px;
     border-style:       none;
     border-width:       1px;

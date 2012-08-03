@@ -7,11 +7,18 @@ body {
     background-color:   #ffffff;
 }
 h1 {
-    font-size:          x-large;
+    font-size:          xx-large;
 }
 h2 {
-    font-size:          large;
+    font-size:          x-large;
     background-color:   #cfcf00;
+    padding:            3px;
+    border-style:       none;
+    border-width:       1px;
+}
+h3 {
+    font-size:          large;
+    background-color:   #9fcf3f;
     padding:            3px;
     border-style:       none;
     border-width:       1px;
@@ -43,11 +50,11 @@ All utilities are designed to be invoked on a command line.  </p>
 <li>HTML converter</li>
 </ul>
 
-<p>In the next three sections, I explain how to use those utility programs.</p>
+<p>and some auxiliary utilities.</p>
 
 <h2>Solver</h2>
 
-<p>The 'Solver' utility solves a puzzle.  ubongo-utils provides a solver
+<p>THE 'Solver' utility solves a puzzle.  ubongo-utils provides a solver
 command for each Ubongo variant.</p>
 
 <ul>
@@ -584,5 +591,145 @@ The default value is "<em>GAME TITLE</em> Problems" if '--problem' option
 is specifed, or "<em>GAME TITLE</em> Solutions" otherwise.
 <em>GAME TITLE</em> here is "Ubongo", "Ubongo Duel", "Ubongo Mini" or
 "Ubongo 3-D".</p>
+
+<h2>Auxiliary utilities</h2>
+
+<p>'ubonbo-utils' provides some auxiliary utilities.  This chapter
+explains them.</p>
+
+<h3>Generic solver</h3>
+
+<p>Since 'Solver' programs described in the 'Solver' chapter is
+specialized in solving a particular Ubongo variant, it cannot solve
+other 'Filling squares' puzzle.  'ubongo-solve-duel' can solve
+Ubongo Duel puzzles, but it cannot solve other puzzles.</p>
+
+<p>'ubongo-utils' also provides 'Generic Solver' utility named
+'ubongo-solve-dir'.  It can solve and analyze generic 'Filling squares'
+puzzles.</p>
+
+<p>The most famous 'Filling squares' puzzle is 'Pentomino'.  The generic
+solver can solve 'Pentomino' puzzles, of course.</p>
+
+<p>The common form of the 'ubongo-solve-dir' command is the same as
+other 'Solver':</p>
+
+<pre><code>ubongo-solve-dir [option...] BOARD-FILE PIECE...
+</code></pre>
+
+<p>or</p>
+
+<pre><code>ubongo-solve-dir [option...] -f PROBLEM-FILE BOARD-FILE
+</code></pre>
+
+<p>In addition, 'ubongo-solve-dir' recognizes '--pieceset-directory'
+('-p' for short) option:</p>
+
+<ul>
+<li>-p DIR, --pieceset-directory=DIR</li>
+</ul>
+
+<p>Read data about a set of pieces used in the puzzle from DIRECTORY.
+If DIR is not an absolute path, 'ubongo-solve-dir' assumes it is 
+relative to '/usr/local/share/ubongo-utils' (if 'ubongo-utils' has
+been installed under '/usr/local').  The default value of DIRECTORY
+is '.' (the current directory).</p>
+
+<p>'ubongo-duel' installs the following piece-set data under 
+'/usr/local/share/ubongo-utils'.</p>
+
+<ul>
+<li>orig (Ubongo)</li>
+<li>duel (Ubongo Duel)</li>
+<li>minib (Ubongo Mini - blue tiles)</li>
+<li>minig (Ubongo Mini - green tiles)</li>
+<li>minir (Ubongo Mini - red tiles)</li>
+<li>miniy (Ubongo Mini - yellow tiles)</li>
+<li>pentomino (Pentomino)</li>
+</ul>
+
+<p>Note that piece-set data for Ubongo 3-D also exists but it cannot be
+used by 'ubongo-solve-dir'.  'ubongo-solve-dir' can solve 2-D puzzles
+only.</p>
+
+<p>For example,</p>
+
+<pre><code>$ ubongo-solve-dir -p duel board1.txt C L R
+</code></pre>
+
+<p>results the same as:</p>
+
+<pre><code>$ ubongo-solve-duel board1.txt C L R
+</code></pre>
+
+<p>but 'ubongo-solve-dir' may be slower than 'ubongo-solve-duel' a bit,
+since 'ubongo-solve-dir' reads data from files.</p>
+
+<h3>Generic analyzer</h3>
+
+<p>'ubongo-utils' also provides 'Generic analyzer', 'ubongo-analyze-dir'. 
+Its usage is the same as other 'Analyzer' programs and it can recognizes
+'--pieceset-directory' ('-p' for short) option like 'ubongo-solve-dir'.</p>
+
+<h3>Board shape comparison tool</h3>
+
+<p>The 'ubongo-compare' command is an utility for checking duplicate of
+board files.  Suppose that the shape data of 'board1.txt' is:</p>
+
+<pre><code>.###.
+#####
+###.#
+###.#
+</code></pre>
+
+<p>and 'board2.txt' is:</p>
+
+<pre><code>.###
+##..
+####
+####
+.###
+</code></pre>
+
+<p>The two board files have different data, but their shapes are identical.
+The shape rotated right 90 degrees of 'board2.txt' is equivalent to
+'board1.txt'.  Execute 'ubongo-compare':</p>
+
+<pre><code>ubongo-compare board1.txt board2.txt
+</code></pre>
+
+<p>then the command reports:</p>
+
+<pre><code>duplicate: board01
+       and board02
+</code></pre>
+
+<p>You can specify three or more board files to 'ubongo-compare' at once.
+The common form of the 'ubongo-compare' command is:</p>
+
+<pre><code>ubongo-compare [option...] BOARD-FILE BOARD-FILE...
+</code></pre>
+
+<p>It recognizes the following options:</p>
+
+<ul>
+<li>-h, --help</li>
+</ul>
+
+<p>Print command line usage, then exits.</p>
+
+<ul>
+<li>-n, --no-flip</li>
+</ul>
+
+<p>During duplicate checks, 'ubongo-compare' rotates and flips board shapes.
+This option tells 'ubongo-compare' not to flip board shapes.  Please
+specify this option when you check board files for Ubongo Mini.</p>
+
+<ul>
+<li>-v, --version</li>
+</ul>
+
+<p>Print a version number, then exits.</p>
 </body>
 </html>
