@@ -278,7 +278,12 @@ main(int argc, char *argv[]) {
 	    std::exit(0);
 #ifdef UBONGO_SOLVE_DIR
 	case 'p':
-	    pieceset_directory = ::optarg;
+	    if (::optarg[0] == '/')
+		pieceset_directory = ::optarg;
+	    else {
+		pieceset_directory = "@pkgdatadir@/";
+		pieceset_directory += ::optarg;
+	    }
 	    break;
 #endif
 	case 'v':

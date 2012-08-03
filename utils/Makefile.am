@@ -217,6 +217,7 @@ ubongo-solve-dir.cpp: ubongo-solve-x.cpp.in
 	    -e 's|[@]lib[@]|ubongo|' \
 	    -e 's|[@]namespace[@]|Ubongo|' \
 	    -e 's|[@]pieceset_suffix[@]|Dir|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
 	    $(srcdir)/ubongo-solve-x.cpp.in > $@
 
 ubongo-solve-3d.cpp: ubongo-solve-x.cpp.in
@@ -281,6 +282,7 @@ ubongo-analyze-dir.cpp: ubongo-analyze-x.cpp.in
 	    -e 's|[@]lib[@]|ubongo|' \
 	    -e 's|[@]namespace[@]|Ubongo|' \
 	    -e 's|[@]pieceset_suffix[@]|Dir|' \
+	    -e 's|[@]pkgdatadir[@]|$(pkgdatadir)|' \
 	    $(srcdir)/ubongo-analyze-x.cpp.in > $@
 
 ubongo-analyze-3d.cpp: ubongo-analyze-x.cpp.in

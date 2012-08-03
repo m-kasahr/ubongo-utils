@@ -201,7 +201,12 @@ main(int argc, char *argv[]) {
 	    break;
 #ifdef UBONGO_ANALYZE_DIR
 	case 'p':
-	    pieceset_directory = ::optarg;
+	    if (::optarg[0] == '/')
+		pieceset_directory = ::optarg;
+	    else {
+		pieceset_directory = "@pkgdatadir@/";
+		pieceset_directory += ::optarg;
+	    }
 	    break;
 #endif
 	case 's':
