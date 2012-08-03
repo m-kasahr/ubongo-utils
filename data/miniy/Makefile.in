@@ -436,8 +436,9 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-pkgdataminiyDATA
-
-.MAKE: install-am install-strip
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) uninstall-hook
+.MAKE: install-am install-strip uninstall-am
 
 .PHONY: all all-am check check-am clean clean-generic clean-libtool \
 	distclean distclean-generic distclean-libtool distdir dvi \
@@ -449,8 +450,13 @@ uninstall-am: uninstall-pkgdataminiyDATA
 	install-ps-am install-strip installcheck installcheck-am \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-generic mostlyclean-libtool pdf pdf-am \
-	ps ps-am uninstall uninstall-am uninstall-pkgdataminiyDATA
+	ps ps-am uninstall uninstall-am uninstall-hook \
+	uninstall-pkgdataminiyDATA
 
+
+uninstall-hook:
+	-rmdir $(pkgdataminiydir)
+	-rmdir $(pkgdatadir)
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

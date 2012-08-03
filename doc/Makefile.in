@@ -520,8 +520,9 @@ ps: ps-am
 ps-am:
 
 uninstall-am: uninstall-pkgdocDATA
-
-.MAKE: install-am install-strip
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) uninstall-hook
+.MAKE: install-am install-strip uninstall-am
 
 .PHONY: all all-am check check-am clean clean-generic clean-libtool \
 	distclean distclean-generic distclean-libtool distdir dvi \
@@ -533,8 +534,12 @@ uninstall-am: uninstall-pkgdocDATA
 	install-strip installcheck installcheck-am installdirs \
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	uninstall uninstall-am uninstall-pkgdocDATA
+	uninstall uninstall-am uninstall-hook uninstall-pkgdocDATA
 
+
+uninstall-hook:
+	-rmdir $(pkgdocdir)
+	-rmdir $(pkgdatadir)
 
 ubongo-utils.html: ubongo-utils.html.header \
                    ubongo-utils.html.footer ubongo-utils.md

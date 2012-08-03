@@ -652,8 +652,9 @@ ps-am:
 
 uninstall-am: uninstall-libLTLIBRARIES \
 	uninstall-ubongo3dincludeHEADERS
-
-.MAKE: install-am install-strip
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) uninstall-hook
+.MAKE: install-am install-strip uninstall-am
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
 	clean-libLTLIBRARIES clean-libtool cscopelist ctags distclean \
@@ -668,9 +669,12 @@ uninstall-am: uninstall-libLTLIBRARIES \
 	installdirs maintainer-clean maintainer-clean-generic \
 	mostlyclean mostlyclean-compile mostlyclean-generic \
 	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-libLTLIBRARIES \
+	uninstall-am uninstall-hook uninstall-libLTLIBRARIES \
 	uninstall-ubongo3dincludeHEADERS
 
+
+uninstall-hook:
+	-rmdir $(ubongo3dincludedir)
 
 pieceset_3d.h: make-pieceset3d.rb
 	rm -f $@
