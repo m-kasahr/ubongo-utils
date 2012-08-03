@@ -1,31 +1,35 @@
 #! @RUBY@
-# -*- ruby -*-
-
+#                                                             -*- Ruby -*-
+# Copyright (c) 2009  Motoyuki Kasahara
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. Neither the name of the project nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
 require 'getoptlong'
 
 # Program version.
 PROGRAM_VERSION = '@PACKAGE_VERSION@'
-
-#
-# Find a file in directories.
-#
-def find_file(file_name, directories)
-  if file_name !~ /^\//
-    directories.each do |directory|
-      path = directory + '/' + file_name
-      if ((File.stat(path).file?) rescue false)
-          return path
-      end
-    end
-  end
-
-  if ((File.stat(file_name).file?) rescue false)
-    return file_name
-  end
-
-  warn("#{$0}: failed to find a file: #{file_name}")
-  return
-end
 
 #
 # Read a matrix file.
@@ -166,22 +170,20 @@ def print_matrix(matrix)
     line.each do |ch|
       print ch
     end
-    print "\n"
+    print("\n")
   end
 end
 
 #
 # Initialize variables.
 #
-$include_directories = []
 $flip_flag = true
 
 #
 # Parse command line options.
 #
 $options =
-  GetoptLong.new(['--directory',  '-d', GetoptLong::REQUIRED_ARGUMENT],
-                 ['--help',       '-h', GetoptLong::NO_ARGUMENT],
+  GetoptLong.new(['--help',       '-h', GetoptLong::NO_ARGUMENT],
                  ['--no-flip',    '-n', GetoptLong::NO_ARGUMENT],
                  ['--version',    '-v', GetoptLong::NO_ARGUMENT])
 $try_help = "Try '#{$0} --help' for more details."
@@ -189,30 +191,17 @@ $try_help = "Try '#{$0} --help' for more details."
 begin
   $options.each do |name, argument|
     case name
-    when '--directory'
-      $include_directories.push(argument)
     when '--help'
-      print "Usage: ubongo-compare [option...] MATRIX1-FILE MATRIX2-FILE\n"
-      print "Options:\n"
-      print "  -d DIR, --directory=DIR\n"
-      print "                 Also search DIR for color and matrix files.\n"
-      print "                 Prior to UBONGO_INCLUDES.\n"
-      print "  -h, --help     Give this help, then exit.\n"
-      print "  -n, --no-flip  Pieces cannot be flipped.\n"
-      print "  -v, --version  Display version number, then exit.\n"
-      print "\n"
-      print "Arguments:\n"
-      print "  MATRIX-FILE1   Input matrix file.\n"
-      print "  MATRIX-FILE2   Input matrix file.\n"
-      print "\n"
-      print "Environment Variables:\n"
-      print "  UBONGO_INCLUDES=DIR:...\n"
-      print "                 Also search DIR... for color and matrix files.\n"
+      print("Usage: ubongo-compare [option...] BOARD-FILE BOARD-FILE ...\n")
+      print("Options:\n")
+      print("  -h, --help     Give this help, then exit.\n")
+      print("  -n, --no-flip  Pieces cannot be flipped.\n")
+      print("  -v, --version  Display version number, then exit.\n")
       exit(0)
     when '--no-flip'
       $flip_flag = false
     when '--version'
-      print "ubongo-compare version #{PROGRAM_VERSION}\n"
+      print("ubongo-compare version #{PROGRAM_VERSION}\n")
       exit(0)
     end
   end
@@ -227,10 +216,6 @@ if ARGV.length < 2
   exit(1)
 end
 
-if ENV.key?('UBONGO_INCLUDES')
-  $include_directories += ENV['UBONGO_INCLUDES'].split(':')
-end
-
 $nfiles = ARGV.length
 $matrix_file_paths = []
 $matrixes = []
@@ -239,14 +224,7 @@ $matrixes = []
 # Read a matrix file.
 #
 ARGV.each_index do |i|
-  if i == '-'
-    $matrix_file_paths[i] = ARGV[i]
-  else
-    $matrix_file_paths[i] = find_file(ARGV[i], $include_directories)
-    if $matrix_file_paths[i] == nil
-      exit(1)
-    end
-  end
+  $matrix_file_paths[i] = ARGV[i]
   $matrixes[i] = read_matrix_file($matrix_file_paths[i])
   normalize_matrix($matrixes[i])
 end
@@ -254,8 +232,8 @@ end
 for i in 0 .. $nfiles - 2
   for j in i + 1 .. $nfiles - 1
     if compare_matrixes($matrixes[i], $matrixes[j], $flip_flag)
-      print "matched: #{ARGV[i]}\n"
-      print "     and #{ARGV[j]}\n"
+      print("matched: #{ARGV[i]}\n")
+      print("     and #{ARGV[j]}\n")
     end
   end
 end
