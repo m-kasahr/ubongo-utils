@@ -16,6 +16,8 @@ pkgdatapentomino_DATA = F.piece \
                         piece-flip-flag \
                         piece-order
 
+EXTRA_DIST = $(pkgdatapentomino_DATA)
+
 uninstall-hook:
 	-rmdir $(pkgdatapentominodir)
 	-rmdir $(pkgdatadir)

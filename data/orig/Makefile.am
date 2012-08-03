@@ -16,6 +16,8 @@ pkgdataorig_DATA = A.piece \
                    piece-flip-flag \
                    piece-order
 
+EXTRA_DIST = $(pkgdataorig_DATA)
+
 uninstall-hook:
 	-rmdir $(pkgdataorigdir)
 	-rmdir $(pkgdatadir)

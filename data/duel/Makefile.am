@@ -25,6 +25,8 @@ pkgdataduel_DATA = A.piece \
                    piece-flip-flag \
                    piece-order
 
+EXTRA_DIST = $(pkgdataduel_DATA)
+
 uninstall-hook:
 	-rmdir $(pkgdatadueldir)
 	-rmdir $(pkgdatadir)

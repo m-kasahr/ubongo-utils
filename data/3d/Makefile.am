@@ -36,6 +36,8 @@ pkgdata3d_DATA = A.piece \
                  piece-order \
                  ubongo-3d-blocks.svg 
 
+EXTRA_DIST = $(pkgdata3d_DATA)
+
 uninstall-hook:
 	-rmdir $(pkgdata3ddir)
 	-rmdir $(pkgdatadir)
