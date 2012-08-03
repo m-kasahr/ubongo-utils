@@ -52,7 +52,7 @@ EXTRA_DIST = board01 \
              board03-solve-03.exp \
              board03-solve-03.sh
 
-clean-hook:
+clean-local:
 	rm -f do-test.sh
 	rm -f *.out
 

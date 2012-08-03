@@ -90,13 +90,13 @@ EXTRA_DIST = board01 \
              board05-solve-03.exp \
              board05-solve-03.sh
 
+clean-local:
+	rm -f do-test.sh
+	rm -f *.out
+
 do-test.sh: $(srcdir)/../do-test.sh.in
 	rm -f $@
 	sed -e 's|[@]top_builddir[@]|$(top_builddir)|' \
 	    -e 's|[@]srcdir[@]|$(srcdir)|' \
 	    $(srcdir)/../do-test.sh.in > $@
 	chmod 0755 $@
-
-clean-hook:
-	rm -f do-test.sh
-	rm -f *.out
