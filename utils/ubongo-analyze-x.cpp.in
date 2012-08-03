@@ -214,7 +214,8 @@ main(int argc, char *argv[]) {
 		output_mode = show_one_solution;
 	    break;
 	case 'v':
-	    std::cout << "ubongo-analyze version " << VERSION << std::endl;
+	    std::cout << "ubongo-analyze-@name@ version " << VERSION
+		      << std::endl;
 	    exit(0);
 	default:
 	    show_try_help_message();

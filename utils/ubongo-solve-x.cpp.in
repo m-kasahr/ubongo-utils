@@ -287,7 +287,8 @@ main(int argc, char *argv[]) {
 	    break;
 #endif
 	case 'v':
-	    std::cout << "ubongo-solve version " << VERSION << std::endl;
+	    std::cout << "ubongo-solve-@name@ version " << VERSION
+		      << std::endl;
 	    exit(0);
 	default:
 	    show_try_help_message();
